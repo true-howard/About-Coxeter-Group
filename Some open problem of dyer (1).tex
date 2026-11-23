@@ -3022,17 +3022,15 @@ of the full sequence.
 
 \par\medskip
 \noindent\textbf{Status.}
-Partially solved.
-Theorem~\ref{thm:normalized-root-orbits} below proves that every
-infinite root orbit under a fixed element has a unique normalized
-limit, without a restriction on the signature of the associated
-bilinear form.
-Corollary~\ref{cor:periodic-root-phases} consequently determines
-the accumulation set of a periodic fixed-root sequence with
-an infinite period orbit.
-Finite root orbits are periodic and must be treated separately.
-The arguments below do not settle the convergence problem for
-arbitrary nonperiodic left-infinite reduced words.
+$\checkmark$ Convergence is characterized for a fixed initial root.
+Theorem~\ref{thm:normalized-root-orbits} treats powers of a fixed
+element, and Corollary~\ref{cor:periodic-root-phases} gives all phase
+limits for a periodic word with infinite period orbit.
+Remark~\ref{rem:word-component-weights} gives a necessary and sufficient
+condition for an arbitrary left-infinite reduced word in terms of root
+heights and component weights. A criterion read directly from the
+letters in general, and a description of all accumulation sets in the
+divergent case, remain open here.
 
 \par\medskip
 \noindent\textbf{Previous work and verified progress.}
@@ -3774,6 +3772,64 @@ in one such period have the same normalization.
 Thus finite period orbits are also completely determined,
 but their accumulation points need not be limit roots.
 \end{remark}
+
+\begin{remark}[Convergence for an arbitrary left-infinite reduced word]
+\label{rem:word-component-weights}
+Work in the simple-root basis above. Put
+$\beta_n=s_n\cdots s_1\alpha_0$, $x_n=\widehat{\beta_n}$ and
+$H_n=|h(\beta_n)|$. Let $I$ consist of the generators occurring
+infinitely often. For each irreducible component $J$ of $I$, let
+$p_J$ be coordinate projection onto $V_J$ and put $t_J(n)=h(p_Jx_n)$.
+Call $J$ affine here when its Gram form is positive semidefinite
+of corank one, and write $\widehat{\delta_J}$ for its normalized
+positive null vector.
+
+If the roots $\beta_n$ take finitely many values, then $x_n$ converges
+exactly when it is eventually constant. If they take infinitely many
+values, then $x_n$ converges if and only if all three conditions hold:
+\[
+ H_n\to\infty,\qquad
+ t_J(n)\to0\ \text{for every non-affine }J,\qquad
+ t_J(n)\to t_J\ \text{for every affine }J.
+\]
+In that case the limit is $\sum_{J\ {\rm affine}}t_J\widehat{\delta_J}$.
+
+For necessity, suppose $x_n\to x$. Bounded-height positive roots
+form a finite set \cite[Corollary~2.11]{HLR}, so along some subsequence
+$H_n\to\infty$. The identity $B(x_n,x_n)=H_n^{-2}$ gives $B(x,x)=0$
+and then $H_n\to\infty$ along the entire sequence. Coordinates outside
+$I$ eventually remain constant before normalization, hence $x\in V_I$.
+For $s\in I$ take indices $n$ with $s_n=s$. Passing to projective
+limits in $[x_n]=s[x_{n-1}]$ shows that $s[x]=[x]$.
+The negative eigenline of $s$ is spanned by the nonisotropic root
+$\alpha_s$, so $sx=x$. Thus $x$ is orthogonal to $V_I$.
+On each component the nonnegative coordinate vector $c$ of $p_Jx$
+satisfies $G_Jc=0$, where $G_J$ is its Gram matrix.
+If $c\ne0$, Perron--Frobenius applied to the irreducible nonnegative
+matrix $\mathrm{Id}-G_J$ gives spectral radius one, with one a simple
+eigenvalue. By symmetry, $G_J$ is positive semidefinite of corank one.
+This proves the required conditions since $t_J(n)\to h(p_Jx)$.
+
+For sufficiency, choose a tail using only $I$ and let $\gamma$ be the
+root just before that tail. The tail product up to time $n$ splits into
+commuting factors $g_{J,n}\in W_J$. Each fixes the other component
+spaces pointwise, so
+\[
+ \beta_n=\gamma+\sum_J d_{J,n},\qquad
+ d_{J,n}=g_{J,n}\gamma-\gamma=p_J(\beta_n-\gamma).
+\]
+Invariance of $B$ gives
+$B(d_{J,n},d_{J,n})=-2B(\gamma,d_{J,n})$.
+Since $\beta_n$ has coordinates of one sign, $d_{J,n}=O(H_n+1)$.
+Dividing the identity by $H_n^2$ shows that every accumulation
+point of $p_Jx_n$ is isotropic. For affine $J$, positive semidefiniteness
+puts that point in the null line, and its height fixes it uniquely
+as $t_J\widehat{\delta_J}$. For other $J$, the nonnegative coordinates
+of $p_Jx_n$ sum to $t_J(n)\to0$. The coordinates outside $I$ also
+vanish after normalization. Compactness of the normalized simplex
+now yields the stated limit.
+\end{remark}
+
 \subsection{Uniqueness of limits of dominance chains}
 
 Let $(\rho_n)_{n\ge1}$ be an infinite sequence of positive roots
