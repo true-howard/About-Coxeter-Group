@@ -1,0 +1,2155 @@
+\documentclass[11pt,reqno]{amsart}
+
+% ==================================================
+% 1. Packages
+% ==================================================
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{mathrsfs} 
+% ==================================================
+% 2. Mathematical operators
+% ==================================================
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\PLC}{PLC}
+
+\DeclareMathOperator{\Inv}{Inv}
+% ==================================================
+% 3. Mathematical symbols
+% ==================================================
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\pairing}[2]{\left\langle #1,#2 \right\rangle}
+
+% Coxeter group notation (optional)
+
+\newcommand{\simpleRoots}{\Pi}
+\newcommand{\limitRoots}{\mathcal{E}}
+\newcommand{\imaginaryCone}{\mathcal{I}}
+\newcommand{\TitsCone}{\mathcal{T}}
+\newcommand{\depth}{\operatorname{dp}}
+
+% ==================================================
+% 4. Theorem environments
+% ==================================================
+
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{remark}
+
+\newtheorem{remark}[theorem]{Remark}
+
+% ==================================================
+% 5. Equation numbering
+% ==================================================
+
+\numberwithin{equation}{section}
+
+% ==================================================
+% 6. Hyper-reference names
+% ==================================================
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Pos}{Pos}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\dom}{dom}
+
+% ==================================================
+% 7. Title and author
+% ==================================================
+
+\title[Uniqueness of Limit Roots]
+{Uniqueness of Limit Roots}
+
+\author{Haoquan Wang}
+
+\address{
+School of Mathematical Science,
+Peking University,
+Peking, China
+}
+
+\email{2300010755@stu.pku.edu.cn}
+
+% Optional: AMS classification and keywords
+
+
+\keywords{
+Coxeter groups, Fushcian groups, limit roots,
+dominance order
+}
+
+% ==================================================
+% 8. Document
+% ==================================================
+
+\begin{document}
+
+% Abstract
+
+\begin{abstract}
+A non-affine Coxeter group could has many different limit roots. We claim that for a dominance chain of rank 4 Coxeter group, it has an unique limit root as its accumulation point. Besides, for most of the cases of rank 5 Coxeter group, this proposition also stands. 
+\end{abstract}
+
+\maketitle
+
+% Optional table of contents
+
+% ==================================================
+% Section 1: Introduction
+% ==================================================
+\tableofcontents
+\section{Introduction}
+\label{sec:introduction}
+
+% ==================================================
+% Section 2: Preliminaries
+% ==================================================
+
+\section{Main statement, small ranks, and quotient lifting}\label{sec:rank-four}
+\begin{theorem}\label{thm:main}
+If $|S|<6$, every infinite strict dominance chain $(\beta_n)$ has a normalized sequence $(\widehat{\beta}_n)$ converging to a unique point of $E$. In arbitrary rank $r$, the same conclusion holds for nondegenerate systems of signature $(r-1,1)$ or $(2,r-2)$.
+\end{theorem}
+\begin{remark}
+The proof is organized by inertia. Section~\ref{sec:signature-32} develops the relative-boundary argument in signature $(3,2)$. Section~\ref{sec:higher-rank} extends the same boundary argument to positive index two and completes the rank-five discussion. The rank-four nondegenerate case is included in that extension; no separate matrix or circle-action argument is used.
+\end{remark}
+
+\subsection{Notation and the main statement}
+
+Let $(W,S)$ be a Coxeter system of finite rank $r=|S|$, and let
+\[
+V=\bigoplus_{s\in S}\R\alpha_s
+\]
+be its faithful geometric representation. Write $\Pi=\{\alpha_s:s\in S\}$ for the simple-root basis. The symmetric bilinear form $B$ satisfies
+\[
+B(\alpha_s,\alpha_s)=1,\qquad
+B(\alpha_s,\alpha_t)=
+\begin{cases}
+-\cos(\pi/m_{st}),&m_{st}<\infty,\\
+\leq-1,&m_{st}=\infty.
+\end{cases}
+\]
+Thus arbitrary values below $-1$ are allowed on infinite edges. The action of a simple generator is
+\[
+s(v)=v-2B(v,\alpha_s)\alpha_s.
+\]
+For a real root $\alpha$, write $s_\alpha$ for the reflection
+\[
+s_\alpha(v)=v-2B(v,\alpha)\alpha.
+\]
+Set
+\[
+G=(B(\alpha_s,\alpha_t))_{s,t\in S},\qquad \Phi=W\Pi,
+\]
+and
+\[
+P=\sum_{s\in S}\R_{\geq0}\alpha_s,\qquad
+\Phi^+=\Phi\cap P,\qquad\Phi^-=-\Phi^+.
+\]
+For $v=\sum_s c_s\alpha_s$, define
+\[
+h(v)=\sum_s c_s,\qquad\supp(v)=\{s\in S:c_s\neq0\},
+\]
+and
+\[
+V_1=\{v:h(v)=1\},\qquad
+\widehat v=\frac{v}{h(v)}\quad\text{if }h(v)\neq0.
+\]
+Connectedness of a support refers to the induced Coxeter diagram. The normalized positive roots lie in the compact simplex $\Delta=P\cap V_1$. Let $E$ be their set of accumulation points, and put
+\[
+Q=\{v\in V:B(v,v)=0\},\qquad U^*=\bigcap_{w\in W}wP.
+\]
+For $\eta\in V$, set
+\[
+\Pos(\eta)=\{\alpha\in\Phi^+:B(\eta,\alpha)>0\}.
+\]
+For $I\subseteq S$, write
+\[
+W_I=\langle s:s\in I\rangle,\qquad
+V_I=\operatorname{span}\{\alpha_s:s\in I\}.
+\]
+For $v\neq0$, write $[v]=\R v$, and set
+\[
+\mathbb P Q=\{[v]:v\in Q\setminus\{0\}\}.
+\]
+Since $E\subseteq V_1$, projectivization identifies $E$ homeomorphically with $\mathbb P E$. When applied to $A\in\operatorname{SL}_2(\R)$, the notation $[A]$ instead denotes its class in $\operatorname{PSL}_2(\R)$.
+
+We write the inertia of a symmetric form as $(n_+,n_-,n_0)$. For a nondegenerate form, its signature is $(n_+,n_-)$.
+
+\begin{definition}
+For roots $\alpha,\beta$, write $\alpha\dom\beta$ if
+\[
+w\alpha\in\Phi^-\quad\Longrightarrow\quad w\beta\in\Phi^-
+\qquad(w\in W).
+\]
+An infinite strict dominance chain is a sequence $(\beta_n)_{n\geq1}\subseteq\Phi^+$ satisfying
+\[
+\beta_{n+1}\dom\beta_n,\qquad\beta_{n+1}\neq\beta_n\qquad(n\geq1).
+\]
+An element of $W$ is \emph{essential} if it belongs to no proper parabolic subgroup.
+\end{definition}
+
+\begin{theorem}\label{thm:root-facts}
+The following facts are used for the geometric realizations considered here:
+\begin{enumerate}
+\item Every real root is positive or negative. Each $w\in W$ sends only finitely many positive roots to negative roots. A simple reflection $s$ permutes $\Phi^+\setminus\{\alpha_s\}$.
+\item For each $M>0$, only finitely many positive roots have height at most $M$.
+\item Dominance is $W$-invariant, and distinct positive roots satisfy
+\[
+\alpha\dom\beta\quad\Longrightarrow\quad B(\alpha,\beta)\geq1.
+\]
+\item The limit-root set is contained in $U^*\cap Q$, is invariant under the normalized action, and $B(u,v)\leq0$ for $u,v\in U^*$.
+\item A root basis is not required to be linearly independent. Its associated representation on the spanned space is faithful and discrete. In particular, this applies to the quotient root bases used in Section~\ref{sec:higher-rank}.
+\item Finite Coxeter systems have positive definite geometric forms. Irreducible affine systems of rank at least three have positive semidefinite geometric forms.
+\end{enumerate}
+See \cite{DHR,Fu2013,FuEtAl2026,Krammer2009,Cashen}. For the root-basis representation in~(v), see \cite[Theorem~1.2.2 and Proposition~6.1.3]{Krammer2009}.
+\end{theorem}
+
+We use in particular
+\begin{equation}\label{eq:cone-facts}
+E\subseteq U^*\cap Q,\qquad B(u,v)\leq0\quad(u,v\in U^*).
+\end{equation}
+The cone $U^*$ is closed, $W$-invariant, and contained in $P$. The normalized action on $E$ is
+\[
+w\cdot x=\widehat{wx}=\frac{wx}{h(wx)}.
+\]
+
+
+
+
+
+
+\begin{lemma}[{\cite[Lemma ~4.1]{FuEtAl2026}}]\label{lem:orthogonality}
+Any two accumulation points $x,y$ of the normalized sequence of an infinite strict dominance chain satisfy $B(x,y)=0$.
+\end{lemma}
+\begin{proof}
+The roots in the chain are distinct. Finiteness of roots of bounded height gives $h(\beta_n)\to\infty$. Distinct positive real roots have distinct normalizations: proportional real roots of the same sign coincide because their $B$-norms are one. Thus every accumulation point belongs to $E$.
+
+For fixed $n$ and every $m>n$, dominance gives $B(\beta_n,\beta_m)\geq1$. Along a subsequence with $\widehat{\beta}_{m_j}\to y$, we obtain
+\[
+B(\beta_n,y)=\lim_{j\to\infty}
+\frac{B(\beta_n,\beta_{m_j})}{h(\beta_{m_j})}\geq0.
+\]
+Dividing by $h(\beta_n)$ and taking a subsequence converging to $x$ gives $B(x,y)\geq0$. The reverse inequality follows from \eqref{eq:cone-facts}.
+\end{proof}
+
+\begin{lemma}[{\cite[Proposition 4.6]{FuEtAl2026}}]\label{lem:components}
+Every strict dominance chain lies entirely in one irreducible component.
+\end{lemma}
+\begin{proof}
+Every real root belongs to one irreducible component. Different components are orthogonal, whereas comparable distinct positive roots have inner product at least one. Consequently, consecutive roots of a strict chain cannot belong to different components.
+\end{proof}
+
+\subsection{Small ranks and possible signatures}
+
+We use Cauchy's interlacing theorem, Sylvester's law of inertia, and the Schur-complement inertia formula. We also use the Perron--Frobenius theorem: an irreducible nonnegative matrix has a positive algebraically simple spectral-radius eigenvalue with a strictly positive eigenvector.
+
+\begin{lemma}\label{lem:three-positive}
+Every three-by-three Coxeter Gram matrix has at least two strictly positive eigenvalues.
+\end{lemma}
+\begin{proof}
+Write the matrix as $H=I_3-A$, where
+\[
+A=\begin{pmatrix}0&a&b\\a&0&c\\b&c&0\end{pmatrix},\qquad a,b,c\geq0.
+\]
+The eigenvalues of $A$ have sum zero and product $\det A=2abc\geq0$. If two were strictly positive, the third would be strictly negative, making their product negative. Thus at least two eigenvalues of $A$ are nonpositive. The corresponding eigenvalues of $H$ are at least one.
+\end{proof}
+
+\begin{proposition}\label{prop:rank4-inertia}
+A rank-four Coxeter Gram matrix has at least two strictly positive eigenvalues. If it is indefinite, its inertia is one of
+\[
+(3,1,0),\qquad(2,2,0),\qquad(2,1,1).
+\]
+If its signature is $(2,2)$, every principal submatrix of order three has signature $(2,1)$.
+\end{proposition}
+\begin{proof}
+Let $\lambda_1\leq\lambda_2\leq\lambda_3\leq\lambda_4$ be the eigenvalues of $G$, and let $\nu_1\leq\nu_2\leq\nu_3$ be those of a principal submatrix of order three. Lemma~\ref{lem:three-positive} gives $\nu_2>0$. Interlacing gives
+\[
+\lambda_1\leq\nu_1\leq\lambda_2\leq\nu_2
+\leq\lambda_3\leq\nu_3\leq\lambda_4.
+\]
+Thus $\lambda_3,\lambda_4>0$, giving the stated list.
+
+If $G$ has signature $(2,2)$, then $\nu_1\leq\lambda_2<0$. The other two eigenvalues are positive by Lemma~\ref{lem:three-positive}.
+\end{proof}
+Using the same technologies in \cite{Cashen}, we get that Theorem ~\ref{thm:main} stands for all the Lorentzian Coxeter system.
+\begin{lemma}\label{lem:lorentz}
+If $B$ is nondegenerate of signature $(r-1,1)$, every infinite strict dominance chain has a unique normalized limit.
+\end{lemma}
+\begin{proof}
+Let $x,y$ be two accumulation points. They are nonzero isotropic vectors, and Lemma~\ref{lem:orthogonality} gives $B(x,y)=0$. In coordinates
+\[
+B((u,t),(v,s))=u\cdot v-ts,
+\]
+isotropy gives $\|u\|=|t|$ and $\|v\|=|s|$. Orthogonality gives $u\cdot v=ts$, so equality holds in Cauchy--Schwarz. Hence $(u,t)$ and $(v,s)$ are proportional. Their normalization gives $x=y$. Compactness of $\Delta$ then gives convergence.
+\end{proof}
+
+\begin{lemma}\label{lem:psd}
+If the root system is irreducible and $G$ is positive semidefinite, every infinite strict dominance chain has a unique normalized limit.
+\end{lemma}
+\begin{proof}
+If $G$ is positive definite, $E\subseteq Q$ is empty, so no infinite strict chain exists.
+
+Otherwise write $G=I-A$. The matrix $A$ is nonnegative, symmetric, and irreducible. Positive semidefiniteness and singularity of $G$ imply $\rho(A)=1$. Perron--Frobenius makes this eigenvalue simple, so $\dim\ker G=1$. For a positive semidefinite form, isotropy implies membership in its radical. Thus any two accumulation points are proportional, and normalization makes them equal. Compactness gives convergence.
+\end{proof}
+
+\begin{proposition}\label{prop:rank2}
+Every infinite strict dominance chain in rank two has a unique normalized limit.
+\end{proposition}
+\begin{proof}
+For $S=\{s,t\}$ and $m_{st}<\infty$, the group is finite dihedral, so no infinite strict chain exists. If $m_{st}=\infty$, the Gram matrix is
+\[
+\begin{pmatrix}1&-c\\-c&1\end{pmatrix},\qquad c\geq1.
+\]
+Apply Lemma~\ref{lem:psd} when $c=1$ and Lemma~\ref{lem:lorentz} when $c>1$.
+\end{proof}
+
+\begin{remark}
+When $c=1$, the limit-root set is $\{(\alpha_s+\alpha_t)/2\}$. When $c>1$, the two normalized positive isotropic directions are distinct.
+\end{remark}
+
+\begin{proposition}\label{prop:rank3}
+Theorem~\ref{thm:main} holds when $|S|\leq3$.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:components}, assume irreducibility. Ranks one and two are immediate or covered by Proposition~\ref{prop:rank2}. In rank three, Lemma~\ref{lem:three-positive} leaves the positive semidefinite case or signature $(2,1)$. Apply Lemmas~\ref{lem:psd} and~\ref{lem:lorentz}.
+\end{proof}
+
+
+\subsection{Inertia bookkeeping in ranks two through five}
+For an irreducible indefinite system, the possible inertias are necessarily among
+\[
+\begin{array}{c|l}
+ r& (n_+,n_-,n_0)\\\hline
+ 2&(1,1,0)\\
+ 3&(2,1,0)\\
+ 4&(3,1,0),\ (2,2,0),\ (2,1,1)\\
+ 5&(4,1,0),\ (3,2,0),\ (2,3,0),\ (3,1,1),\ (2,2,1),\ (2,1,2).
+\end{array}
+\]
+The positive semidefinite cases are handled separately by Lemma~\ref{lem:psd}. The indefinite lists follow from Lemma~\ref{lem:three-positive} and eigenvalue interlacing (and directly from the two-by-two Gram matrix in rank two). These are necessary lists, not existence assertions for every inertia.
+
+\subsection{Lifting uniqueness from the radical quotient}
+
+The following argument works in arbitrary finite rank and allows radicals of arbitrary dimension.
+
+\begin{lemma}\label{lem:radical-positive}
+Suppose $(W,S)$ is irreducible and $B$ is indefinite. Put
+\[
+R=\rad B,\qquad\overline V=V/R,\qquad\pi:V\longrightarrow\overline V.
+\]
+There is a vector $\mathbf p$ with strictly positive simple-root coordinates such that
+\[
+\mathbf p^{\mathsf T}R=0,\qquad R\cap P=\{0\}.
+\]
+Consequently, $\ell(\pi(v))=\mathbf p^{\mathsf T}v$ is a well-defined linear functional, strictly positive on $\pi(P\setminus\{0\})$.
+\end{lemma}
+\begin{proof}
+Write $G=I-A$. The matrix $A$ is nonnegative, symmetric, and irreducible. Indefiniteness gives $\rho(A)>1$. Perron--Frobenius provides $\mathbf p>0$ with
+\[
+G\mathbf p=\lambda\mathbf p,\qquad\lambda=1-\rho(A)<0.
+\]
+For $r\in R$, symmetry gives
+\[
+0=\mathbf p^{\mathsf T}Gr=(G\mathbf p)^{\mathsf T}r
+=\lambda\mathbf p^{\mathsf T}r.
+\]
+Thus $\mathbf p^{\mathsf T}r=0$. If also $r\in P$, positivity of $\mathbf p$ forces $r=0$. The assertions about $\ell$ follow.
+\end{proof}
+
+\begin{theorem}[\cite{FuEtAl2026}]\label{thm:descent-inputs}
+The following statements hold for the finite-rank root systems considered here:
+\begin{enumerate}[label=(\alph*)]
+\item If $x,y$ are accumulation points of one normalized strict dominance chain and $\Pos(x)$ is finite, then $x=y$.
+\item Every accumulation point of a normalized strict dominance chain has connected support. The supports of the roots in the chain eventually equal that support.
+\item Let $\eta\in U^*\cap Q$ with $\Pos(\eta)$ infinite. Suppose
+\[
+\eta_1=\eta,\qquad\eta_{k+1}=s_{a_k}\eta_k,\qquad
+ a_k\in\Pi,\qquad B(\eta_k,a_k)>0.
+\]
+Let $m$ be a separating index: each simple root either never occurs or occurs infinitely often in $(a_k)_{k\geq m}$. If $\supp(\eta_m)$ is connected, then $\eta_k\to0$ without normalization.
+\end{enumerate}
+These are Proposition~4.14, Theorem~4.8, and Theorem~3.27 of \cite{FuEtAl2026}, respectively.
+\end{theorem}
+
+\begin{proposition}\label{prop:quotient-lifting}
+Under the assumptions of Lemma~\ref{lem:radical-positive}, let $C\subseteq E$ be the accumulation set of an infinite strict dominance chain $(\widehat{\beta}_n)$. Then
+\[
+\eta:C\longrightarrow\mathbb P(\overline V),\qquad x\longmapsto[\pi(x)]
+\]
+is well-defined and injective. In particular, uniqueness of the accumulation point of $([\pi(\beta_n)])$ implies convergence of $(\widehat{\beta}_n)$ to a unique point of $E$.
+\end{proposition}
+\begin{proof}
+Lemma~\ref{lem:radical-positive} gives $\pi(v)\neq0$ for $v\in P\setminus\{0\}$. Suppose $x,y\in C$ have the same projective image. Then
+\[
+y=tx+r,\qquad r\in R,\qquad t=\frac{\mathbf p^{\mathsf T}y}{\mathbf p^{\mathsf T}x}>0.
+\]
+If $\Pos(x)$ is finite, Theorem~\ref{thm:descent-inputs}(a) gives $x=y$. Otherwise choose a descending reflection sequence
+\[
+x_1=x,\qquad x_{k+1}=s_{a_k}x_k,\qquad a_k\in\Pi,\qquad B(x_k,a_k)>0.
+\]
+This sequence continues indefinitely. Indeed, a root in $\Pos(v)$ is a nonnegative linear combination of simple roots, so some $a\in\Pi$ satisfies $B(v,a)>0$. Moreover,
+\[
+\Pos(s_av)=s_a\bigl(\Pos(v)\setminus\{a\}\bigr),
+\]
+because $s_a$ permutes $\Phi^+\setminus\{a\}$. Thus infinitude of $\Pos(v)$ is preserved.
+
+Write $x_k=w_kx$, with $w_1=1$ and $w_k=s_{a_{k-1}}\cdots s_{a_1}$ for $k\geq2$, and choose a separating index $m$ after all occurrences of simple roots occurring only finitely often.
+
+For each $w\in W$, deleting a finite initial segment makes $(w\beta_n)$ a strict dominance chain of positive roots. If $\widehat{\beta}_{n_j}\to x$, then
+\[
+\widehat{w\beta_{n_j}}=
+\frac{w\widehat{\beta}_{n_j}}{h(w\widehat{\beta}_{n_j})}
+\longrightarrow\frac{wx}{h(wx)}.
+\]
+The limiting denominator is positive because $wx\in U^*\setminus\{0\}\subseteq P\setminus\{0\}$. Theorem~\ref{thm:descent-inputs}(b) therefore gives connected support of $wx$. In particular, $x_m$ has connected support. Part~(c) of that theorem yields $w_kx=x_k\to0$.
+
+Every simple reflection fixes $R$ pointwise. Hence $w_ky=t\,w_kx+r\to r$. Each $w_ky$ lies in $U^*\subseteq P$. Since $P$ is closed, $r\in R\cap P=\{0\}$. Thus $y=tx$, and normalization gives $x=y$.
+
+Finally, $\eta$ extends continuously to $\Delta$. Compactness and subsequence extraction show that the accumulation set of $([\pi(\beta_n)])$ is exactly $\eta(C)$. If this is a singleton, injectivity makes $C$ a singleton. Compactness of $\Delta$ gives convergence.
+\end{proof}
+
+\begin{remark}
+The proposition concerns projected sequences of original dominance chains. Equivalently, normalize the quotient by $\ell$:
+\[
+\frac{\pi(\beta_n)}{\ell(\pi(\beta_n))}.
+\]
+These vectors lie in the compact section
+\[
+\pi(P)\cap\{\ell=1\}=\pi\{v\in P:\mathbf p^{\mathsf T}v=1\}.
+\]
+The proposition does not assert injectivity of $\eta$ on all of $E$.
+\end{remark}
+
+\begin{corollary}\label{cor:lorentz-quotient}
+If $(W,S)$ is irreducible and $B$ has inertia $(p,1,k)$ with $p,k\geq1$, every infinite strict dominance chain has a unique normalized limit.
+\end{corollary}
+\begin{proof}
+The quotient form has signature $(p,1)$. For accumulation points $x,y$ of a chain, $B(x,x)=B(y,y)=B(x,y)=0$. Their quotient images are nonzero by Lemma~\ref{lem:radical-positive}. The Lorentz calculation in Lemma~\ref{lem:lorentz} makes these images proportional. Proposition~\ref{prop:quotient-lifting} then gives $x=y$, and compactness gives convergence.
+\end{proof}
+
+\begin{proposition}\label{prop:degenerate}
+Every infinite strict dominance chain in an irreducible rank-four system of inertia $(2,1,1)$ has a unique normalized limit.
+\end{proposition}
+\begin{proof}
+Apply Corollary~\ref{cor:lorentz-quotient}.
+\end{proof}
+
+\begin{proposition}\label{prop:rank-at-most-four}
+The conclusion of Theorem~\ref{thm:main} holds for $|S|\leq4$.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:components}, the chain lies in one irreducible component. Rank at most three is covered by Proposition~\ref{prop:rank3}. In rank four, Proposition~\ref{prop:rank4-inertia} leaves the positive semidefinite case and inertias $(3,1,0)$, $(2,2,0)$, and $(2,1,1)$. Apply Lemma~\ref{lem:psd}, Lemma~\ref{lem:lorentz}, Theorem~\ref{thm:positive-index-two}, and Proposition~\ref{prop:degenerate}, respectively.
+\end{proof}
+
+\subsection{The Lorentz quotient cases \texorpdfstring{$(2,1,2)$ and $(3,1,1)$}{(2,1,2) and (3,1,1)}}
+
+\begin{theorem}\label{thm:rank5-lorentz-quotients}
+If $|S|=5$ and $B$ has inertia $(2,1,2)$ or $(3,1,1)$, every infinite strict dominance chain has a unique normalized limit.
+\end{theorem}
+\begin{proof}
+In a reducible system, Lemma~\ref{lem:components} places the chain in a component of rank at most four, where Proposition~\ref{prop:rank-at-most-four} applies. Otherwise the quotient has signature $(2,1)$ or $(3,1)$. Apply Corollary~\ref{cor:lorentz-quotient}.
+\end{proof}
+
+\begin{remark}
+The two cases use the same mechanism: orthogonal isotropic quotient vectors are proportional, and Proposition~\ref{prop:quotient-lifting} removes their radical difference. The quotient representations themselves have different dimensions.
+\end{remark}
+
+\section{The relative-boundary proof in signature (3,2)}\label{sec:signature-32}
+
+We establish the signature $(3,2)$ case of Theorem~\ref{thm:main} below.
+
+\subsection{The boundary map and its fibres}\label{subsec:32-fibres}
+
+We first work in the irreducible case. Write
+\[
+    K=
+    \left\{
+        z\in\operatorname{cone}(\Pi):
+        B(z,\alpha_s)\leq0\text{ for every }s\in S
+    \right\},
+    \qquad
+    \mathcal C=\overline{WK}.
+\]
+Let $D=\mathcal C\cap V_1$. By \cite[Theorem~2.2]{DHR}, the normalized section $D$ satisfies
+\[
+    D=\operatorname{conv}(E),
+    \qquad
+    B(\mathcal C,\mathcal C)\leq0.
+\]
+\begin{theorem}[{\cite[Theorem~A$'$]{CapraceErratum}}]\label{thm:caprace-relative}
+Let $(W,S)$ be a finitely generated Coxeter system and let $\mathcal T$ be a family of subsets of $S$.
+Then $W$ is hyperbolic relative to $\{W_I:I\in\mathcal T\}$ if and only if the following conditions hold.
+\begin{enumerate}[label=\textup{(RH\arabic*)}]
+    \item Every irreducible affine subset of cardinality at least three is contained in some member of $\mathcal T$. The union of any two commuting irreducible non-spherical subsets is also contained in some member of $\mathcal T$.
+    \item Distinct members of $\mathcal T$ have spherical intersection.
+    \item For every $I\in\mathcal T$ and every irreducible non-spherical subset $J\subseteq I$, one has $J^\perp\subseteq I$.
+\end{enumerate}
+\end{theorem}
+
+\noindent
+Here \emph{hyperbolic relative to} a finite family $\mathcal P$
+is understood in the boundary sense of Bowditch: in the non-elementary
+case considered below, $W$ admits a geometrically finite convergence
+action on a compact metrizable space $\mathcal B$, and the maximal
+parabolic subgroups are precisely the conjugates of members of
+$\mathcal P$; see \cite{Bowditch}.
+A convergence action means that every sequence of distinct group
+elements has a subsequence converging locally uniformly to a constant
+map on the complement of one point.
+Geometric finiteness means that every point of $\mathcal B$ is either
+conical or bounded parabolic.
+The space $\mathcal B=\partial(W,\mathcal P)$ is the Bowditch boundary.
+In particular, if $p_I$ is the point stabilized by $W_I\in\mathcal P$,
+every parabolic point is $g p_I$ for some $g\in W$ and some $I$;
+its full stabilizer is $gW_Ig^{-1}$.
+
+\begin{lemma}\label{lem:positive-index-bound}
+In a nondegenerate space of positive index $p$, a positive semidefinite subspace with positive index $k$ and radical dimension $d$ satisfies $k+d\leq p$.
+\end{lemma}
+\begin{proof}
+Split off its $k$-dimensional positive definite part. Its radical is a totally isotropic subspace of the nondegenerate orthogonal complement, whose positive index is $p-k$; hence $d\leq p-k$.
+\end{proof}
+
+\begin{lemma}\label{lem:32-peripherals}
+Let $\mathcal T$ consist of the following subsets of $S$,
+with repetitions omitted:
+\begin{enumerate}[label=(\roman*)]
+    \item irreducible affine subsets of cardinality three;
+    \item subsets $I=J\sqcup J'$ consisting of two commuting
+    infinite pairs;
+    \item subsets $I=J\cup J^\perp$, where
+    $J=\{s,t\}$ satisfies $B(\alpha_s,\alpha_t)=-1$
+    and is not contained in a subset of type~\textup{(ii)}.
+\end{enumerate}
+Then $W$ is hyperbolic relative to
+\[
+    \mathcal P=\{W_I:I\in\mathcal T\}.
+\]
+Every subgroup of type~\textup{(i)} or \textup{(ii)}
+is virtually $\mathbb Z^2$.
+For type~\textup{(iii)}, $J^\perp$ is spherical and has
+at most one element.
+In type~\textup{(ii)}, at least one factor has
+$B(\alpha_s,\alpha_t)<-1$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:positive-index-bound}, a positive semidefinite
+subspace with positive index $k$ and radical dimension $r$ satisfies
+\[
+    k+r\leq3.
+\]
+Nondegeneracy also gives, for every subspace $U\subseteq V$,
+\[
+    \dim\operatorname{rad}(B|_U)\leq5-\dim U.
+\]
+
+Consequently an irreducible affine subset of rank at least
+three has rank exactly three and has no orthogonal simple
+root.
+
+If $J,J'$ are commuting irreducible non-spherical subsets,
+then each has at least two elements.
+Their union is proper in $S$ by irreducibility.
+Thus both are infinite pairs and $|J\cup J'|=4$.
+Each pair is connected to the remaining vertex.
+Both pairs cannot have degenerate Gram matrices, since
+otherwise their four-dimensional span would have a
+two-dimensional radical.
+
+There is at most one subset of type~\textup{(ii)}.
+Indeed, two distinct such subsets share three vertices.
+The induced diagram on these three vertices consists of
+one infinite pair and one isolated vertex.
+The common infinite pair would therefore commute with
+all three remaining vertices of $S$, contradicting
+irreducibility.
+
+For a pair $J$ occurring in type~\textup{(iii)},
+irreducibility gives $|J^\perp|\leq2$.
+If $J^\perp$ were non-spherical, it would be an infinite
+pair and $J\cup J^\perp$ would have type~\textup{(ii)}.
+Hence $J^\perp$ is spherical.
+Lemma~\ref{lem:positive-index-bound} applied to $V_{J\cup J^\perp}$
+gives
+\[
+    2+|J^\perp|\leq3.
+\]
+
+We verify the three conditions of Theorem~\ref{thm:caprace-relative}.
+Condition \textup{(RH1)} follows from the preceding
+classification.
+For \textup{(RH2)}, an affine triple contains no infinite
+pair, and a subset of type~\textup{(iii)} contains exactly
+one irreducible non-spherical subset, namely its designated
+pair.
+Such a pair is excluded from type~\textup{(ii)}.
+Together with the uniqueness of a subset of
+type~\textup{(ii)}, this shows that distinct members of
+$\mathcal T$ have spherical intersection.
+Finally, an affine triple has empty orthogonal complement,
+the orthogonal complement of either factor in
+type~\textup{(ii)} is the opposite factor, and
+type~\textup{(iii)} includes the full orthogonal complement
+of its infinite pair.
+Thus \textup{(RH3)} holds.
+\end{proof}
+    \begin{theorem}[{\cite[Main Theorem]{Tran}}]
+\label{thm:tran-boundary}
+Let $G$ be a finitely generated group that is hyperbolic
+relative to a finite collection $\mathcal P$ of subgroups.
+Suppose that $G$ acts properly and cocompactly by isometries
+on a proper CAT(0) space $X$.
+
+Fix $o\in X$. For each peripheral left coset $gP$, define
+\[
+    \Lambda_X(gP)
+    =
+    \overline{gP\cdot o}^{\,X\cup\partial X}\cap\partial X.
+\]
+Then the Bowditch boundary $\partial(G,\mathcal P)$ is
+$G$-equivariantly homeomorphic to the quotient of
+$\partial X$ obtained by collapsing each set
+$\Lambda_X(gP)$ to a point and making no other
+identifications.
+
+In particular, there is a continuous $G$-equivariant
+surjection
+\[
+    q:\partial X\longrightarrow\partial(G,\mathcal P).
+\]
+The fiber over the parabolic point stabilized by
+$gPg^{-1}$ is $\Lambda_X(gP)$, and the fiber over
+each conical point is a singleton.
+\end{theorem}
+
+Let $X$ be the Davis complex of $(W,S)$, equipped with
+its standard CAT(0) metric, and put
+\[
+    \mathcal B=\partial(W,\mathcal P).
+\]
+Since $S$ is finite, $X$ is proper and the natural
+$W$-action on $X$ is proper and cocompact.
+By Lemma~\ref{lem:32-peripherals}, $W$ is hyperbolic
+relative to
+\[
+    \mathcal P=\{W_I:I\in\mathcal T\}.
+\]
+Theorem~\ref{thm:tran-boundary} therefore gives a
+continuous $W$-equivariant surjection
+\[
+    q:\partial X\longrightarrow\mathcal B.
+\]
+
+Let $\mathscr K$ be the fundamental chamber, and fix
+a basepoint $o$ in its interior.
+For $I\in\mathcal T$, let $p_I\in\mathcal B$ be the
+parabolic point with stabilizer $W_I$, and write
+\[
+    R_I=\bigcup_{w\in W_I}w\mathscr K.
+\]
+The standard residue $R_I$ is convex, and $W_I$ acts
+cocompactly on it. Thus $W_I\cdot o$ is at finite
+Hausdorff distance from $R_I$, and hence
+\[
+    \Lambda_X(W_I)=\partial R_I.
+\]
+It follows that, for every $w\in W$ and $I\in\mathcal T$,
+\begin{equation}\label{eq:32-tran-fibers}
+    q^{-1}(wp_I)=w\partial R_I=\partial(wR_I),
+    \qquad
+    \Stab_W(wp_I)=wW_Iw^{-1}.
+\end{equation}
+For every conical point $\xi\in\mathcal B$, the set
+$q^{-1}(\xi)$ is a singleton.
+
+We next record the geometric consequences needed below.
+Let $\mathcal P_0$ be obtained from $\mathcal P$ by
+removing the subgroups of type~\textup{(iii)}.
+The verification of the relative-hyperbolicity criterion
+in Lemma~\ref{lem:32-peripherals} remains valid for
+$\mathcal P_0$.
+Its members are virtually $\mathbb Z^2$.
+Consequently, $X$ has isolated flats when
+$\mathcal P_0\neq\varnothing$, and is hyperbolic when
+$\mathcal P_0=\varnothing$; see
+\cite[Theorem~1.2.1]{HK}.
+
+In the isolated-flats case, each nontrivial connected
+component of the Tits boundary is the boundary of a flat
+associated to a conjugate of a member of $\mathcal P_0$.
+Such a boundary is contained in a peripheral limit set
+and is therefore collapsed by $q$.
+In the hyperbolic case, distinct boundary points have
+infinite Tits distance.
+Thus, in either case,
+\[
+    q(\zeta)\neq q(\eta)
+    \quad\Longrightarrow\quad
+    d_T(\zeta,\eta)=\infty.
+\]
+In particular, $\zeta$ and $\eta$ are joined by a
+bi-infinite geodesic in $X$.
+By \cite[Lemma~20]{LT}, the geodesic rays from $o$ toward
+$\zeta$ and $\eta$ cross only finitely many common walls.
+
+We also use the fact that a conical point of
+$\mathcal B$ is fixed by only finitely many reflections.
+Indeed, for a geometrically finite convergence action,
+a point fixed by infinitely many distinct finite-order
+elements is parabolic; see \cite[Section~6]{Bowditch}.
+Since every reflection has order two, the assertion follows.
+
+Finally, the action of $W$ on $\mathcal B$ is
+non-elementary and minimal.
+Indeed, $W$ contains a non-dihedral universal reflection
+subgroup by \cite[Proposition~6.4]{DHR}, so $W$ is not
+virtually abelian.
+All members of $\mathcal P$ are virtually abelian and
+are proper subgroups of $W$.
+Thus the relatively hyperbolic pair $(W,\mathcal P)$
+is non-elementary, and its action on the Bowditch
+boundary is minimal.
+\begin{lemma}\label{lem:32-carrier}
+For every $I\in\mathcal T$,
+\begin{align}
+    x\in E\cap V_I,\quad
+    \rho\in\Phi^+\setminus\Phi_I
+    &\Longrightarrow B(x,\rho)<0,
+    \label{eq:32-carrier1}\\
+    x\in E\setminus V_I
+    &\Longrightarrow
+    |\Pos(x)\cap\Phi_I^+|<\infty.
+    \label{eq:32-carrier2}
+\end{align}
+For types~\textup{(i)} and \textup{(iii)}, $E\cap V_I$
+is a singleton.
+
+For type~\textup{(ii)}, every null vector in
+$\mathcal C\cap V_I$ is a nonnegative sum of one null
+direction from each factor, allowing one summand to vanish.
+A convex cone of such null vectors uses at most one fixed
+null direction from each factor.
+\end{lemma}
+
+\begin{proof}
+For types~\textup{(i)} and \textup{(iii)}, let $\delta$
+be the positive radical vector of the affine component.
+The restriction to $V_I$ is positive semidefinite with
+radical $\mathbb R\delta$, so
+\[
+    E\cap V_I=\{\widehat\delta\}.
+\]
+Moreover,
+\[
+    B(\delta,\alpha_s)=0\quad(s\in I),
+    \qquad
+    B(\delta,\alpha_s)<0\quad(s\notin I).
+\]
+Expanding an external positive root proves
+\eqref{eq:32-carrier1}.
+If $x\in E\setminus V_I$, then $B(x,\delta)<0$.
+Since the normalized roots of $\Phi_I$ accumulate only
+at $\widehat\delta$, this proves
+\eqref{eq:32-carrier2}.
+
+Now suppose $I=J\sqcup J'$ has type~\textup{(ii)},
+and let $r$ be the remaining vertex.
+Consider a non-affine factor $J=\{1,2\}$ with
+\[
+    B(\alpha_1,\alpha_2)=-d,\qquad d>1.
+\]
+Choose its positive null vectors as
+\[
+    e_\pm=(d\pm\sqrt{d^2-1})\alpha_1+\alpha_2.
+\]
+Then $B(e_+,e_-)<0$.
+The translation $g=s_1s_2$ has eigenvalues
+$\lambda,\lambda^{-1}$ on $e_+,e_-$, with $\lambda>1$,
+and fixes $V_J^\perp$ pointwise.
+
+Let $z$ be an external positive root or a vector of
+$\mathcal C\setminus V_I$.
+Its $\alpha_r$-coordinate is some $t>0$.
+For every $k\in\mathbb Z$, the vector $g^kz$
+has nonnegative simple coordinates.
+For roots, this follows from the unchanged positive
+coordinate $t$ and the one-sign property.
+For vectors in $\mathcal C$, it follows from invariance.
+
+Write
+\[
+    z=a e_++b e_-+z_0,\qquad z_0\in V_J^\perp.
+\]
+Scaled limits of $g^kz$ in the two directions give
+$a,b\geq0$.
+Suppose $b=0$.
+Then $g^{-k}z\to z_0$, so $z_0$ has nonnegative
+simple coordinates.
+Writing $c_1,c_2$ for its coordinates on $J$ and
+\[
+    p_i=-B(\alpha_i,\alpha_r),
+\]
+orthogonality gives
+\[
+    c_1-dc_2=p_1t,\qquad
+    c_2-dc_1=p_2t.
+\]
+The factor $J$ is connected to $r$, so $p_1+p_2>0$.
+Adding the equations yields
+\[
+    (1-d)(c_1+c_2)=(p_1+p_2)t>0,
+\]
+a contradiction.
+Similarly $a>0$. Hence
+\[
+    B(z,e_+)<0,\qquad B(z,e_-)<0.
+\]
+For an affine factor, with
+$\delta_J=\alpha_1+\alpha_2$, the corresponding calculation is
+\[
+    B(z,\delta_J)=-(p_1+p_2)t<0.
+\]
+
+If $y\in\mathcal C\cap V_I$, decompose it into its two
+factor components.
+In a non-affine factor, invariance and the same
+scaled-limit argument place the component in
+\[
+    \mathbb R_{\geq0}e_+
+    +\mathbb R_{\geq0}e_-.
+\]
+Its square is nonpositive, with equality precisely
+on the two boundary rays.
+For an affine factor the translation acts by
+\[
+    (a,b)\longmapsto(a,b)+2k(a-b)(1,1).
+\]
+Nonnegativity for every $k\in\mathbb Z$ forces $a=b$.
+Since the factors are orthogonal, a null vector has
+a null component in each factor.
+
+The strict pairing calculations now prove
+\eqref{eq:32-carrier1}.
+The only accumulation directions of roots of $\Phi_I$
+are the null endpoints of its factors, and an external
+$x\in E$ pairs strictly negatively with each of them.
+This proves \eqref{eq:32-carrier2}.
+
+Finally, if two vectors in a convex null cone used opposite
+endpoints in one non-affine factor, their sum would have
+negative square in that factor and nonpositive square
+in the other.
+Thus a fixed null direction must be used in each factor.
+\end{proof}
+
+For a signed root $\rho$, let $H_\rho$ be the closed
+halfspace of $X$ containing exactly the chambers
+$w\mathscr K$ with $w^{-1}\rho\in\Phi^-$. Fix a basepoint $o$ in the interior of the
+fundamental chamber $\mathcal K$ of $X$.
+Thus $H_{-\rho}$ is the base halfspace when $\rho>0$.
+Put $M_\rho=H_\rho\cap H_{-\rho}$.
+We use
+\[
+    wH_\rho=H_{w\rho},
+    \qquad
+    \partial H_\rho\cap\partial H_{-\rho}
+    =\partial M_\rho.
+\]
+
+For a standard residue
+\[
+    R_I=\bigcup_{w\in W_I}w\mathscr K
+\]
+one has
+\begin{equation}\label{eq:32-residue}
+    R_I=
+    \bigcap_{\rho\in\Phi^+\setminus\Phi_I}H_{-\rho},
+    \qquad
+    \partial R_I=
+    \bigcap_{\rho\in\Phi^+\setminus\Phi_I}
+    \partial H_{-\rho}.
+\end{equation}
+Indeed, $W_I$ preserves positivity of external positive roots.
+Conversely, choose a shortest chamber label $w$ containing
+a point in the first intersection.
+For every $\rho\in\Inv(w)$, the point lies strictly on the
+$H_\rho$ side.
+Otherwise reflection across $M_\rho$ gives a shorter
+chamber label containing the same point.
+Hence $\Inv(w)\subseteq\Phi_I$, which implies $w\in W_I$.
+The boundary identity follows by taking rays from a point
+in the base chamber, since all the halfspaces are convex
+and contain that point.
+For $I\in\mathcal T$ this gives
+\[
+    \partial R_I=q^{-1}(p_I).
+\]
+
+For every nonzero null vector $z\in\mathcal C$, define
+\[
+    L(z)=
+    \bigcap_{\substack{\rho\in\Phi\\B(z,\rho)>0}}
+    \partial H_\rho.
+\]
+Then
+\[
+    L(wz)=wL(z),\qquad L(tz)=L(z)\quad(t>0).
+\]
+
+\begin{lemma}\label{lem:32-nonempty}
+The set $L(z)$ is nonempty for every nonzero null vector
+$z\in\mathcal C$.
+If $\Pos(z)$ is finite, then $q(L(z))$ is a single
+parabolic point.
+\end{lemma}
+
+\begin{proof}
+Suppose first that $\Pos(z)$ is infinite.
+Choose
+\[
+    w_nk_n\longrightarrow z,\qquad k_n\in K.
+\]
+For any signed root $\rho$ with $B(z,\rho)>0$,
+eventually
+\[
+    B(k_n,w_n^{-1}\rho)>0.
+\]
+Thus $w_n^{-1}\rho$ is negative, and $w_no\in H_\rho$.
+Every finite subset of $\Pos(z)$ is eventually contained
+in $\Inv(w_n)$, so $\ell(w_n)\to\infty$.
+A subsequence of $w_no$ converges in the visual
+compactification to some $\zeta\in\partial X$.
+Closedness of the required halfspaces gives
+$\zeta\in L(z)$.
+
+Now suppose $\Pos(z)$ is finite.
+If it is nonempty, some simple root satisfies
+$B(z,\alpha_s)>0$, and
+\[
+    \Pos(sz)=s\bigl(\Pos(z)\setminus\{\alpha_s\}\bigr).
+\]
+Repeatedly applying such reflections gives a nonzero
+null vector $z'\in K$.
+
+Write $z'=\sum_s c_s\alpha_s$.
+Since
+\[
+    0=B(z',z')=\sum_s c_sB(z',\alpha_s),
+\]
+all pairings on its support vanish.
+Each connected support component therefore has a positive
+kernel vector.
+Perron--Frobenius implies that its Gram matrix is positive
+semidefinite of corank one, so the component is affine.
+
+There can be only one component.
+Two components would have at least four vertices and
+radical dimension at least two, contradicting
+\[
+    \dim\operatorname{rad}(B|_U)\leq5-\dim U.
+\]
+Consequently $z'=t\delta_J$ for some $t>0$ and an
+irreducible affine subset $J$.
+Choose $I\in\mathcal T$ containing $J$.
+Then
+\[
+    B(\delta_J,\alpha_s)=0\quad(s\in I),
+    \qquad
+    B(\delta_J,\alpha_s)<0\quad(s\notin I).
+\]
+This also holds when $I$ is a product peripheral,
+because its other factor commutes with $J$ and the
+remaining vertex is connected to $J$.
+Therefore
+\[
+    L(\delta_J)=\partial R_I=q^{-1}(p_I).
+\]
+Equivariance finishes the proof.
+\end{proof}
+
+\begin{lemma}\label{lem:32-unique-image}
+For every $x\in E$, the set $q(L(x))$ consists of exactly
+one point. Moreover, if $\Pos(x)$ is infinite and
+$q(L(x))=\{p_I\}$ for some $I\in\mathcal T$, then $x\in V_I$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:32-nonempty}, $L(x)$ is nonempty.
+The same lemma proves the assertion when $\Pos(x)$ is finite.
+Suppose therefore that $\Pos(x)$ is infinite.
+
+First suppose that some $\zeta\in L(x)$ has parabolic image.
+After applying an element of $W$ and normalizing, we may
+assume that $q(\zeta)=p_I$ for some $I\in\mathcal T$.
+Infinitude of $\Pos(x)$ is preserved under this operation,
+since every element of $W$ has only finitely many inversions.
+
+If $\rho\in\Pos(x)\setminus\Phi_I$, then
+$\zeta\in\partial H_\rho$ by the definition of $L(x)$.
+On the other hand,
+\[
+    \zeta\in q^{-1}(p_I)=\partial R_I
+    \subseteq\partial H_{-\rho}.
+\]
+Consequently,
+\[
+    \zeta\in
+    \partial H_\rho\cap\partial H_{-\rho}
+    =\partial M_\rho.
+\]
+Thus $s_\rho$ fixes $\zeta$, and equivariance of $q$ implies
+that it fixes $p_I$. Since $\Stab_W(p_I)=W_I$, this gives
+$s_\rho\in W_I$, contradicting $\rho\notin\Phi_I$.
+Therefore
+\[
+    \Pos(x)\subseteq\Phi_I.
+\]
+Equation~\eqref{eq:32-carrier2} and infinitude of $\Pos(x)$
+now imply $x\in V_I$. Equations~\eqref{eq:32-carrier1}
+and~\eqref{eq:32-residue} give
+\[
+    L(x)\subseteq\partial R_I=q^{-1}(p_I).
+\]
+Hence $q(L(x))=\{p_I\}$.
+
+It remains to consider the case where every point of $q(L(x))$
+is conical. Suppose that $\zeta,\eta\in L(x)$ have distinct
+images under $q$. The rays from $o$ to $\zeta$ and $\eta$
+then cross only finitely many common walls.
+
+For every $\rho\in\Pos(x)$, however, both endpoints belong
+to $\partial H_\rho$. Only finitely many of the walls
+$M_\rho$ can contain either endpoint at infinity:
+the corresponding reflections would fix its conical image.
+For every remaining $\rho\in\Pos(x)$, both rays cross $M_\rho$,
+since $o$ lies on the opposite side of this wall.
+This gives infinitely many common walls, a contradiction.
+Thus $q(L(x))$ is a singleton.
+\end{proof}
+
+\begin{theorem}\label{thm:32-boundary-map}
+For each $x\in E$, define $\Theta(x)\in\mathcal B$ by
+\[
+    q(L(x))=\{\Theta(x)\}.
+\]
+Then $\Theta:E\to\mathcal B$ is a continuous
+$W$-equivariant surjection. Writing $F_b=\Theta^{-1}(b)$,
+one has, for every $I\in\mathcal T$,
+\begin{equation}\label{eq:32-parabolic-fibers}
+    F_{p_I}=E\cap V_I.
+\end{equation}
+Moreover, for all $x,y\in E$,
+\begin{equation}\label{eq:32-orthogonal-code}
+    B(x,y)=0
+    \quad\Longrightarrow\quad
+    \Theta(x)=\Theta(y).
+\end{equation}
+In particular, points in distinct fibers pair strictly negatively.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:32-unique-image} makes $\Theta$ well defined.
+The identities
+\[
+    L(wx)=wL(x),
+    \qquad
+    L(tx)=L(x)\quad(t>0),
+\]
+together with equivariance of $q$, show that $\Theta$ is
+equivariant for the normalized action on $E$.
+
+To prove continuity, consider
+\[
+    \mathscr G=
+    \{(x,\zeta)\in E\times\partial X:\zeta\in L(x)\}.
+\]
+This set is closed. Indeed, if
+$(x_n,\zeta_n)\to(x,\zeta)$ with $\zeta_n\in L(x_n)$,
+then every root $\rho$ satisfying $B(x,\rho)>0$ also satisfies
+$B(x_n,\rho)>0$ for all sufficiently large $n$.
+Since $\partial H_\rho$ is closed, $\zeta\in\partial H_\rho$.
+Thus $\zeta\in L(x)$.
+
+The image of $\mathscr G$ under
+$\operatorname{id}_E\times q$ is precisely the graph of $\Theta$.
+It is compact, hence closed. Since $E$ and $\mathcal B$ are
+compact Hausdorff spaces, $\Theta$ is continuous.
+Its image is nonempty, compact and $W$-invariant;
+minimality of the action on $\mathcal B$ therefore gives
+$\Theta(E)=\mathcal B$.
+
+We next prove \eqref{eq:32-parabolic-fibers}.
+Equations~\eqref{eq:32-carrier1} and~\eqref{eq:32-residue}
+give
+\[
+    x\in E\cap V_I
+    \quad\Longrightarrow\quad
+    L(x)\subseteq\partial R_I,
+\]
+so $E\cap V_I\subseteq F_{p_I}$.
+
+Conversely, let $x\in F_{p_I}$.
+If $\Pos(x)$ is infinite, Lemma~\ref{lem:32-unique-image}
+gives $x\in V_I$.
+If $\Pos(x)$ is finite, the proof of
+Lemma~\ref{lem:32-nonempty} gives $w\in W$ and
+$J\in\mathcal T$ such that
+\[
+    wx\in V_J,
+    \qquad
+    \Theta(x)=w^{-1}p_J.
+\]
+Since $\Theta(x)=p_I$, equality of full stabilizers yields
+\[
+    w^{-1}W_Jw=W_I.
+\]
+Taking spans of the corresponding roots gives
+$w^{-1}V_J=V_I$, and hence $x\in V_I$.
+
+Finally, suppose $B(x,y)=0$.
+For every root $\rho$, invariance of $\mathcal C$ and
+$B(\mathcal C,\mathcal C)\leq0$ imply
+\[
+    0\geq B(x,s_\rho y)
+      =B(x,y)-2B(x,\rho)B(y,\rho)
+      =-2B(x,\rho)B(y,\rho).
+\]
+Therefore
+\[
+    B(x,\rho)B(y,\rho)\geq0.
+\]
+In particular, if either pairing is positive, the other
+is nonnegative, so $B(x+y,\rho)>0$. It follows that
+\[
+    L(x+y)\subseteq L(x)\cap L(y).
+\]
+The vector $x+y$ belongs to $\mathcal C$, is nonzero, and satisfies
+\[
+    B(x+y,x+y)=0.
+\]
+Lemma~\ref{lem:32-nonempty} therefore gives $L(x+y)\neq\varnothing$.
+Choosing $\zeta\in L(x+y)$, we obtain
+\[
+    \Theta(x)=q(\zeta)=\Theta(y).
+\]
+This proves \eqref{eq:32-orthogonal-code}.
+The final assertion follows by contraposition and
+$B(\mathcal C,\mathcal C)\leq0$.
+\end{proof}
+
+\medskip
+\noindent\textit{Remark (Conical and parabolic images of limit roots).}
+A limit root $x\in E$ will be called conical or parabolic here according
+to the type of its image $\Theta(x)\in\mathcal B$.
+If $\Theta(x)=g p_I$ is parabolic, equivariance and
+\eqref{eq:32-parabolic-fibers} give
+\[
+    g^{-1}\cdot x\in E\cap V_I,
+    \qquad
+    F_{g p_I}=g\cdot(E\cap V_I),
+\]
+where $w\cdot x=\widehat{wx}$.
+Thus precisely the limit roots with parabolic image belong to
+\[
+    \bigcup_{I\in\mathcal T}\ \bigcup_{g\in W}g\cdot(E\cap V_I).
+\]
+If $\Theta(x)=\xi$ is conical, write $q^{-1}(\xi)=\{\zeta\}$.
+Since $L(x)$ is nonempty and $q(L(x))=\{\xi\}$, one has
+$L(x)=\{\zeta\}$.
+Moreover, every $w\Theta(x)$ is conical, so no normalized translate
+of $x$ belongs to any $E\cap V_I$ with $I\in\mathcal T$.
+It is important to distinguish the fibers of
+$q:\partial X\to\mathcal B$ from those of $\Theta:E\to\mathcal B$:
+although $q$ identifies no distinct points over a conical point,
+this alone does not show that $F_\xi$ is a singleton.
+
+\medskip
+For an infinite strict dominance chain, let $A\subseteq E$ be the
+nonempty accumulation set of its normalized roots.
+Lemma~\ref{lem:orthogonality} gives $B(x,y)=0$ for all $x,y\in A$.
+Theorem~\ref{thm:32-boundary-map} therefore implies that, for any
+$x_0\in A$,
+\[
+    A\subseteq F_\xi,\qquad \xi=\Theta(x_0).
+\]
+It remains to prove that $A$ is a singleton within this fiber.
+For conical $\xi$, we will prove in Proposition~\ref{prop:32-conical}
+that two orthogonal points of $F_\xi$ must coincide; injectivity of
+$\Theta$ on the entire conical part is not needed.
+For parabolic $\xi$, we may translate to $F_{p_I}=E\cap V_I$.
+The fibers of types~\textup{(i)} and~\textup{(iii)} are singletons.
+For type~\textup{(ii)}, we will use the carrier inequalities to place
+the transformed chain in one rank-two factor and then deduce
+uniqueness there. Once $A$ is a singleton, compactness of $\Delta$
+gives convergence of the whole normalized sequence.
+
+\begin{remark}\label{rem:32-negative-same-image}
+Strictly negative pairing does not, in general, force distinct
+images under $\Theta$.
+
+Indeed, suppose that a peripheral subset $I$ of
+type~\textup{(ii)} occurs. By Lemma~\ref{lem:32-peripherals},
+one of its infinite pairs $J=\{s,t\}$ is non-affine.
+Write
+\[
+    a=\alpha_s,\qquad b=\alpha_t,\qquad c=-B(a,b)>1,
+\]
+and put
+\[
+    \lambda_\pm=c\pm\sqrt{c^2-1},
+    \qquad
+    e_\pm=a+\lambda_\pm b.
+\]
+These are the two null directions of the infinite dihedral
+root subsystem $\Phi_J$. Their normalizations
+\[
+    x=\widehat{e_+},
+    \qquad
+    y=\widehat{e_-}
+\]
+are distinct points of $E\cap V_J\subseteq E\cap V_I$.
+Since
+\[
+    \lambda_++\lambda_-=2c,
+    \qquad
+    \lambda_+\lambda_-=1,
+\]
+we have
+\[
+    B(e_+,e_-)=2-2c^2<0,
+\]
+and consequently
+\[
+    B(x,y)=\frac{2-2c^2}{h(e_+)h(e_-)}<0.
+\]
+Nevertheless, \eqref{eq:32-parabolic-fibers} gives
+\[
+    \Theta(x)=\Theta(y)=p_I.
+\]
+Thus the converse of \eqref{eq:32-orthogonal-code} fails
+whenever a peripheral subset of type~\textup{(ii)} occurs.
+
+This example concerns a parabolic fiber. It does not settle
+whether a conical fiber can contain strictly negatively paired
+points; the conical-fiber proposition below addresses
+orthogonal pairs only.
+\end{remark}
+\subsection{Conical fibres and uniqueness of accumulation points}\label{subsec:32-conical}
+
+We show that two orthogonal limit roots in a conical fibre coincide.
+By Lemma~\ref{lem:orthogonality}, this excludes distinct accumulation
+points of one dominance chain in such a fibre.
+
+\begin{lemma}\label{lem:32-separation}
+If $a\ne b$ in $\mathcal B$ and $b$ is conical,
+there is a signed root $\rho$ such that
+\[
+    B(\rho,F_b)<0,\qquad B(\rho,F_a)>0.
+\]
+\end{lemma}
+
+\begin{proof}
+Choose $z_b\in F_b$.
+Its set $\Pos(z_b)$ is infinite by
+Lemma~\ref{lem:32-nonempty}.
+Write $q^{-1}(b)=\{\eta_b\}$.
+Discard the finitely many $\alpha\in\Pos(z_b)$
+whose reflections fix $b$.
+For every remaining $\alpha$, the point $\eta_b$
+lies strictly on the $H_\alpha$ side at infinity.
+
+For every $z\in F_b$, this implies $B(z,\alpha)>0$.
+Negative pairing would place $\eta_b$ in
+$\partial H_{-\alpha}$, while zero pairing would give
+$s_\alpha z=z$ and hence $s_\alpha b=b$.
+
+If $a$ is conical, write $q^{-1}(a)=\{\eta_a\}$.
+Only finitely many walls are crossed by both rays
+toward $\eta_a$ and $\eta_b$.
+After also excluding the finitely many reflections fixing
+$a$, choose $\alpha$ so that $\eta_a$ lies strictly
+on the $H_{-\alpha}$ side.
+The same sign argument gives $B(\alpha,F_a)<0$.
+
+If $a$ is parabolic, conjugate first so that $a=p_I$.
+Choose $z_b$ and the positive roots in these coordinates.
+Since $z_b\notin V_I$, equation
+\eqref{eq:32-carrier2} allows us to choose
+\[
+    \alpha\in\Pos(z_b)\setminus\Phi_I
+\]
+whose reflection does not fix $b$.
+Equation \eqref{eq:32-carrier1} gives
+$B(\alpha,F_a)<0$.
+In either case take $\rho=-\alpha$ and conjugate back
+if necessary.
+\end{proof}
+
+\begin{lemma}\label{lem:32-extreme}
+Let $u$ be an extreme point of $D$.
+Suppose $\gamma_n\in\Phi^+$ satisfies
+\[
+    h(\gamma_n)\to\infty,\qquad
+    \widehat{\gamma_n}\to z,\qquad
+    h(\gamma_n)B(\gamma_n,u)\to c>0.
+\]
+Then $z=u$.
+\end{lemma}
+
+\begin{proof}
+Extreme points of $D=\operatorname{conv}(E)$ belong to $E$.
+Put
+\[
+    t_n=2h(\gamma_n)B(\gamma_n,u).
+\]
+Eventually $t_n>0$, and invariance of $\mathcal C$ gives
+\[
+    1-t_n=h(s_{\gamma_n}u)>0.
+\]
+The reflection formula yields
+\[
+    u=t_n\widehat{\gamma_n}
+      +(1-t_n)\widehat{s_{\gamma_n}u}.
+\]
+After passing to a subsequence,
+$\widehat{s_{\gamma_n}u}\to y\in E$.
+Thus
+\[
+    u=2cz+(1-2c)y,\qquad 0<2c\leq1.
+\]
+If $2c=1$, then $u=z$ directly.
+Otherwise extremality gives the same conclusion.
+\end{proof}
+
+\begin{theorem}\label{thm:local-spanning}
+For an irreducible indefinite based root system whose simple roots span $V$,
+\[
+\operatorname{span}(E)=V.
+\]
+Every nonempty relatively open subset $O\subseteq E$ satisfies $\operatorname{aff}(O)=\operatorname{aff}(E)$. See \cite[Proposition~2.5 and Theorem~6.12(a)]{DHR}.
+\end{theorem}
+
+\begin{lemma}\label{lem:23-local-spanning}
+The set $E$ is perfect and spans $V$. For every nonempty relatively open subset $O\subseteq E$,
+\[
+\operatorname{aff}(O)=\operatorname{aff}(E).
+\]
+In particular, $E$ is not contained in a finite union of proper linear subspaces of $V$.
+\end{lemma}
+\begin{proof}
+The spanning assertions are Theorem~\ref{thm:local-spanning}. An isolated point would give a relatively open singleton, contradicting local spanning. Thus $E$ is perfect.
+
+For a proper linear subspace $M$, the set $E\cap M$ is closed and has empty relative interior. Otherwise a nonempty relatively open subset of $E$ would span $V$ while lying in $M$. Finitely many closed sets with empty interior cannot cover the nonempty space $E$.
+\end{proof}
+
+\begin{proposition}\label{prop:32-conical}
+Suppose $\xi\in\mathcal B$ is conical.
+If $x,y\in F_\xi$ and $B(x,y)=0$, then $x=y$.
+\end{proposition}
+
+\begin{proof}
+Suppose $x\ne y$ and put $U=\operatorname{span}\{x,y\}$.
+This is a maximal totally isotropic plane.
+Put $F=D\cap(x+y)^\perp$. Since $B(D,D)\leq0$, this is a nonempty exposed face containing $x,y$, and $F\subseteq U^\perp$. Every extreme point $z$ of $F$ is an extreme point of $D$, hence belongs to $E$ and satisfies $B(z,z)=0$.
+For signature $(3,2)$ the quotient $U^\perp/U$ is positive definite, so every such $z$ belongs to $U$. Since $F$ is compact and is the convex hull of its extreme points, $F\subseteq U$. Conversely, $D\cap U\subseteq F$. Thus
+\[
+ F=D\cap U
+\]
+is a nondegenerate exposed segment. Its endpoints $u,v$ are distinct extreme points of $D$ and lie in $F_\xi$ by \eqref{eq:32-orthogonal-code}.
+This argument also applies in signature $(2,n)$: the quotient is negative definite (or zero when $n=2$), and isotropy of the extreme points still forces their quotient images to vanish. It is essential here to use $B(z,z)=0$ for extreme points, not merely $B(z,z)\leq0$ for arbitrary points of $F$.
+
+Choose a conical sequence $g_n$ and distinct
+$a,b\in\mathcal B$ such that
+\begin{equation}\label{eq:32-conical-sequence}
+    g_n\xi\to a,\qquad
+    g_n\eta\to b\quad(\eta\ne\xi).
+\end{equation}
+Choose a Euclidean norm in which the matrix of $B$ is
+$\operatorname{diag}(I_3,-I_2)$, and set
+$\lambda_n=\|g_n\|$.
+
+We have $\lambda_n\to\infty$.
+Otherwise infinitely many $g_n$ would map the simple basis
+into a bounded set of roots, giving only finitely many
+possible matrices.
+Moreover $\|g_n^{-1}\|=\lambda_n$.
+After passing to a subsequence,
+\[
+    \lambda_n^{-1}g_n\to T,\qquad
+    \lambda_n^{-1}g_n^{-1}\to R=T^{*B},
+    \qquad \|T\|=1.
+\]
+The image of $T$ is totally isotropic, so
+\begin{equation}\label{eq:32-rank-bound}
+    1\leq\operatorname{rank}T
+      =\operatorname{rank}R\leq2.
+\end{equation}
+Also $T(\mathcal C)\subseteq\mathcal C$.
+
+Since $\Theta$ is continuous and surjective and $\mathcal B$ has
+more than one point, $E\setminus F_\xi$ is nonempty and relatively open.
+By Lemma~\ref{lem:23-local-spanning}, it spans $V$.
+Here we use only the local-spanning conclusion of that lemma,
+whose proof from Theorem~\ref{thm:local-spanning} applies to every
+irreducible indefinite based root system, including signature $(3,2)$.
+Choose $e$ in this set with $Te\ne0$.
+By continuity and equivariance,
+\[
+    \widehat{Te}\in F_b.
+\]
+If $z\in F_\xi$ and $Tz\ne0$, then
+$\widehat{Tz}\in F_a$.
+But $B(Te,Tz)=0$, contradicting
+\eqref{eq:32-orthogonal-code}.
+Therefore
+\begin{equation}\label{eq:32-T-image}
+    T(F_\xi)=0,\qquad
+    T(\mathcal C)\subseteq\operatorname{cone}(F_b),
+\end{equation}
+where the cone on the right is the convex cone generated
+by $F_b$.
+The second inclusion follows by applying the same argument
+to points of $E\setminus F_\xi$ and using
+$D=\operatorname{conv}(E)$.
+
+Pass to a further subsequence so that
+\[
+    \widehat{g_nu}\to u_a\in F_a,\qquad
+    \widehat{g_nv}\to v_a\in F_a.
+\]
+Since distinct fibers pair strictly negatively,
+\[
+    B(e,u)<0,\qquad B(Te,u_a)<0.
+\]
+The identity
+\[
+    B\left(
+        \frac{g_ne}{\lambda_n},
+        \widehat{g_nu}
+    \right)
+    =
+    \frac{B(e,u)}{\lambda_n h(g_nu)}
+\]
+therefore gives
+\[
+    \lambda_n h(g_nu)
+    \longrightarrow
+    \frac{B(e,u)}{B(Te,u_a)}>0.
+\]
+The same argument applies to $v$.
+Thus there are nonzero $u_*,v_*\in\mathcal C$ with
+\begin{equation}\label{eq:32-small-vectors}
+    \lambda_ng_nu\to u_*,
+    \qquad
+    \lambda_ng_nv\to v_*,
+    \qquad
+    \widehat{u_*},\widehat{v_*}\in F_a,
+\end{equation}
+and
+\[
+    Ru_*=u,\qquad Rv_*=v.
+\]
+Since $u,v$ are linearly independent,
+\eqref{eq:32-rank-bound} implies
+\begin{equation}\label{eq:32-rank-two}
+    \operatorname{rank}T=\operatorname{rank}R=2.
+\end{equation}
+
+We next construct a signed root $\rho$ satisfying
+\begin{align}
+    &B(\rho,Tz)\leq0\quad(z\in\mathcal C),
+    \qquad
+    B(\rho,Tz_0)<0
+    \quad\text{for some }z_0\in\mathcal C,
+    \label{eq:32-target1}\\
+    &B(\rho,u_*)>0,\qquad B(\rho,v_*)>0.
+    \label{eq:32-target2}
+\end{align}
+
+If $b$ is conical, use Lemma~\ref{lem:32-separation}
+and \eqref{eq:32-T-image}.
+Strict inequality occurs because $T(\mathcal C)$
+spans the nonzero space $\operatorname{im}T$.
+
+Suppose $b$ is parabolic.
+Transport the following calculation by a fixed element
+of $W$ so that its peripheral is standard.
+For types~\textup{(i)} and \textup{(iii)}, its fiber is a
+singleton.
+Then \eqref{eq:32-T-image} would imply
+$\operatorname{rank}T\leq1$, contradicting
+\eqref{eq:32-rank-two}.
+
+It remains that $b=p_I$ with $I=J\sqcup J'$ of
+type~\textup{(ii)}.
+The cone $T(\mathcal C)$ is a convex cone of null vectors
+in $\mathcal C\cap V_I$.
+Lemma~\ref{lem:32-carrier} gives
+\[
+    T(\mathcal C)
+    \subseteq
+    \mathbb R_{\geq0}e_+
+    +\mathbb R_{\geq0}f,
+\]
+where the two directions belong to the two factors.
+Both occur with positive coefficient somewhere,
+since $T(\mathcal C)$ spans a two-dimensional space.
+
+At least one factor is non-affine.
+Choose it as $J$, and let $e_-$ be its other positive
+null endpoint.
+Choose $\sigma\in\Phi_J$ with
+\[
+    B(\sigma,e_+)<0<B(\sigma,e_-).
+\]
+One of the signed simple roots has these signs.
+Let $p\in W_J$ be a translation satisfying
+\[
+    pe_-=\mu e_-,
+    \qquad
+    pe_+=\mu^{-1}e_+,
+    \qquad
+    \mu>1.
+\]
+It fixes $V_J^\perp$ pointwise.
+
+The normalized endpoints $e_\pm$ lie in $F_b$.
+Consequently
+\[
+    B(u_*,e_+)<0,\qquad B(v_*,e_+)<0.
+\]
+Writing
+\[
+    u_*=c_-e_-+c_+e_++u_0,
+    \qquad u_0\in V_J^\perp,
+\]
+we obtain
+\[
+    c_-=\frac{B(u_*,e_+)}{B(e_-,e_+)}>0.
+\]
+The corresponding coefficient for $v_*$ is also positive.
+Hence, for a sufficiently large fixed $k$,
+\[
+    B(\sigma,p^ku_*)>0,\qquad
+    B(\sigma,p^kv_*)>0.
+\]
+Set $\rho=p^{-k}\sigma$.
+Then \eqref{eq:32-target2} holds, while
+\[
+    B(\rho,e_+)=\mu^{-k}B(\sigma,e_+)<0,
+    \qquad
+    B(\rho,f)=0.
+\]
+This gives \eqref{eq:32-target1}.
+The same construction transported back handles a
+conjugate peripheral.
+
+Now put
+\[
+    \gamma_n=g_n^{-1}\rho,\qquad d=R\rho.
+\]
+By \eqref{eq:32-target1},
+\[
+    \frac{\gamma_n}{\lambda_n}\to d\ne0,
+    \qquad
+    B(d,z)=B(\rho,Tz)\leq0
+    \quad(z\in\mathcal C),
+\]
+with strict inequality for some $z\in\mathcal C$.
+
+The roots $\gamma_n$ are eventually positive.
+Indeed, an infinite negative subsequence would yield
+$-d\in\mathcal C$, by normalizing the unbounded positive
+roots $-\gamma_n$ and taking their limit in $E$.
+Then $B(\mathcal C,\mathcal C)\leq0$ would give
+$B(d,\mathcal C)\geq0$, a contradiction.
+Thus
+\[
+    d\in\mathcal C\setminus\{0\},
+    \qquad
+    h(\gamma_n)\to\infty,
+    \qquad
+    \widehat{\gamma_n}\to\widehat d.
+\]
+Using \eqref{eq:32-small-vectors}, we obtain
+\begin{align*}
+    h(\gamma_n)B(\gamma_n,u)
+    &=
+    \frac{h(\gamma_n)}{\lambda_n}
+    B(\rho,\lambda_ng_nu)
+    \longrightarrow h(d)B(\rho,u_*)>0,\\
+    h(\gamma_n)B(\gamma_n,v)
+    &\longrightarrow h(d)B(\rho,v_*)>0.
+\end{align*}
+Lemma~\ref{lem:32-extreme} gives
+$\widehat d=u=v$, contradicting $u\ne v$.
+\end{proof}
+
+\subsection{Parabolic fibres and completion of the proof}\label{subsec:32-parabolic}
+
+It remains to treat the parabolic fibre containing the accumulation set.
+The singleton fibres require no further argument; for a product peripheral,
+the carrier inequality reduces the chain to one infinite dihedral factor.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main} in signature $(3,2)$]
+First assume irreducibility.
+Let $A\subseteq E$ be the accumulation set of
+$(\widehat{\beta_n})$.
+It is nonempty and compact.
+The dominance inequalities and
+$B(\mathcal C,\mathcal C)\leq0$ give
+\[
+    B(x,y)=0\quad(x,y\in A),
+    \qquad
+    B(\beta_m,x)\geq0\quad(m\geq1,\ x\in A).
+\]
+By Theorem~\ref{thm:32-boundary-map},
+there is a single $\xi\in\mathcal B$ with
+$A\subseteq F_\xi$.
+
+If $\xi$ is conical,
+Proposition~\ref{prop:32-conical} makes $A$ a singleton.
+The same conclusion holds for a parabolic point of
+type~\textup{(i)} or \textup{(iii)}.
+
+Suppose $\xi$ belongs to a product peripheral.
+Conjugate that peripheral to a standard
+$W_I=W_J\times W_{J'}$.
+After deleting finitely many terms, the transformed
+chain is again a positive strict dominance chain.
+Its accumulation set is the corresponding normalized
+translate of $A$.
+We may therefore assume
+\[
+    A\subseteq E\cap V_I.
+\]
+
+Choose $x\in A$.
+For every fixed $m$,
+\[
+    B(\beta_m,x)\geq0.
+\]
+If $\beta_m\notin\Phi_I$,
+equation \eqref{eq:32-carrier1} would give
+$B(\beta_m,x)<0$.
+Hence every term belongs to $\Phi_I$.
+Roots in different factors are orthogonal and therefore
+cannot be comparable.
+Thus the chain lies in one rank-two factor.
+
+An affine factor has a single normalized accumulation
+direction.
+A non-affine factor has two null endpoints with strictly
+negative pairing, so they cannot both lie in $A$.
+Again $A$ is a singleton.
+Compactness of the normalization simplex now implies
+convergence of the whole sequence.
+
+If the system is reducible, Lemma~\ref{lem:components} places the chain in a component of rank at most four, so Proposition~\ref{prop:rank-at-most-four} applies.
+\end{proof}
+
+
+\section{Positive index two, low-rank completion, and higher-rank counterexamples}\label{sec:higher-rank}
+\subsection{The general case of signature \texorpdfstring{$(2,n)$}{(2,n)}}\label{subsec:2n-general}
+Throughout this subsection the system is irreducible and $B$ is nondegenerate of signature $(2,n)$, where $n\geq2$. We also allow a positively independent simple root system spanning $V$; linear independence will not be needed. This formulation permits the radical quotient used below. When the spanning simple roots are linearly dependent, height means a fixed linear functional strictly positive on the positive cone away from zero, and all normalizations use that functional. Positive independence gives such a functional and a compact normalized section; for the radical quotient we use the functional $\ell$ from Lemma~\ref{lem:radical-positive}.
+
+We use the following metric property of the Davis complex $X$: there is
+$\delta\geq0$ such that each side of every geodesic triangle lies in the
+$\delta$-neighbourhood of the other two sides. The next lemma establishes
+this property directly from the restrictions on standard subgroups; no
+separate definition of hyperbolicity for groups is needed.
+
+\begin{lemma}\label{lem:2n-hyperbolic}
+In an irreducible system of signature $(2,n)$, there are no irreducible affine standard subgroups of rank at least three and no two commuting irreducible infinite standard subgroups. The Davis complex has uniformly thin geodesic triangles. If $J=\{s,t\}$ satisfies $B(\alpha_s,\alpha_t)=-1$, then $J^\perp=\varnothing$.
+\end{lemma}
+\begin{proof}
+An irreducible affine standard subsystem of rank $m\geq3$ has Gram inertia $(m-1,0,1)$. Its simple roots are linearly independent even in the spanning-root-basis formulation: any linear relation belongs to the one-dimensional Gram radical, which has a strictly positive generator, contrary to positive independence. Lemma~\ref{lem:positive-index-bound} would give $m\leq2$.
+
+Suppose that two irreducible infinite standard subsystems commute. Each contributes a positive direction, and every subsystem with at least three generators contributes at least two by Lemma~\ref{lem:three-positive}. Thus both are infinite pairs. If one is affine, its positive direction and nonzero null vector, together with a positive direction in the other orthogonal factor, form a semidefinite subspace of inertia $(2,0,1)$, which is impossible. Therefore both pairs are non-affine. Their Gram matrix is
+\[
+ A=A_c\oplus A_d,\qquad A_c=\begin{pmatrix}1&-c\\-c&1\end{pmatrix},\qquad c,d>1.
+\]
+The four roots are independent because $A$ is nonsingular. Irreducibility implies that their union is proper. For any additional generator the Gram matrix has the form
+\[
+ \begin{pmatrix}A&b\\b^{\mathsf T}&1\end{pmatrix},\qquad b\leq0.
+\]
+The inverse of each block is entrywise negative. Thus $1-b^{\mathsf T}A^{-1}b>0$, and this matrix has three positive eigenvalues, contradicting positive index two. Moussong's criterion for the Davis complex (see \cite{CapraceErratum,Krammer2009}) now gives uniformly thin geodesic triangles.
+
+Finally, an affine pair and an orthogonal simple root would again span a semidefinite subspace of inertia $(2,0,1)$. Its null vector is nonzero by positive independence. This proves $J^\perp=\varnothing$.
+\end{proof}
+
+Set
+\[
+ \mathcal T_2=\{\{s,t\}\subseteq S:B(\alpha_s,\alpha_t)=-1\},\qquad
+ \mathcal P_2=\{W_J:J\in\mathcal T_2\}.
+\]
+The empty family is allowed.
+\begin{lemma}\label{lem:2n-carriers}
+The family $\mathcal T_2$ satisfies Theorem~\ref{thm:caprace-relative}. For $J=\{s,t\}\in\mathcal T_2$, put $\delta_J=\alpha_s+\alpha_t$. Then
+\[
+ E\cap V_J=\{\widehat{\delta_J}\},\qquad
+ B(z,\delta_J)<0\quad(z\in P\setminus V_J),
+\]
+and
+\[
+ \rho\in\Phi^+\setminus\Phi_J\ \Longrightarrow\ B(\rho,\delta_J)<0,
+ \qquad
+ x\in E\setminus V_J\ \Longrightarrow\ \#(\Pos(x)\cap\Phi_J^+)<\infty.
+\]
+\end{lemma}
+\begin{proof}
+Condition (RH1) is vacuous by Lemma~\ref{lem:2n-hyperbolic}. Distinct pairs intersect spherically, giving (RH2), and $J^\perp=\varnothing$ gives (RH3).
+For $u\notin J$, the simple-root pairings are nonpositive, and at least one of $B(\alpha_u,\alpha_s)$ and $B(\alpha_u,\alpha_t)$ is negative. Hence $B(\alpha_u,\delta_J)<0$, whereas the two internal pairings vanish. Expanding a vector of $P$ in simple roots proves the strict inequality outside $V_J$. It also shows that a positive vector in $V_J$ has no positive coefficient outside $J$, even if the spanning root basis is dependent.
+The null cone in $V_J$ is the line through $\delta_J$; the positive null ray is the affine dihedral limit direction. This proves the first assertion. Moreover, a real root in $V_J$ belongs to $\Phi_J$: its positive expansion is supported on $J$, so this is the usual standard-subsystem restriction property. The first carrier assertion follows.
+Finally, an infinite set of positive roots of $\Phi_J$ has normalized subsequences converging to $\widehat{\delta_J}$. Strict negativity of $B(x,\delta_J)$ therefore excludes infinitely many positive pairings.
+\end{proof}
+
+\begin{lemma}\label{lem:2n-finite-pos}
+Every nonzero null vector in $\mathcal C$ with finite $\Pos$ is a positive multiple of a $W$-translate of some $\delta_J$, $J\in\mathcal T_2$.
+\end{lemma}
+\begin{proof}
+The descent in Lemma~\ref{lem:32-nonempty} terminates at a nonzero null vector $z\in K$. For a positive expansion $z=\sum c_s\alpha_s$, the equality $0=\sum c_sB(z,\alpha_s)$ forces all pairings on the support to vanish. Each connected support component has a positive Gram kernel vector and hence is affine by Perron--Frobenius. Lemma~\ref{lem:2n-hyperbolic} excludes components of rank at least three. Two affine pairs would supply two positive directions and a nonzero null radical direction, contrary to Lemma~\ref{lem:positive-index-bound}. Thus the support is one affine pair.
+\end{proof}
+
+\begin{proposition}\label{prop:2n-boundary}
+There is a continuous equivariant surjection
+\[
+ \Theta:E\longrightarrow\mathcal B_2=\partial(W,\mathcal P_2)
+\]
+such that $B(x,y)=0$ implies $\Theta(x)=\Theta(y)$. Every parabolic fibre is a singleton; specifically $F_{p_J}=\{\widehat{\delta_J}\}$.
+\end{proposition}
+\begin{proof}
+We verify the inputs to the boundary construction of Section~\ref{sec:signature-32}. The Davis complex is proper and has uniformly thin geodesic triangles by Lemma~\ref{lem:2n-hyperbolic}; Theorem~\ref{thm:tran-boundary} gives its quotient onto $\mathcal B_2$ with peripheral residue boundaries as parabolic fibres and singleton conical fibres. Distinct visual endpoints have infinite Tits distance, so the common-wall argument used there applies. The pair is non-elementary, since an irreducible indefinite system of rank at least three contains a non-dihedral universal reflection subgroup, and all peripherals are virtually cyclic.
+
+Lemma~\ref{lem:2n-carriers} supplies exactly \eqref{eq:32-carrier1}--\eqref{eq:32-carrier2}; Lemma~\ref{lem:2n-finite-pos} replaces the rank-five support calculation in Lemma~\ref{lem:32-nonempty}. Thus the same halfspace intersection $L(z)$ is nonempty for every nonzero null $z\in\mathcal C$. For finite $\Pos$, its image is the corresponding parabolic point. For infinite $\Pos$, the common-wall argument in Lemma~\ref{lem:32-unique-image} proves uniqueness of $q(L(z))$; if this image is parabolic, the carrier assertions force $z\in V_J$ after conjugation.
+
+Define $\Theta(x)$ by $q(L(x))=\{\Theta(x)\}$. The closed-graph, equivariance, and minimality arguments in Theorem~\ref{thm:32-boundary-map} give continuity and surjectivity. Its proof of $B(x,y)=0\Rightarrow\Theta(x)=\Theta(y)$ uses only nonemptiness of $L(x+y)$ and $B(\mathcal C,\mathcal C)\leq0$, so it applies unchanged. The same stabilizer argument identifies $F_{p_J}=E\cap V_J$, which is a singleton by Lemma~\ref{lem:2n-carriers}. These steps use the labelled Coxeter halfspaces and the carrier properties, not linear independence of the spanning simple roots.
+\end{proof}
+
+\begin{theorem}\label{thm:positive-index-two}
+For an irreducible nondegenerate based root system of signature $(2,n)$, $n\geq2$, distinct limit roots pair strictly negatively. Consequently every infinite strict dominance chain has a unique normalized limit. The same conclusion holds for a positively independent spanning root basis in this signature.
+\end{theorem}
+\begin{proof}
+Use Proposition~\ref{prop:2n-boundary}. Suppose $x\ne y$ and $B(x,y)=0$. Their common boundary image cannot be parabolic, because those fibres are singletons. Put $U=\operatorname{span}\{x,y\}$ and $F=D\cap(x+y)^\perp$. As shown at the beginning of Proposition~\ref{prop:32-conical}, every extreme point of $F$ is an isotropic extreme point of $D$. The quotient $U^\perp/U$ is negative definite (or zero if $n=2$), which forces these extreme points into $U$, and compact convexity gives $F=D\cap U$. Its endpoints $u,v$ are distinct extreme points of $D$ in the common fibre.
+
+The rest of the conical calculation can now be applied with an adapted Euclidean norm for $B=\operatorname{diag}(I_2,-I_n)$. Discreteness of the root representation and finiteness of bounded-height roots give $\lambda_j=\|g_j\|\to\infty$; positive independence ensures that bounded vectors in the positive root cone have bounded height. We have $\|g_j^{-1}\|=\lambda_j$. Passing to a subsequence gives $T,R$ with $R=T^{*B}$ and rank at most two. Local spanning and distinct-fibre negativity give \eqref{eq:32-T-image}; the scaling calculation gives $Ru_*=u$, $Rv_*=v$, so both ranks are two.
+
+If the attracting point $b$ were parabolic, $T(\mathcal C)$ would be contained in a ray, contradicting rank two and $\operatorname{span}(\mathcal C)=V$. Hence $b$ is conical. Lemma~\ref{lem:32-separation} applies: its proof only uses the common-wall property, the boundary-map properties, and the two carrier assertions verified above. It supplies the signed root $\rho$ in \eqref{eq:32-target1}--\eqref{eq:32-target2}. The final calculation of Proposition~\ref{prop:32-conical} then produces positive roots $\gamma_j=g_j^{-1}\rho$ to which Lemma~\ref{lem:32-extreme} applies for both $u$ and $v$. Thus $u=\widehat{R\rho}=v$, a contradiction.
+
+Therefore orthogonal points of $E$ coincide. Apply Lemma~\ref{lem:orthogonality} and compactness to obtain convergence of each normalized dominance chain.
+\end{proof}
+
+\begin{corollary}\label{cor:2n-reducible}
+Every nondegenerate system of signature $(2,n)$ has convergence of all normalized strict dominance chains, without an irreducibility assumption.
+\end{corollary}
+\begin{proof}
+The chain lies in one irreducible component. Each component is nondegenerate. An infinite component of rank at least three has positive index at least two and hence uses both available positive directions; apply Theorem~\ref{thm:positive-index-two}, or the Lorentz case if its negative index is one. A rank-two component is covered by Proposition~\ref{prop:rank2}.
+\end{proof}
+
+\subsection{The low-rank special cases and completion of the main theorem}\label{subsec:low-rank-completion}
+
+The nondegenerate signatures $(2,2)$ and $(2,3)$ are the cases $n=2$
+and $n=3$ of the preceding theorem. The remaining inertia $(2,2,1)$
+is obtained from its spanning-root-basis formulation by quotient lifting.
+
+\begin{proposition}\label{prop:22-special-case}
+Every infinite strict dominance chain in signature $(2,2)$ has a unique normalized limit.
+\end{proposition}
+\begin{proof}
+Apply Corollary~\ref{cor:2n-reducible} with $n=2$.
+\end{proof}
+
+\begin{proposition}\label{prop:23-special-case}
+Every infinite strict dominance chain in signature $(2,3)$ has a unique normalized limit.
+\end{proposition}
+\begin{proof}
+This is Corollary~\ref{cor:2n-reducible} with $n=3$.
+\end{proof}
+
+The preceding results settle rank at most four and all rank-five inertias except $(2,2,1)$: the positive semidefinite and Lorentz cases were treated in Section~\ref{sec:rank-four}, the inertias $(3,1,1)$ and $(2,1,2)$ follow by lifting, and the nondegenerate cases follow from Section~\ref{sec:signature-32} and Proposition~\ref{prop:23-special-case}.
+\begin{proposition}\label{prop:221-unified}
+Every infinite strict dominance chain in a rank-five system of inertia $(2,2,1)$ has a unique normalized limit.
+\end{proposition}
+\begin{proof}
+In the reducible case the chain lies in a component of rank at most four. Otherwise put $R=\rad B$ and $\overline V=V/R$. By Lemma~\ref{lem:radical-positive}, the projected simple roots form a positively independent spanning root basis: a nonzero nonnegative relation would lift to a nonzero vector in $R\cap P$. Their pairings are unchanged and the quotient has signature $(2,2)$. Its representation is faithful, and identifies the labelled real roots and their signs; hence the projected sequence remains a strict dominance chain. Apply the spanning-root-basis version of Theorem~\ref{thm:positive-index-two}. Proposition~\ref{prop:quotient-lifting} then lifts uniqueness of its projective accumulation point to uniqueness upstairs.
+\end{proof}
+
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
+Reduce to an irreducible component and apply the inertia lists in Section~\ref{sec:rank-four}. Rank at most three is covered there; rank four follows from the Lorentz, positive semidefinite, quotient-lifting, and $(2,2)$ cases. The rank-five cases are exhausted by the preceding paragraph and Proposition~\ref{prop:221-unified}.
+\end{proof}
+
+\subsection{Higher rank: guarantees and counterexamples}\label{subsec:higher-rank-counterexamples}
+\begin{proposition}
+Let $(W,S)$ be the Coxeter system with simple roots
+$\Pi=\{\alpha_1,\ldots,\alpha_6\}$ and Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-3&0&0&0&0\\
+-3&1&-3&0&0&0\\
+0&-3&1&-3&0&0\\
+0&0&-3&1&-3&0\\
+0&0&0&-3&1&-3\\
+0&0&0&0&-3&1
+\end{pmatrix}.
+\]
+Then $B$ has signature $(3,3)$, and there exists an infinite strict
+dominance chain $(\beta_n)_{n\geq1}$ in $\Phi^+$ such that
+$(\widehat{\beta_n})_{n\geq1}$ has exactly two distinct accumulation
+points.
+\end{proposition}
+
+\begin{proof}
+We use the convention that $\beta\succ\alpha$ means that $\beta$
+strictly dominates $\alpha$. Write
+\[
+h\left(\sum_{i=1}^6 c_i\alpha_i\right)=\sum_{i=1}^6 c_i,
+\qquad
+\widehat{z}=\frac{z}{h(z)},
+\]
+whenever $h(z)>0$. All vector and operator norms below are the
+$\ell^1$ norms relative to $\Pi$.
+
+The eigenvalues of $G$ are
+\[
+1-6\cos\frac{k\pi}{7},
+\qquad 1\leq k\leq6.
+\]
+Exactly three are positive and three are negative. Thus $B$ has
+signature $(3,3)$.
+
+Put
+\[
+g=s_1s_2,\qquad t=s_5s_6,\qquad
+r=3+2\sqrt2,\qquad
+\lambda=r^2=17+12\sqrt2,
+\]
+and define
+\[
+x=\frac{r\alpha_1+\alpha_2}{r+1},
+\qquad
+y=\frac{r\alpha_5+\alpha_6}{r+1}.
+\]
+These are limit roots of the two standard infinite dihedral
+subgroups. In particular,
+\[
+x,y\in E,\qquad B(x,y)=0,\qquad \|x-y\|_1=2.
+\]
+
+For $m\geq0$, let
+\[
+u_m=g^m\alpha_3,\qquad v_m=t^m\alpha_4.
+\]
+The root $u_m$ is supported on $\{1,2,3\}$, with
+$\alpha_3$-coefficient equal to $1$. Similarly, $v_m$ is supported
+on $\{4,5,6\}$, with $\alpha_4$-coefficient equal to $1$.
+The positive--negative dichotomy for real roots therefore implies
+that $u_m,v_m\in\Phi^+$.
+
+The only nonzero pairing between these two supports is
+$B(\alpha_3,\alpha_4)=-3$. Consequently,
+\[
+B(u_m,v_\ell)=-3,\qquad
+B(u_m,y)=0,\qquad B(v_\ell,x)=0
+\qquad(m,\ell\geq0).
+\tag{1}
+\]
+Moreover, $gx=\lambda x$ and $ty=\lambda y$, so
+\[
+B(u_m,x)=-\frac{3\lambda^{-m}}{r+1}<0,
+\qquad
+B(v_m,y)=-\frac{3r\lambda^{-m}}{r+1}<0.
+\tag{2}
+\]
+
+We first record quantitative convergence estimates. Direct
+diagonalization gives
+\[
+u_m=\frac{3}{16}\lambda^m(r\alpha_1+\alpha_2)+R_m,
+\]
+where
+\[
+R_m=
+\alpha_3-\frac98\alpha_1-\frac38\alpha_2
++\frac{3}{16}\lambda^{-m}(r^{-1}\alpha_1+\alpha_2),
+\]
+and
+\[
+v_m=\frac{3}{16r}\lambda^m(r\alpha_5+\alpha_6)+T_m,
+\]
+where
+\[
+T_m=
+\alpha_4-\frac38\alpha_5-\frac98\alpha_6
++\frac{3r}{16}\lambda^{-m}(r^{-1}\alpha_5+\alpha_6).
+\]
+Since $1<r<6$, these remainders satisfy
+\[
+\|R_m\|_1\leq3,\qquad \|T_m\|_1\leq4.
+\]
+For nonzero vectors $a,b$ in the positive cone,
+\[
+\left\|\frac{a}{h(a)}-\frac{b}{h(b)}\right\|_1
+\leq\frac{2\|a-b\|_1}{h(b)}.
+\]
+Applying this inequality to the preceding decompositions yields
+\[
+\|\widehat{u_m}-x\|_1\leq50\lambda^{-m},
+\qquad
+\|\widehat{v_m}-y\|_1\leq50\lambda^{-m}.
+\tag{3}
+\]
+
+Now set
+\[
+M_n=10^n,\qquad
+\gamma_n=
+\begin{cases}
+u_{M_n},& n\text{ odd},\\
+v_{M_n},& n\text{ even},
+\end{cases}
+\]
+and define
+\[
+w_0=1,\qquad
+w_n=s_{\gamma_1}\cdots s_{\gamma_n},
+\qquad
+\beta_n=w_{n-1}\gamma_n.
+\tag{4}
+\]
+
+We verify the dominance relations before studying convergence.
+If $a,b\in\Phi^+$ satisfy $B(a,b)=-3$, then
+\[
+s_ab=b+6a\in\Phi^+,
+\qquad B(s_ab,a)=3.
+\]
+By the standard dominance comparability criterion, $s_ab$ and $a$
+are comparable. The relation $a\succ s_ab$ is impossible:
+applying $s_a$ sends $a$ to the negative root $-a$ but sends
+$s_ab$ to the positive root $b$. Hence
+\[
+s_ab\succ a.
+\tag{5}
+\]
+By (1), $B(\gamma_n,\gamma_{n+1})=-3$. Applying $w_{n-1}$ to (5)
+and using $W$-invariance of dominance gives
+\[
+\beta_{n+1}
+=w_{n-1}s_{\gamma_n}\gamma_{n+1}
+\succ w_{n-1}\gamma_n
+=\beta_n.
+\]
+Since $\beta_1\in\Phi^+$, every $\beta_n$ is positive. The chain is
+strict, and
+\[
+B(\beta_n,\beta_{n+1})=3.
+\tag{6}
+\]
+
+Define the moving limit roots
+\[
+X_n=\widehat{w_nx},\qquad
+Y_n=\widehat{w_ny}.
+\]
+These are well defined because $E\subseteq U^*$ and hence
+$wx,wy$ belong to the positive cone for every $w\in W$.
+
+We claim that
+\[
+\|\widehat{\beta_n}-X_{n-1}\|_1<2^{-n-4}
+\quad\text{if }n\text{ is odd},
+\tag{7}
+\]
+and
+\[
+\|\widehat{\beta_n}-Y_{n-1}\|_1<2^{-n-4}
+\quad\text{if }n\text{ is even}.
+\tag{8}
+\]
+To prove this, observe that if $p,q$ are normalized positive vectors
+and $wp,wq$ are positive, then
+\[
+\|\widehat{wp}-\widehat{wq}\|_1
+\leq
+2\|w\|_1\|w^{-1}\|_1\|p-q\|_1.
+\tag{9}
+\]
+Indeed, the normalization inequality above gives a bound with
+denominator $h(wq)$, and
+\[
+h(wq)=\|wq\|_1\geq\|w^{-1}\|_1^{-1}.
+\]
+
+The matrices of $g$ and $t$ satisfy
+\[
+\|g\|_1,\|t\|_1\leq43.
+\]
+Consequently, $\|\gamma_j\|_1\leq43^{M_j}$. The reflection formula
+and the bound $\max_{i,j}|G_{ij}|\leq3$ imply
+\[
+\|s_{\gamma_j}\|_1
+\leq1+6\|\gamma_j\|_1^2
+\leq7\cdot43^{2M_j}.
+\]
+Since each reflection is its own inverse,
+\[
+\|w_{n-1}\|_1\|w_{n-1}^{-1}\|_1
+\leq49^{n-1}43^{4\sum_{j<n}M_j}.
+\tag{10}
+\]
+Combining (3), (9), and (10), the left-hand side of either
+(7) or (8) is at most
+\[
+100\cdot49^{n-1}
+43^{4\sum_{j<n}M_j}\lambda^{-M_n}.
+\]
+Now
+\[
+\sum_{j<n}M_j=\frac{10^n-10}{9},
+\qquad
+43<\lambda^2,\qquad49<\lambda^2.
+\]
+Therefore this bound is at most
+\[
+100\lambda^{\,2(n-1)-(10^n+80)/9}
+\leq100\lambda^{-n-9}
+<2^{-n-4}.
+\]
+Here the middle inequality follows from
+$10^n\geq27n-17$ for $n\geq1$, and the last follows from
+$\lambda>33$. This proves (7) and (8).
+
+Suppose first that $n$ is odd. By (1),
+$s_{\gamma_n}y=y$, and therefore
+\[
+Y_n=Y_{n-1}.
+\]
+By (2), the scalar $c_n=-2B(\gamma_n,x)$ is positive, and
+\[
+w_nx=w_{n-1}x+c_n\beta_n.
+\]
+All vectors on the right are positive. Thus $X_n$ is a convex
+combination of $X_{n-1}$ and $\widehat{\beta_n}$. By (7),
+\[
+\|X_n-X_{n-1}\|_1<2^{-n-4}.
+\tag{11}
+\]
+Similarly, for even $n$,
+\[
+X_n=X_{n-1},
+\qquad
+\|Y_n-Y_{n-1}\|_1<2^{-n-4}.
+\tag{12}
+\]
+
+Since
+\[
+\sum_{n=1}^{\infty}2^{-n-4}=\frac1{16},
+\]
+both $(X_n)$ and $(Y_n)$ are Cauchy sequences. Write
+\[
+X_n\longrightarrow X,\qquad Y_n\longrightarrow Y.
+\]
+Their limits satisfy
+\[
+\|X-x\|_1\leq\frac1{16},
+\qquad
+\|Y-y\|_1\leq\frac1{16}.
+\]
+It follows that
+\[
+\|X-Y\|_1
+\geq\|x-y\|_1-\|X-x\|_1-\|Y-y\|_1
+\geq\frac{15}{8}>0.
+\]
+In particular, $X\neq Y$.
+
+Finally, (7) and (8) imply
+\[
+\widehat{\beta_{2k-1}}\longrightarrow X,
+\qquad
+\widehat{\beta_{2k}}\longrightarrow Y.
+\]
+Thus the normalized strict dominance chain has exactly the two
+accumulation points $X$ and $Y$. Both belong to $E$. Moreover,
+\[
+B(X_n,Y_n)
+=\frac{B(x,y)}{h(w_nx)h(w_ny)}=0,
+\]
+so continuity gives $B(X,Y)=0$.
+\end{proof}
+\begin{remark}\label{rem:42-counterexample}
+A signature $(4,2)$ counterexample is obtained by replacing all five entries $-3$ in the six-vertex path by $-2$. Here is a parameter version of the construction, which avoids reusing the numerical constants from the preceding proof.
+For a common edge parameter $-a$, $a>1$, put $r=a+\sqrt{a^2-1}$ and $\lambda=r^2$. With $g=s_1s_2$, $t=s_5s_6$, define
+\[
+ x=\frac{r\alpha_1+\alpha_2}{r+1},\quad
+ y=\frac{r\alpha_5+\alpha_6}{r+1},\quad
+ u_m=g^m\alpha_3,\quad v_m=t^m\alpha_4.
+\]
+The two-by-two reflection calculation gives
+\[
+ u_m=\frac{a}{2(a^2-1)}\lambda^m(r\alpha_1+\alpha_2)+O(1),\quad
+ v_m=\frac{a}{2r(a^2-1)}\lambda^m(r\alpha_5+\alpha_6)+O(1).
+\]
+Moreover $B(u_m,v_k)=-a$, $s_{u_m}y=y$, $s_{v_m}x=x$, and
+\[
+ B(u_m,x)=-\frac{a}{r+1}\lambda^{-m}<0,\qquad
+ B(v_m,y)=-\frac{ar}{r+1}\lambda^{-m}<0.
+\]
+Choose $\gamma_j=u_{M_j}$ for odd $j$ and $\gamma_j=v_{M_j}$ for even $j$, recursively choosing $M_j$ so large that, for $w_{j-1}=s_{\gamma_1}\cdots s_{\gamma_{j-1}}$, the normalized image of $\gamma_j$ is within $2^{-j-4}$ of $\widehat{w_{j-1}x}$ or $\widehat{w_{j-1}y}$, respectively. This is possible by the displayed convergence and continuity at $x,y$. Put $\beta_j=w_{j-1}\gamma_j$ and $w_j=w_{j-1}s_{\gamma_j}$.
+For adjacent choices, $s_{\gamma_j}\gamma_{j+1}=\gamma_{j+1}+2a\gamma_j$ strictly dominates $\gamma_j$: the pairing is $a>1$, and the opposite dominance direction is excluded by applying $s_{\gamma_j}$. Equivariance proves that the $\beta_j$ form a strict chain; positivity follows inductively from positivity of $\beta_1$ and dominance. On odd steps $\widehat{w_jy}$ is fixed, while $\widehat{w_jx}$ is a convex combination of $\widehat{w_{j-1}x}$ and $\widehat{\beta_j}$; on even steps the roles reverse. The total displacement of each moving endpoint is at most $1/16$. Since $\|x-y\|_1=2$, their limiting endpoints are distinct, and the odd and even normalized roots converge to these respective endpoints.
+For $a=2$, the eigenvalues of the six-by-six Gram matrix are
+\[
+ 1-4\cos(k\pi/7),\qquad 1\leq k\leq6.
+\]
+Exactly two are negative and four positive. This proves the claimed $(4,2)$ counterexample. Adjoining $r-6$ orthogonal finite rank-one factors gives counterexamples in signatures $(r-2,2)$; the original example similarly gives $(r-3,3)$.
+\end{remark}
+
+For nondegenerate systems of rank $r\geq6$, the signatures $(r-1,1)$ and $(2,r-2)$ guarantee convergence of every normalized strict dominance chain. Counterexamples occur outside these families, including signatures $(3,3)$ and $(4,2)$ in rank six, so convergence does not hold for all nondegenerate systems. The positive definite case is vacuous.
+
+A counterexample in a standard parabolic subsystem is also a counterexample in the ambient system: dominance restricts to the standard subsystem, the same roots remain positive, and height normalization restricts to the original normalization. Thus adjoining finite direct factors yields counterexamples of signatures $(r-3,3)$ and $(r-2,2)$ in every rank $r\geq6$.
+
+These are existence statements, not a claim that every system outside the two convergence families fails. Nor do they yet give an example in every remaining prescribed signature: that stronger assertion requires Coxeter Gram extensions with the desired inertia. Degenerate forms beyond the cases treated here remain to be studied; a complete classification solely by signature, even among nondegenerate forms, is not asserted by the constructions above.
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+\end{document}
