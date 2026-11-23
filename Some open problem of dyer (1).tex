@@ -2642,59 +2642,96 @@ the existence and properties of $W$-invariant measures
 on $E(\Phi)$.
 
 \subsection{Existence of invariant measures}
-Under what conditions does $E(\Phi)$ admit a $W$-invariant
-Borel probability measure?
+Throughout these three subsections, $\Phi$ is a finite-rank based root
+system and $W$ acts on $E=E(\Phi)$ by normalization.
+A Borel probability measure $\mu$ is $W$-invariant if
+$\mu(w\cdot A)=\mu(A)$ for every Borel set $A\subseteq E$ and every
+$w\in W$.
 
+\noindent\textbf{Status.} $\checkmark$ Solved. An invariant probability
+exists precisely when $E$ contains a finite $W$-orbit.
 
-\par\medskip
-\noindent\textbf{Status.} Partially solved. The affine singleton supports an invariant probability measure; the non-elementary Lorentzian limit set supports none. No classification in full generality was verified.
+\begin{proposition}\label{prop:limit-root-invariant-probability}
+If $\Phi$ is irreducible of indefinite type and has rank at least
+three, then $E$ admits no $W$-invariant Borel probability measure.
+\end{proposition}
 
-\par\medskip
-\noindent\textbf{Previous work and verified progress.}
-A distinction is necessary. Patterson--Sullivan theory constructs
-an equivariant \emph{family} of conformal measures, not generally a
-$W$-invariant probability measure at one base point \cite{Sullivan1979}.
-In a non-elementary Lorentzian case there is no invariant probability
-measure on $E$: invariance under a loxodromic element and recurrence
-force support on its two fixed points; two independent loxodromic
-elements have disjoint fixed-point pairs. In an irreducible affine
-system, by contrast, the Dirac mass on the unique limit root is invariant.
-These are elementary consequences in the indicated cases, not a
-classification for all signatures.
+\begin{proof}
+Suppose that $\mu$ is such a measure. By
+\cite[Theorem~3.1(b)]{DHR}, every orbit is dense in $E$. In particular,
+the support of $\mu$, being nonempty, closed and invariant, equals $E$.
+The infinite group $W$ acts faithfully on $E$ by
+\cite[Theorem~6.1]{DHR}, so $E$ is infinite. A finite orbit would be
+closed and dense, hence every orbit is infinite. Consequently
+$\mu(\{x\})=0$ for each $x\in E$, since all points of its orbit have
+the same mass.
+
+Fix $x\in E$. By \cite[Lemma~3.8(b)]{DHR}, there is $y\in E$ with
+$B(x,y)<0$. Choose $0<\varepsilon<-B(x,y)$ and set
+\[
+K=\{z\in E:B(x,z)\le -\varepsilon\}.
+\]
+This compact set contains a relative neighborhood of $y$, so
+$\mu(K)>0$. Choose positive roots $\alpha_n$ with
+$\widehat{\alpha_n}\to x$. Put $Z=\operatorname{conv}(E)$ and fix a
+Euclidean norm on the ambient space. Since $K$ is closed in $Z$ and
+disjoint from $Z\cap x^\perp$, \cite[Theorem~3.11(a)]{DHR} gives,
+for each $m\ge1$ and all sufficiently large $n$,
+\[
+s_{\alpha_n}\cdot K\subseteq U_m
+   :=\{z\in E:\|z-x\|<1/m\}.
+\]
+Here we apply the theorem to the corresponding neighborhood in $Z$
+and use the invariance of $E$. Thus $\mu(U_m)\ge\mu(K)$ for every
+$m$. As $U_m\downarrow\{x\}$, continuity from above yields
+$\mu(\{x\})\ge\mu(K)>0$, a contradiction.
+\end{proof}
+
+For the remaining irreducible types, a finite root system has empty
+limit set, an affine root system has a single limit root, and a
+rank-two indefinite root system has two limit roots
+\cite[Example~2.1 and Corollary~2.15]{HLR}. In the last case the two
+points form one orbit by minimality.
+
+For a general $\Phi$, let $\Phi_i$ be its irreducible components.
+By \cite[Remark~3.3]{DHR}, $E$ is the finite union of the closed
+invariant sets $E(\Phi_i)$, and $W$ acts on each through $W_i$.
+If an invariant probability assigned positive mass to the limit set
+of an indefinite component of rank at least three, its normalized
+restriction would contradict
+\cref{prop:limit-root-invariant-probability}. Thus all mass lies in
+the union of the singleton affine orbits and the two-point indefinite
+dihedral orbits. Conversely, the uniform probability on any finite
+orbit is invariant. This proves the existence criterion.
 
 \subsection{Uniqueness of invariant measures}
-When such a measure exists, under what conditions is it unique?
+\noindent\textbf{Status.} $\checkmark$ Solved. There is a unique
+$W$-invariant Borel probability measure on $E$ precisely when $E$
+contains exactly one finite $W$-orbit.
 
-
-\par\medskip
-\noindent\textbf{Status.} Partially solved. The affine singleton case is unique; the non-elementary Lorentzian case has no invariant probability. General uniqueness requires a separate existence analysis.
-
-\par\medskip
-\noindent\textbf{Previous work and verified progress.}
-For invariant probabilities, the affine singleton case is unique,
-whereas the non-elementary Lorentzian case in the preceding subsection
-has none. Uniqueness results for conformal densities, such as the
-critical-exponent and ergodicity theory in \cite{Sullivan1979}, concern
-a different object and have their own hypotheses. Likewise,
-$p$-stationarity does not mean invariance under every element of $W$.
+Indeed, all mass is carried by the finite orbits, and invariance
+forces equal masses at points in the same orbit. If there is just one
+such orbit, this determines the measure. Two distinct finite orbits
+give distinct invariant probabilities by taking the uniform measure
+on each. We count distinct orbits since component limit sets can
+coincide when the simple roots are linearly dependent
+\cite[Remark~3.3]{DHR}.
 
 \subsection{Construction of invariant measures}
-How can such invariant probability measures be constructed?
-
-
-\par\medskip
-\noindent\textbf{Status.} Partially solved; existence is an obstruction. Stationary probabilities and conformal densities do not automatically yield invariant probabilities.
-
-\par\medskip
-\noindent\textbf{Previous work and verified progress.}
-The classical construction uses weighted orbit sums and a limit at
-the critical exponent \cite{Patterson1976,Sullivan1979}; its output is
-conformal. A separate elementary construction always yields a stationary
-probability on nonempty compact $E$: for a finitely supported probability
-$p$ on $W$, put $P\nu=\sum_w p(w)w_*\nu$ and take a weak limit of
-$N^{-1}\sum_{k=0}^{N-1}P^k\nu$. Since
-$P\nu_N-\nu_N=(P^N\nu-\nu)/N$, the limit is $P$-stationary.
-This argument supplies existence but neither $W$-invariance nor uniqueness.
+\noindent\textbf{Status.} $\checkmark$ Solved. Let $O_1,\dots,O_m$
+be the distinct finite $W$-orbits in $E$. For $m\ge1$, all invariant
+Borel probabilities are given by
+\[
+\boxed{\displaystyle
+\mu=\sum_{j=1}^{m}\frac{t_j}{|O_j|}
+                 \sum_{\xi\in O_j}\delta_\xi,\qquad
+t_j\ge0,\quad \sum_{j=1}^{m}t_j=1.}
+\]
+Here $\delta_\xi$ is the unit point mass at $\xi$. Each group element
+permutes each $O_j$, so every measure in the display is invariant.
+Conversely, the weights are recovered uniquely as $t_j=\mu(O_j)$.
+In particular, a singleton contributes its point mass and a two-point
+orbit contributes the average of its two point masses.
 
 \subsection{Hausdorff dimension}
 Furthermore, when the root system is of indefinite
