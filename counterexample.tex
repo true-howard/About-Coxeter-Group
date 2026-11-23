@@ -1,0 +1,2128 @@
+\documentclass[11pt,reqno]{amsart}
+
+% ==================================================
+% 1. Packages
+% ==================================================
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{mathrsfs} 
+% ==================================================
+% 2. Mathematical operators
+% ==================================================
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\PLC}{PLC}
+
+\DeclareMathOperator{\Inv}{Inv}
+% ==================================================
+% 3. Mathematical symbols
+% ==================================================
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\pairing}[2]{\left\langle #1,#2 \right\rangle}
+
+% Coxeter group notation (optional)
+
+\newcommand{\simpleRoots}{\Pi}
+\newcommand{\limitRoots}{\mathcal{E}}
+\newcommand{\imaginaryCone}{\mathcal{I}}
+\newcommand{\TitsCone}{\mathcal{T}}
+\newcommand{\depth}{\operatorname{dp}}
+
+% ==================================================
+% 4. Theorem environments
+% ==================================================
+
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{remark}
+
+\newtheorem{remark}[theorem]{Remark}
+
+% ==================================================
+% 5. Equation numbering
+% ==================================================
+
+\numberwithin{equation}{section}
+
+% ==================================================
+% 6. Hyper-reference names
+% ==================================================
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Pos}{Pos}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\dom}{dom}
+
+% ==================================================
+% 7. Title and author
+% ==================================================
+
+\title[Counterexamples]
+{Counterexamples}
+
+\author{Haoquan Wang}
+
+\address{
+School of Mathematical Science,
+Peking University,
+Peking, China
+}
+
+\email{2300010755@stu.pku.edu.cn}
+
+% Optional: AMS classification and keywords
+
+
+\keywords{
+Coxeter groups, Fushcian groups, limit roots,
+dominance order
+}
+
+% ==================================================
+% 8. Document
+% ==================================================
+
+\begin{document}
+
+% Abstract
+
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+\section{Counterexample}
+\begin{proposition}
+Let $(W,S)$ be the Coxeter system with simple roots
+$\Pi=\{\alpha_1,\ldots,\alpha_6\}$ and Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-3&0&0&0&0\\
+-3&1&-3&0&0&0\\
+0&-3&1&-3&0&0\\
+0&0&-3&1&-3&0\\
+0&0&0&-3&1&-3\\
+0&0&0&0&-3&1
+\end{pmatrix}.
+\]
+Then $B$ has signature $(3,3)$, and there exists an infinite strict
+dominance chain $(\beta_n)_{n\geq1}$ in $\Phi^+$ such that
+$(\widehat{\beta_n})_{n\geq1}$ has exactly two distinct accumulation
+points.
+\end{proposition}
+
+\begin{proof}
+We use the convention that $\beta\succ\alpha$ means that $\beta$
+strictly dominates $\alpha$. Write
+\[
+h\left(\sum_{i=1}^6 c_i\alpha_i\right)=\sum_{i=1}^6 c_i,
+\qquad
+\widehat{z}=\frac{z}{h(z)},
+\]
+whenever $h(z)>0$. All vector and operator norms below are the
+$\ell^1$ norms relative to $\Pi$.
+
+The eigenvalues of $G$ are
+\[
+1-6\cos\frac{k\pi}{7},
+\qquad 1\leq k\leq6.
+\]
+Exactly three are positive and three are negative. Thus $B$ has
+signature $(3,3)$.
+
+Put
+\[
+g=s_1s_2,\qquad t=s_5s_6,\qquad
+r=3+2\sqrt2,\qquad
+\lambda=r^2=17+12\sqrt2,
+\]
+and define
+\[
+x=\frac{r\alpha_1+\alpha_2}{r+1},
+\qquad
+y=\frac{r\alpha_5+\alpha_6}{r+1}.
+\]
+These are limit roots of the two standard infinite dihedral
+subgroups. In particular,
+\[
+x,y\in E,\qquad B(x,y)=0,\qquad \|x-y\|_1=2.
+\]
+
+For $m\geq0$, let
+\[
+u_m=g^m\alpha_3,\qquad v_m=t^m\alpha_4.
+\]
+The root $u_m$ is supported on $\{1,2,3\}$, with
+$\alpha_3$-coefficient equal to $1$. Similarly, $v_m$ is supported
+on $\{4,5,6\}$, with $\alpha_4$-coefficient equal to $1$.
+The positive--negative dichotomy for real roots therefore implies
+that $u_m,v_m\in\Phi^+$.
+
+The only nonzero pairing between these two supports is
+$B(\alpha_3,\alpha_4)=-3$. Consequently,
+\[
+B(u_m,v_\ell)=-3,\qquad
+B(u_m,y)=0,\qquad B(v_\ell,x)=0
+\qquad(m,\ell\geq0).
+\tag{1}
+\]
+Moreover, $gx=\lambda x$ and $ty=\lambda y$, so
+\[
+B(u_m,x)=-\frac{3\lambda^{-m}}{r+1}<0,
+\qquad
+B(v_m,y)=-\frac{3r\lambda^{-m}}{r+1}<0.
+\tag{2}
+\]
+
+We first record quantitative convergence estimates. Direct
+diagonalization gives
+\[
+u_m=\frac{3}{16}\lambda^m(r\alpha_1+\alpha_2)+R_m,
+\]
+where
+\[
+R_m=
+\alpha_3-\frac98\alpha_1-\frac38\alpha_2
++\frac{3}{16}\lambda^{-m}(r^{-1}\alpha_1+\alpha_2),
+\]
+and
+\[
+v_m=\frac{3}{16r}\lambda^m(r\alpha_5+\alpha_6)+T_m,
+\]
+where
+\[
+T_m=
+\alpha_4-\frac38\alpha_5-\frac98\alpha_6
++\frac{3r}{16}\lambda^{-m}(r^{-1}\alpha_5+\alpha_6).
+\]
+Since $1<r<6$, these remainders satisfy
+\[
+\|R_m\|_1\leq3,\qquad \|T_m\|_1\leq4.
+\]
+For nonzero vectors $a,b$ in the positive cone,
+\[
+\left\|\frac{a}{h(a)}-\frac{b}{h(b)}\right\|_1
+\leq\frac{2\|a-b\|_1}{h(b)}.
+\]
+Applying this inequality to the preceding decompositions yields
+\[
+\|\widehat{u_m}-x\|_1\leq50\lambda^{-m},
+\qquad
+\|\widehat{v_m}-y\|_1\leq50\lambda^{-m}.
+\tag{3}
+\]
+
+Now set
+\[
+M_n=10^n,\qquad
+\gamma_n=
+\begin{cases}
+u_{M_n},& n\text{ odd},\\
+v_{M_n},& n\text{ even},
+\end{cases}
+\]
+and define
+\[
+w_0=1,\qquad
+w_n=s_{\gamma_1}\cdots s_{\gamma_n},
+\qquad
+\beta_n=w_{n-1}\gamma_n.
+\tag{4}
+\]
+
+We verify the dominance relations before studying convergence.
+If $a,b\in\Phi^+$ satisfy $B(a,b)=-3$, then
+\[
+s_ab=b+6a\in\Phi^+,
+\qquad B(s_ab,a)=3.
+\]
+By the standard dominance comparability criterion, $s_ab$ and $a$
+are comparable. The relation $a\succ s_ab$ is impossible:
+applying $s_a$ sends $a$ to the negative root $-a$ but sends
+$s_ab$ to the positive root $b$. Hence
+\[
+s_ab\succ a.
+\tag{5}
+\]
+By (1), $B(\gamma_n,\gamma_{n+1})=-3$. Applying $w_{n-1}$ to (5)
+and using $W$-invariance of dominance gives
+\[
+\beta_{n+1}
+=w_{n-1}s_{\gamma_n}\gamma_{n+1}
+\succ w_{n-1}\gamma_n
+=\beta_n.
+\]
+Since $\beta_1\in\Phi^+$, every $\beta_n$ is positive. The chain is
+strict, and
+\[
+B(\beta_n,\beta_{n+1})=3.
+\tag{6}
+\]
+
+Define the moving limit roots
+\[
+X_n=\widehat{w_nx},\qquad
+Y_n=\widehat{w_ny}.
+\]
+These are well defined because $E\subseteq U^*$ and hence
+$wx,wy$ belong to the positive cone for every $w\in W$.
+
+We claim that
+\[
+\|\widehat{\beta_n}-X_{n-1}\|_1<2^{-n-4}
+\quad\text{if }n\text{ is odd},
+\tag{7}
+\]
+and
+\[
+\|\widehat{\beta_n}-Y_{n-1}\|_1<2^{-n-4}
+\quad\text{if }n\text{ is even}.
+\tag{8}
+\]
+To prove this, observe that if $p,q$ are normalized positive vectors
+and $wp,wq$ are positive, then
+\[
+\|\widehat{wp}-\widehat{wq}\|_1
+\leq
+2\|w\|_1\|w^{-1}\|_1\|p-q\|_1.
+\tag{9}
+\]
+Indeed, the normalization inequality above gives a bound with
+denominator $h(wq)$, and
+\[
+h(wq)=\|wq\|_1\geq\|w^{-1}\|_1^{-1}.
+\]
+
+The matrices of $g$ and $t$ satisfy
+\[
+\|g\|_1,\|t\|_1\leq43.
+\]
+Consequently, $\|\gamma_j\|_1\leq43^{M_j}$. The reflection formula
+and the bound $\max_{i,j}|G_{ij}|\leq3$ imply
+\[
+\|s_{\gamma_j}\|_1
+\leq1+6\|\gamma_j\|_1^2
+\leq7\cdot43^{2M_j}.
+\]
+Since each reflection is its own inverse,
+\[
+\|w_{n-1}\|_1\|w_{n-1}^{-1}\|_1
+\leq49^{n-1}43^{4\sum_{j<n}M_j}.
+\tag{10}
+\]
+Combining (3), (9), and (10), the left-hand side of either
+(7) or (8) is at most
+\[
+100\cdot49^{n-1}
+43^{4\sum_{j<n}M_j}\lambda^{-M_n}.
+\]
+Now
+\[
+\sum_{j<n}M_j=\frac{10^n-10}{9},
+\qquad
+43<\lambda^2,\qquad49<\lambda^2.
+\]
+Therefore this bound is at most
+\[
+100\lambda^{\,2(n-1)-(10^n+80)/9}
+\leq100\lambda^{-n-9}
+<2^{-n-4}.
+\]
+Here the middle inequality follows from
+$10^n\geq27n-17$ for $n\geq1$, and the last follows from
+$\lambda>33$. This proves (7) and (8).
+
+Suppose first that $n$ is odd. By (1),
+$s_{\gamma_n}y=y$, and therefore
+\[
+Y_n=Y_{n-1}.
+\]
+By (2), the scalar $c_n=-2B(\gamma_n,x)$ is positive, and
+\[
+w_nx=w_{n-1}x+c_n\beta_n.
+\]
+All vectors on the right are positive. Thus $X_n$ is a convex
+combination of $X_{n-1}$ and $\widehat{\beta_n}$. By (7),
+\[
+\|X_n-X_{n-1}\|_1<2^{-n-4}.
+\tag{11}
+\]
+Similarly, for even $n$,
+\[
+X_n=X_{n-1},
+\qquad
+\|Y_n-Y_{n-1}\|_1<2^{-n-4}.
+\tag{12}
+\]
+
+Since
+\[
+\sum_{n=1}^{\infty}2^{-n-4}=\frac1{16},
+\]
+both $(X_n)$ and $(Y_n)$ are Cauchy sequences. Write
+\[
+X_n\longrightarrow X,\qquad Y_n\longrightarrow Y.
+\]
+Their limits satisfy
+\[
+\|X-x\|_1\leq\frac1{16},
+\qquad
+\|Y-y\|_1\leq\frac1{16}.
+\]
+It follows that
+\[
+\|X-Y\|_1
+\geq\|x-y\|_1-\|X-x\|_1-\|Y-y\|_1
+\geq\frac{15}{8}>0.
+\]
+In particular, $X\neq Y$.
+
+Finally, (7) and (8) imply
+\[
+\widehat{\beta_{2k-1}}\longrightarrow X,
+\qquad
+\widehat{\beta_{2k}}\longrightarrow Y.
+\]
+Thus the normalized strict dominance chain has exactly the two
+accumulation points $X$ and $Y$. Both belong to $E$. Moreover,
+\[
+B(X_n,Y_n)
+=\frac{B(x,y)}{h(w_nx)h(w_ny)}=0,
+\]
+so continuity gives $B(X,Y)=0$.
+\end{proof}
+
+\begin{proposition}\label{prop:counterexample-convE-Q}
+There exists an irreducible based root system of rank five and
+signature $(3,2)$ for which
+\[
+E \subsetneq \operatorname{conv}(E)\cap Q.
+\]
+More precisely, let
+\[
+V=\bigoplus_{i=1}^{5}\mathbb{R}\alpha_i
+\]
+and let $B$ be the symmetric bilinear form whose Gram matrix,
+with respect to the basis $(\alpha_1,\ldots,\alpha_5)$, is
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&-2\\
+-2&1&0&0&-2\\
+0&0&1&-2&-2\\
+0&0&-2&1&-2\\
+-2&-2&-2&-2&1
+\end{pmatrix}.
+\]
+Let $W=\langle s_1,\ldots,s_5\rangle$, where
+\[
+s_i(v)=v-2B(v,\alpha_i)\alpha_i,
+\]
+and let
+\[
+\Phi=W\{\alpha_1,\ldots,\alpha_5\},
+\qquad
+P=\sum_{i=1}^{5}\mathbb{R}_{\geq 0}\alpha_i,
+\qquad
+\Phi^+=\Phi\cap P.
+\]
+Define
+\[
+h\left(\sum_{i=1}^{5}c_i\alpha_i\right)=\sum_{i=1}^{5}c_i,
+\qquad
+\widehat{v}=\frac{v}{h(v)},
+\qquad
+E=\operatorname{Acc}\{\widehat{\rho}:\rho\in\Phi^+\},
+\]
+and put
+\[
+Q=\{v\in V:B(v,v)=0\}.
+\]
+Set
+\[
+\tau=2-\sqrt{3},
+\qquad
+x=\frac{\alpha_1+\tau\alpha_2}{1+\tau},
+\qquad
+y=\frac{\alpha_3+\tau\alpha_4}{1+\tau}.
+\]
+Then
+\[
+x,y\in E,
+\qquad
+B(x,y)=0,
+\qquad
+\frac{x+2y}{3}\notin E.
+\]
+\end{proposition}
+
+\begin{proof}
+The off-diagonal entries of $G$ belong to $\{0,-2\}$, so $G$
+defines a based root system: an entry $0$ corresponds to
+$m_{ij}=2$, whereas an entry $-2$ corresponds to $m_{ij}=\infty$.
+Its Coxeter graph is connected, since the fifth vertex is
+joined to each of the other four vertices. Hence the root
+system is irreducible.
+
+Write
+\[
+x_+=x,
+\qquad
+x_-=\frac{\tau\alpha_1+\alpha_2}{1+\tau},
+\]
+and
+\[
+y_+=y,
+\qquad
+y_-=\frac{\tau\alpha_3+\alpha_4}{1+\tau}.
+\]
+These are the limit roots of the two non-affine dihedral
+root subsystems supported on
+$\{\alpha_1,\alpha_2\}$ and $\{\alpha_3,\alpha_4\}$.
+
+For completeness, the matrix of $s_1s_2$ on
+$\operatorname{span}\{\alpha_1,\alpha_2\}$ is
+\[
+\begin{pmatrix}
+15&-4\\
+4&-1
+\end{pmatrix}.
+\]
+Its eigenvectors $x_+$ and $x_-$ have respective eigenvalues
+\[
+\tau^{-2}=7+4\sqrt{3},
+\qquad
+\tau^2=7-4\sqrt{3}.
+\]
+Consequently,
+\[
+\widehat{(s_1s_2)^n\alpha_1}\longrightarrow x_+.
+\]
+The corresponding argument for $s_3s_4$ gives
+\[
+\widehat{(s_3s_4)^n\alpha_3}\longrightarrow y_+.
+\]
+Thus $x_+,y_+\in E$.
+
+Direct calculation gives
+\[
+B(x_+,x_+)=B(x_-,x_-)
+=B(y_+,y_+)=B(y_-,y_-)=0,
+\]
+\[
+B(x_+,x_-)=B(y_+,y_-)=-1,
+\]
+and
+\[
+B(x_\varepsilon,y_\delta)=0
+\qquad
+(\varepsilon,\delta\in\{+,-\}).
+\]
+Let
+\[
+\eta=\alpha_5-2\alpha_1-2\alpha_2-2\alpha_3-2\alpha_4.
+\]
+Then
+\[
+\eta\perp_B
+\operatorname{span}\{x_+,x_-,y_+,y_-\},
+\qquad
+B(\eta,\eta)=17.
+\]
+The vectors $(x_+,x_-,y_+,y_-,\eta)$ form a basis of $V$,
+and the Gram matrix in this basis is
+\[
+\begin{pmatrix}
+0&-1&0&0&0\\
+-1&0&0&0&0\\
+0&0&0&-1&0\\
+0&0&-1&0&0\\
+0&0&0&0&17
+\end{pmatrix}.
+\]
+Therefore $B$ has signature $(3,2)$.
+
+For $v=\sum_{i=1}^{5}c_i\alpha_i$, define linear forms
+\[
+\begin{aligned}
+A_+(v)
+&=\frac{1+\sqrt{3}}{2}c_1
+  -\frac{\sqrt{3}-1}{2}c_2+2c_5,\\
+A_-(v)
+&=-\frac{\sqrt{3}-1}{2}c_1
+  +\frac{1+\sqrt{3}}{2}c_2+2c_5,\\
+C_+(v)
+&=\frac{1+\sqrt{3}}{2}c_3
+  -\frac{\sqrt{3}-1}{2}c_4+2c_5,\\
+C_-(v)
+&=-\frac{\sqrt{3}-1}{2}c_3
+  +\frac{1+\sqrt{3}}{2}c_4+2c_5.
+\end{aligned}
+\]
+These are the first four coordinates in the preceding basis:
+\[
+v=
+A_+(v)x_++A_-(v)x_-
++C_+(v)y_++C_-(v)y_-+c_5\eta.
+\]
+
+We claim that every positive root $\rho$ satisfies
+\begin{equation}\label{eq:root-gap-inequality}
+\bigl(20A_+(\rho)-9C_+(\rho)\bigr)
+\bigl(3A_+(\rho)-2C_+(\rho)\bigr)\geq 0.
+\end{equation}
+We first establish a useful description of positive roots.
+
+Since the simple reflections have integer matrices in the
+simple-root basis, every root has integer coordinates.
+Let $\rho=\sum_i c_i\alpha_i$ be a positive root that is
+not simple. Since
+\[
+1=B(\rho,\rho)=\sum_i c_i B(\rho,\alpha_i),
+\]
+there exists $i$ with $B(\rho,\alpha_i)>0$.
+A simple reflection preserves all positive roots other than
+its corresponding simple root. Hence
+\[
+s_i\rho\in\Phi^+,
+\qquad
+h(s_i\rho)=h(\rho)-2B(\rho,\alpha_i)<h(\rho).
+\]
+The height is a positive integer, so repeating this procedure
+eventually reaches a simple root.
+
+Reversing the resulting sequence shows that every positive
+root can be obtained from a simple root by a sequence of
+simple reflections in which each step strictly increases
+one simple-root coordinate and leaves the others unchanged.
+
+Suppose first that the fifth coordinate of $\rho$ is positive.
+Choose such a coordinate-increasing sequence.
+If the sequence contains $s_5$, let $v$ be the root immediately
+after its last occurrence.
+If it contains no $s_5$, then it must start at $\alpha_5$;
+in this case put $v=\alpha_5$.
+In either case,
+\[
+\rho=uv
+\qquad\text{for some}\qquad
+u\in W_{\{1,2,3,4\}}.
+\]
+
+Write
+\[
+v=\sum_{i=1}^{4}c_i\alpha_i+d\alpha_5,
+\qquad
+S=c_1+c_2+c_3+c_4.
+\]
+We have
+\begin{equation}\label{eq:seed-coordinate-bound}
+d\geq 2S.
+\end{equation}
+Indeed, if $v=\alpha_5$, this is immediate.
+Otherwise, let $d_0$ be the fifth coordinate immediately
+before the last occurrence of $s_5$.
+Since that step increases the fifth coordinate,
+\[
+d_0-2S
+=
+B\left(\sum_{i=1}^{4}c_i\alpha_i+d_0\alpha_5,\alpha_5\right)
+<0.
+\]
+The fifth coordinate after reflection is
+\[
+d=4S-d_0>2S,
+\]
+which proves \eqref{eq:seed-coordinate-bound}.
+
+Since $c_i\geq 0$ and $S\leq d/2$, the definitions of the
+four linear forms imply
+\[
+\frac{9-\sqrt{3}}{4}\,d
+\leq
+A_\varepsilon(v),C_\varepsilon(v)
+\leq
+\frac{9+\sqrt{3}}{4}\,d
+\qquad
+(\varepsilon\in\{+,-\}).
+\]
+In particular, these four values are strictly positive.
+Put
+\[
+R=\frac{9+\sqrt{3}}{9-\sqrt{3}}.
+\]
+Then
+\begin{equation}\label{eq:seed-ratio-bound}
+R^{-1}
+\leq
+\frac{A_\varepsilon(v)}{C_\delta(v)}
+\leq R
+\qquad
+(\varepsilon,\delta\in\{+,-\}).
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:elementary-gap-bounds}
+R<\frac32,
+\qquad
+0<\tau<\frac3{10}.
+\end{equation}
+
+The action of the first two simple reflections on the
+coordinates $(A_+,A_-)$ is
+\[
+\begin{pmatrix}
+A_+(s_1v)\\
+A_-(s_1v)
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&\tau^{-1}\\
+\tau&0
+\end{pmatrix}
+\begin{pmatrix}
+A_+(v)\\
+A_-(v)
+\end{pmatrix},
+\]
+and
+\[
+\begin{pmatrix}
+A_+(s_2v)\\
+A_-(s_2v)
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&\tau\\
+\tau^{-1}&0
+\end{pmatrix}
+\begin{pmatrix}
+A_+(v)\\
+A_-(v)
+\end{pmatrix}.
+\]
+They fix the coordinates $(C_+,C_-)$ and the vector $\eta$.
+The reflections $s_3,s_4$ act by the same two matrices on
+$(C_+,C_-)$ and fix $(A_+,A_-)$ and $\eta$.
+
+It follows that there exist integers $k,\ell$ and signs
+$\varepsilon,\delta\in\{+,-\}$ such that
+\[
+A_+(\rho)=\tau^k A_\varepsilon(v),
+\qquad
+C_+(\rho)=\tau^\ell C_\delta(v).
+\]
+In particular, $A_+(\rho),C_+(\rho)>0$, and
+\[
+\frac{A_+(\rho)}{C_+(\rho)}
+\in
+\tau^{k-\ell}[R^{-1},R].
+\]
+If $k-\ell\leq 0$, then
+\[
+\frac{A_+(\rho)}{C_+(\rho)}
+\geq R^{-1}>\frac23.
+\]
+If $k-\ell\geq 1$, then
+\[
+\frac{A_+(\rho)}{C_+(\rho)}
+\leq \tau R<\frac9{20}.
+\]
+Thus the ratio cannot lie between $9/20$ and $2/3$.
+This proves \eqref{eq:root-gap-inequality} whenever the
+fifth coordinate of $\rho$ is positive.
+
+Suppose now that the fifth coordinate of $\rho$ is zero.
+Along a coordinate-increasing sequence producing $\rho$,
+the fifth coordinate must remain zero. Hence the sequence
+does not use $s_5$ and starts at one of
+$\alpha_1,\ldots,\alpha_4$.
+Because the two blocks $\{1,2\}$ and $\{3,4\}$ are orthogonal,
+the resulting root is supported entirely on one of them.
+
+If $\rho$ is supported on $\{\alpha_1,\alpha_2\}$, then
+$C_+(\rho)=0$, and the left-hand side of
+\eqref{eq:root-gap-inequality} is
+\[
+60A_+(\rho)^2\geq 0.
+\]
+If $\rho$ is supported on $\{\alpha_3,\alpha_4\}$, then
+$A_+(\rho)=0$, and the same expression equals
+\[
+18C_+(\rho)^2\geq 0.
+\]
+This completes the proof of
+\eqref{eq:root-gap-inequality} for every positive root.
+
+Define the continuous homogeneous quadratic function
+\[
+F(v)=
+\bigl(20A_+(v)-9C_+(v)\bigr)
+\bigl(3A_+(v)-2C_+(v)\bigr).
+\]
+For every positive root $\rho$,
+\[
+F(\widehat{\rho})=\frac{F(\rho)}{h(\rho)^2}\geq 0.
+\]
+Passing to accumulation points gives
+\[
+F(e)\geq 0
+\qquad\text{for every }e\in E.
+\]
+
+Finally, put
+\[
+z=\frac{x_++2y_+}{3}.
+\]
+Since $x_+,y_+\in E$ are isotropic and orthogonal,
+\[
+z\in\operatorname{conv}(E)\cap Q.
+\]
+On the other hand, its coordinates in the chosen basis give
+\[
+A_+(z)=\frac13,
+\qquad
+C_+(z)=\frac23.
+\]
+Therefore
+\[
+F(z)
+=
+\left(\frac{20}{3}-6\right)
+\left(1-\frac43\right)
+=
+-\frac29<0.
+\]
+Consequently $z\notin E$, proving
+\[
+E\subsetneq\operatorname{conv}(E)\cap Q.
+\]
+\end{proof}
+
+\begin{remark}
+This example uses a generalized geometric realization in
+which the entries associated with infinite Coxeter exponents
+are equal to $-2$.
+It does not establish the same conclusion for the canonical
+Tits realization, where those entries are fixed at $-1$.
+Moreover, the example concerns the full set of limit roots;
+it does not by itself produce a strict dominance chain with
+more than one accumulation point.
+\end{remark}
+\begin{proposition}\label{prop:nonexposed-extreme-limit-roots}
+There exists an irreducible based root system $\Phi$ of rank eight
+and signature $(5,3)$ such that
+\[
+E_{\mathrm{exp}}(\Phi)
+\subsetneq E_{\mathrm{ext}}(\Phi).
+\]
+More precisely, its limit-root convex hull has two distinct
+extreme points $x,y$ such that every supporting hyperplane at
+either point contains both points.
+\end{proposition}
+
+\begin{proof}
+Let $V=\bigoplus_{i=1}^{8}\mathbb R\alpha_i$,
+and define $B$ by the Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&0&0&0&0\\
+-2&1&-2&0&0&0&0&0\\
+0&-2&1&-2&0&0&0&0\\
+0&0&-2&1&-2&0&0&0\\
+0&0&0&-2&1&-2&0&0\\
+0&0&0&0&-2&1&-2&0\\
+0&0&0&0&0&-2&1&-2\\
+0&0&0&0&0&0&-2&1
+\end{pmatrix}.
+\]
+Let
+\[
+s_i(v)=v-2B(v,\alpha_i)\alpha_i,
+\qquad
+W=\langle s_1,\ldots,s_8\rangle,
+\qquad
+\Phi=W\{\alpha_1,\ldots,\alpha_8\}.
+\]
+These data define a based root system, and its Coxeter graph
+is connected.
+The eigenvalues of $G$ are
+\[
+1-4\cos\frac{k\pi}{9},
+\qquad 1\le k\le8.
+\]
+Exactly three are negative, so the signature is $(5,3)$.
+
+Use the normalization
+\[
+h\left(\sum_i c_i\alpha_i\right)=\sum_i c_i,
+\qquad
+\widehat v=\frac{v}{h(v)}.
+\]
+Write
+\[
+E=E(\Phi),
+\qquad
+C=\operatorname{conv}(E),
+\qquad
+K=\mathbb R_{\ge0}C.
+\]
+The cone $K$ is closed and $W$-invariant, is contained in the
+nonnegative simple-root cone, and satisfies
+\[
+B(v,w)\le0
+\qquad(v,w\in K).
+\]
+These are standard properties of the closed imaginary cone;
+see \cite[Section~2]{DHR}.
+
+\medskip
+\noindent\textit{The three dihedral blocks.}
+Put
+\[
+(a_1,b_1)=(1,2),
+\qquad
+(a_2,b_2)=(4,5),
+\qquad
+(a_3,b_3)=(7,8),
+\]
+and set
+\[
+\tau=2-\sqrt3,
+\qquad
+\lambda=\tau^{-2}=7+4\sqrt3.
+\]
+For $1\le i\le3$, define
+\[
+\xi_i=
+\frac{\alpha_{a_i}+\tau\alpha_{b_i}}{1+\tau},
+\qquad
+\eta_i=
+\frac{\tau\alpha_{a_i}+\alpha_{b_i}}{1+\tau}.
+\]
+These are the two limit roots of the corresponding non-affine
+dihedral subsystem. In particular,
+\[
+\xi_i,\eta_i\in E,
+\qquad
+B(\xi_i,\eta_i)=-1.
+\]
+The three two-dimensional blocks are pairwise orthogonal.
+
+We will use that $\xi_1$ and $\xi_3$ generate extreme rays of $K$.
+Indeed, for $i\in\{1,3\}$, the functional
+\[
+v\longmapsto
+B(\xi_i,v)-\sum_{j\notin\{a_i,b_i\}}c_j(v)
+\]
+is nonpositive on $C$.
+Equality forces $v$ to lie in the corresponding dihedral block
+and to be orthogonal to $\xi_i$.
+Since that block is nondegenerate of signature $(1,1)$,
+its intersection with $\xi_i^\perp$ is $\mathbb R\xi_i$.
+The normalization $h(v)=1$ then gives $v=\xi_i$.
+Thus $\xi_1$ and $\xi_3$ are exposed points of $C$.
+
+Define
+\[
+a=s_1s_2,
+\qquad
+b=s_4s_5,
+\qquad
+c=s_7s_8,
+\qquad
+T=s_3s_6.
+\]
+The elements $a,b,c$ commute. On their respective blocks,
+they have eigenvalues $\lambda,\lambda^{-1}$ with
+eigenvectors $\xi_i,\eta_i$.
+
+\medskip
+\noindent\textit{A family approaching a rank-two projection.}
+Define
+\[
+P_i^+(v)=-B(v,\eta_i)\xi_i,
+\qquad
+P_i^-(v)=-B(v,\xi_i)\eta_i,
+\]
+and
+\[
+P_U=I-\sum_{i=1}^{3}(P_i^++P_i^-).
+\]
+Here $P_U$ is the projection onto the orthogonal complement of
+the sum of the three dihedral blocks.
+
+Put $\gamma=7/3$, and define
+\[
+\begin{aligned}
+A_0&=\gamma^{-1}(P_1^++P_3^+)T,\\
+A_1&=\gamma^{-1}P_2^+T,\\
+A_2&=\gamma^{-1}P_UT,\\
+A_3&=\gamma^{-1}P_2^-T,\\
+A_4&=\gamma^{-1}(P_1^-+P_3^-)T.
+\end{aligned}
+\]
+For every integer $d\ge1$, set
+\[
+g(d)=a^{2d}b^dc^{2d}T,
+\qquad
+F(d)=\frac{g(d)}{\gamma\lambda^{2d}}.
+\]
+The spectral decomposition of the three commuting blocks gives
+the exact identity
+\begin{equation}\label{eq:nonexposed-factor-expansion}
+F(d)=
+A_0+\lambda^{-d}A_1+\lambda^{-2d}A_2
++\lambda^{-3d}A_3+\lambda^{-4d}A_4.
+\end{equation}
+
+Direct calculation gives
+\begin{equation}\label{eq:nonexposed-projection}
+A_0^2=A_0,
+\qquad
+\operatorname{im}A_0=\operatorname{span}\{\xi_1,\xi_3\},
+\qquad
+A_0\xi_1=\xi_1,
+\qquad
+A_0\xi_3=\xi_3.
+\end{equation}
+Moreover, with
+\[
+u=\frac{8+4\sqrt3}{7},
+\qquad
+v=\frac{8-4\sqrt3}{7},
+\]
+we have $u,v>0$ and
+\begin{equation}\label{eq:nonexposed-transitions}
+A_0\xi_2=u\xi_1+v\xi_3,
+\qquad
+A_1\xi_1=v\xi_2,
+\qquad
+A_1\xi_3=u\xi_2.
+\end{equation}
+For example, the matrix of $(P_1^++P_2^++P_3^+)T$
+on the ordered vectors $(\xi_1,\xi_2,\xi_3)$ is
+\[
+\begin{pmatrix}
+\frac73&\frac{8+4\sqrt3}{3}&0\\
+\frac{8-4\sqrt3}{3}&\frac{11}{3}&\frac{8+4\sqrt3}{3}\\
+0&\frac{8-4\sqrt3}{3}&\frac73
+\end{pmatrix},
+\]
+from which these identities follow.
+
+\medskip
+\noindent\textit{Convergence of the products.}
+Set
+\[
+d_n=n+10,
+\qquad
+\varepsilon_n=\lambda^{-d_n},
+\qquad
+F_n=F(d_n),
+\qquad
+L_n=F_1\cdots F_n.
+\]
+Each $L_n$ is a positive scalar multiple of a group element,
+and hence
+\[
+L_nK=K,
+\qquad
+L_n^{-1}K=K.
+\]
+
+For completeness, we verify convergence in operator norm.
+Equip $V$ with the norm
+\[
+\|z\|_*=
+\|A_0z\|_\infty+\|(I-A_0)z\|_\infty,
+\]
+where $\|\cdot\|_\infty$ is the maximum norm in the simple-root
+coordinates. Since $A_0$ is a projection,
+\[
+\|A_0\|_*\le1,
+\qquad
+\|I-A_0\|_*\le1.
+\]
+Write
+\[
+F_n=A_0+R_n,
+\qquad
+\delta_n=\|R_n\|_*.
+\]
+
+The explicit matrices above give the elementary bounds
+\[
+\|A_0\|_\infty<6,
+\qquad
+\|A_j\|_\infty<8
+\quad(1\le j\le4).
+\]
+Consequently,
+\[
+\|z\|_\infty\le\|z\|_*\le13\|z\|_\infty,
+\]
+and \eqref{eq:nonexposed-factor-expansion} implies, with a
+deliberately coarse bound,
+\[
+\delta_n\le5000\varepsilon_n.
+\]
+In particular,
+\begin{equation}\label{eq:nonexposed-small-perturbation}
+S:=\sum_{n\ge1}\delta_n
+\le
+\frac{5000\lambda^{-11}}{1-\lambda^{-1}}
+<10^{-8}.
+\end{equation}
+
+We have the uniform bound
+\[
+\|L_n\|_*
+\le
+\prod_{j=1}^{n}(1+\delta_j)
+\le e^S.
+\]
+Also,
+\[
+L_n(I-A_0)=L_{n-1}R_n(I-A_0),
+\]
+so
+\[
+\|L_n(I-A_0)\|_*\le e^S\delta_n.
+\]
+It follows that
+\[
+\begin{aligned}
+L_{n+1}-L_n
+&=L_nR_{n+1}-L_n(I-A_0),\\
+\|L_{n+1}-L_n\|_*
+&\le e^S(\delta_{n+1}+\delta_n).
+\end{aligned}
+\]
+Thus $(L_n)$ converges to an operator $L$.
+The preceding estimate also yields
+\[
+L(I-A_0)=0,
+\qquad\text{hence}\qquad
+L=LA_0.
+\]
+
+Comparing the products $F_1\cdots F_n$ and $A_0^n=A_0$
+by telescoping gives
+\[
+\|L-A_0\|_*\le e^S-1<1.
+\]
+Therefore $L$ is injective on $\operatorname{im}A_0$.
+Together with $L=LA_0$, this proves
+\[
+\operatorname{rank}L=2.
+\]
+
+Applying the same argument to each tail gives operators
+\[
+Q_n=\lim_{m\to\infty}F_{n+1}\cdots F_m
+\]
+such that
+\begin{equation}\label{eq:nonexposed-tail}
+L=L_nQ_n,
+\qquad
+Q_n\longrightarrow A_0.
+\end{equation}
+
+\medskip
+\noindent\textit{The two limiting extreme rays.}
+Put
+\[
+X=L\xi_1,
+\qquad
+Y=L\xi_3,
+\qquad
+x=\widehat X,
+\qquad
+y=\widehat Y.
+\]
+The vectors $X,Y$ belong to $K$, are nonzero, and are linearly
+independent. In particular, $h(X),h(Y)>0$.
+Since normalized group actions preserve $E$,
+\[
+\widehat{L_n\xi_1},\widehat{L_n\xi_3}\in E.
+\]
+Passing to the limit gives $x,y\in E$, with $x\ne y$.
+
+We show that $X$ generates an extreme ray of $K$.
+Suppose
+\[
+X=A+B,
+\qquad A,B\in K.
+\]
+For every $n$, put
+\[
+A_n=L_n^{-1}A,
+\qquad
+B_n=L_n^{-1}B.
+\]
+These vectors belong to $K$, and
+\[
+A_n+B_n=L_n^{-1}X=Q_n\xi_1\longrightarrow\xi_1.
+\]
+Because $K$ is contained in the nonnegative coordinate cone,
+both sequences $(A_n)$ and $(B_n)$ are bounded.
+After passing to a subsequence, write
+\[
+A_n\longrightarrow A_\infty,
+\qquad
+B_n\longrightarrow B_\infty.
+\]
+Then
+\[
+A_\infty,B_\infty\in K,
+\qquad
+A_\infty+B_\infty=\xi_1.
+\]
+Since $\xi_1$ generates an extreme ray,
+$A_\infty=t\xi_1$ for some $t\ge0$.
+Therefore
+\[
+A=L_nA_n\longrightarrow L(t\xi_1)=tX.
+\]
+Thus every decomposition of $X$ in $K$ is along its ray.
+The same argument applies to $Y$, and hence
+\begin{equation}\label{eq:nonexposed-extremality}
+x,y\in E_{\mathrm{ext}}(\Phi).
+\end{equation}
+
+\medskip
+\noindent\textit{The supporting hyperplanes cannot separate the endpoints.}
+Set
+\[
+X_n=L_n\xi_1,
+\qquad
+Y_n=L_n\xi_3,
+\qquad
+Z=L\xi_2.
+\]
+Since $L=LA_0$, equation
+\eqref{eq:nonexposed-transitions} gives
+\begin{equation}\label{eq:nonexposed-mixed-direction}
+Z=uX+vY.
+\end{equation}
+
+Using \eqref{eq:nonexposed-factor-expansion} and
+\eqref{eq:nonexposed-transitions}, together with the uniform
+boundedness of $L_n$, we obtain
+\[
+X_{n+1}-X_n
+=
+v\varepsilon_{n+1}L_n\xi_2
++O(\varepsilon_{n+1}^2).
+\]
+Put
+\[
+t_n=\sum_{k>n}\varepsilon_k.
+\]
+Since $L_n\xi_2\to Z$ and
+$\sum_{k>n}\varepsilon_k^2=o(t_n)$, summing the preceding
+identity gives
+\[
+X-X_n=vt_nZ+o(t_n).
+\]
+By \eqref{eq:nonexposed-mixed-direction},
+\[
+X_n=(1-uvt_n)X-v^2t_nY+o(t_n).
+\]
+After normalization, this becomes
+\begin{equation}\label{eq:nonexposed-tangent-x}
+\widehat{X_n}
+=
+x+
+v^2\frac{h(Y)}{h(X)}t_n(x-y)
++o(t_n).
+\end{equation}
+
+Let $\ell$ be any linear functional attaining its maximum
+over $C$ at $x$.
+As $\widehat{X_n}\in E\subseteq C$,
+\[
+\ell(\widehat{X_n})-\ell(x)\le0.
+\]
+Divide \eqref{eq:nonexposed-tangent-x}, after applying $\ell$,
+by $t_n$ and let $n\to\infty$.
+Because $v^2h(Y)/h(X)>0$, this gives
+\[
+\ell(x)\le\ell(y).
+\]
+The maximality at $x$ gives the reverse inequality, so
+\[
+\ell(x)=\ell(y).
+\]
+Since $x\ne y$, the point $x$ is not exposed.
+
+Likewise,
+\[
+Y_{n+1}-Y_n
+=
+u\varepsilon_{n+1}L_n\xi_2
++O(\varepsilon_{n+1}^2),
+\]
+and therefore
+\[
+\widehat{Y_n}
+=
+y+
+u^2\frac{h(X)}{h(Y)}t_n(y-x)
++o(t_n).
+\]
+The same argument shows that every linear functional attaining
+its maximum at $y$ also attains that maximum at $x$.
+Thus $y$ is not exposed either.
+
+Combining this with \eqref{eq:nonexposed-extremality} yields
+\[
+x,y\in
+E_{\mathrm{ext}}(\Phi)\setminus E_{\mathrm{exp}}(\Phi),
+\]
+as required.
+\end{proof}
+
+\begin{remark}
+The counterexample points are specified by the group elements
+\[
+g_n=
+(s_1s_2)^{2(n+10)}
+(s_4s_5)^{n+10}
+(s_7s_8)^{2(n+10)}
+s_3s_6:
+\]
+namely,
+\[
+x=\lim_{n\to\infty}
+\widehat{g_1\cdots g_n\xi_1},
+\qquad
+y=\lim_{n\to\infty}
+\widehat{g_1\cdots g_n\xi_3}.
+\]
+The summable perturbations preserve two extreme directions,
+while their first-order terms force every supporting hyperplane
+at either limiting point to contain the other point.
+\end{remark}
+
+\begin{remark}
+All infinite edges in this example have Gram parameter $-2$.
+Replacing these entries by $-1$ changes the spectral
+decomposition used in the proof: the corresponding rank-two
+blocks become affine.
+Consequently, the proposition does not answer whether
+\[
+E_{\mathrm{exp}}(\Phi)=E_{\mathrm{ext}}(\Phi)
+\]
+holds for every standard Tits realization.
+\end{remark}
+\begin{theorem}\label{thm:orthogonal-parabolic-join}
+Assume that $(\Phi,\Pi)$ is irreducible. Let $I,J\subseteq S$
+determine irreducible infinite standard parabolic subsystems
+satisfying
+\[
+B(V_I,V_J)=0.
+\]
+If $\Phi_I$ and $\Phi_J$ are not both non-affine root systems of
+rank two, then
+\[
+E_I*E_J\subseteq E.
+\]
+
+For subsets $A,B\subseteq\{v:h(v)=1\}$, define their join by
+\[
+A*B
+=
+\{(1-t)x+ty:x\in A,\ y\in B,\ 0\le t\le1\}.
+\]
+
+The excluded case cannot be omitted in general: there exists an
+irreducible rank-five based root system with two orthogonal
+non-affine rank-two standard parabolic subsystems for which
+\[
+E_I*E_J\not\subseteq E.
+\]
+\end{theorem}
+
+\begin{remark}\label{rem:meaning-of-exception}
+The exception concerns two simultaneously non-affine rank-two
+root systems. It does not concern the property of being parabolic:
+both subsystems in the theorem are standard parabolic subsystems.
+
+Moreover, the theorem does not assert that the join inclusion
+always fails in the excluded case. It asserts that the inclusion
+holds outside that case and can fail within it.
+\end{remark}
+
+We use two results of Dyer--Hohlweg--Ripoll. First, if a based root
+system is irreducible, every orbit in its limit-root set is dense
+\cite[Theorem~3.1]{DHR}. Second, an irreducible infinite non-affine
+based root system contains a based root subsystem whose simple
+roots are positive roots, span the same ambient space, and have
+pairwise inner products strictly less than $-1$
+\cite[Proposition~6.4]{DHR}.
+
+\begin{lemma}\label{lem:connecting-root}
+Under the hypotheses of Theorem~\ref{thm:orthogonal-parabolic-join},
+there exists $\rho\in\Phi^+$ such that
+\[
+\operatorname{supp}(\rho)\subseteq S\setminus(I\cup J),
+\]
+\[
+B(\rho,\alpha)\le0
+\qquad
+(\alpha\in\Phi_I^+\cup\Phi_J^+),
+\]
+and neither $B(\rho,-)|_{V_I}$ nor $B(\rho,-)|_{V_J}$ is zero.
+Moreover,
+\[
+w\rho\in\Phi^+
+\qquad (w\in W_IW_J).
+\]
+\end{lemma}
+
+\begin{proof}
+Choose a shortest path in the Coxeter graph joining a vertex of
+$I$ to a vertex of $J$. Since $B(V_I,V_J)=0$, this path has at least
+one internal vertex. By minimality, all its internal vertices lie
+outside $I\cup J$.
+
+Starting with the simple root at the first internal vertex,
+successively reflect at the remaining internal vertices along
+the path. At each step the new simple root has strictly negative
+inner product with the root already constructed, so the resulting
+root is positive and acquires a strictly positive coefficient at
+the new vertex. We obtain a positive root $\rho$ supported
+precisely on the internal vertices.
+
+All off-diagonal entries of the Gram matrix are nonpositive.
+Consequently,
+\[
+B(\rho,\alpha)\le0
+\qquad
+(\alpha\in\Phi_I^+\cup\Phi_J^+).
+\]
+The first and last edges of the chosen path show that the
+restrictions of $B(\rho,-)$ to $V_I$ and $V_J$ are nonzero.
+
+Every element of $W_IW_J$ preserves the coordinates outside
+$I\cup J$. At least one such coordinate of $\rho$ is strictly
+positive. Hence $w\rho$ cannot be a negative root. The sign
+property of roots therefore gives $w\rho\in\Phi^+$.
+\end{proof}
+
+\begin{lemma}\label{lem:one-segment-suffices}
+Suppose that $x\in E_I$ and $y\in E_J$ satisfy
+\[
+[x,y]\subseteq E.
+\]
+Then
+\[
+E_I*E_J\subseteq E.
+\]
+\end{lemma}
+
+\begin{proof}
+The group $W_I$ fixes $V_J$ pointwise, and $W_J$ fixes $V_I$
+pointwise. Thus, for $u\in W_I$ and $v\in W_J$,
+\[
+(uv)\cdot[x,y]=[u\cdot x,v\cdot y]\subseteq E.
+\]
+Here the normalized linear action maps the segment onto the
+segment between the normalized images of its endpoints.
+
+By minimality,
+\[
+\overline{W_I\cdot x}=E_I,
+\qquad
+\overline{W_J\cdot y}=E_J.
+\]
+Given $x'\in E_I$ and $y'\in E_J$, choose sequences
+$u_n\in W_I$ and $v_n\in W_J$ such that
+\[
+u_n\cdot x\longrightarrow x',
+\qquad
+v_n\cdot y\longrightarrow y'.
+\]
+For every $t\in[0,1]$,
+\[
+(1-t)(u_n\cdot x)+t(v_n\cdot y)\in E.
+\]
+The closedness of $E$ gives
+\[
+(1-t)x'+ty'\in E.
+\]
+\end{proof}
+
+\begin{proof}[Proof of the inclusion in
+Theorem~\ref{thm:orthogonal-parabolic-join}]
+Fix the positive root $\rho$ supplied by
+Lemma~\ref{lem:connecting-root}. By
+Lemma~\ref{lem:one-segment-suffices}, it is enough to construct one
+segment $[x,y]\subseteq E$ with $x\in E_I$ and $y\in E_J$.
+
+\medskip
+\noindent
+\textit{Case 1: at least one subsystem is affine.}
+
+Suppose first that $\Phi_I$ is affine. Let
+\[
+E_I=\{\delta\},
+\qquad h(\delta)=1.
+\]
+The affine root-string structure provides a root $a$ and a
+constant $\ell>0$ such that
+\[
+a_n=a+n\ell\delta\in\Phi_I^+
+\qquad(n\ge0).
+\]
+Since $\delta$ has strictly positive coordinates on $I$,
+Lemma~\ref{lem:connecting-root} implies
+\[
+B(\rho,\delta)<0.
+\]
+Consequently,
+\[
+\begin{aligned}
+s_{a_n}\rho
+&=\rho-2B(\rho,a_n)a_n\\
+&=Cn^2\delta+O(n),
+\end{aligned}
+\]
+where
+\[
+C=-2\ell^2B(\rho,\delta)>0.
+\]
+
+Assume that $\Phi_J$ is non-affine. By
+\cite[Proposition~6.4]{DHR}, we can choose positive roots
+$c,d\in\Phi_J^+$ such that
+\[
+B(c,d)<-1,
+\qquad B(\rho,c)<0.
+\]
+Let $t=s_cs_d$, and let $y\in E_J$ be its normalized attracting
+eigenvector, with eigenvalue $\mu>1$. Since
+\[
+B(\rho,c)<0,\qquad B(\rho,d)\le0,
+\]
+the attracting coefficient of $\rho$ is strictly positive.
+Thus, for some $D>0$,
+\[
+t^m\rho=D\mu^m y+O(1).
+\]
+The element $t$ fixes $V_I$ pointwise, so
+\[
+s_{a_n}t^m\rho
+=
+Cn^2\delta+D\mu^m y+O(n+1).
+\]
+All these vectors are positive roots by
+Lemma~\ref{lem:connecting-root}.
+
+Given $r>0$, choose positive integers $n_m$ satisfying
+\[
+n_m\sim\sqrt{\frac{rD}{C}\mu^m}.
+\]
+Then
+\[
+\widehat{s_{a_{n_m}}t^m\rho}
+\longrightarrow
+\frac{r\delta+y}{r+1}.
+\]
+Hence $[\delta,y]\subseteq E$.
+
+If $\Phi_J$ is also affine, write
+\[
+E_J=\{\varepsilon\},
+\qquad h(\varepsilon)=1,
+\]
+and choose an affine root string
+\[
+b_m=b+m\ell'\varepsilon\in\Phi_J^+.
+\]
+Orthogonality gives
+\[
+s_{a_n}s_{b_m}\rho
+=
+Cn^2\delta+Dm^2\varepsilon+O(n+m+1)
+\]
+for constants $C,D>0$.
+For any $r>0$, choosing $n,m\to\infty$ with
+\[
+\frac{Cn^2}{Dm^2}\longrightarrow r
+\]
+yields
+\[
+\widehat{s_{a_n}s_{b_m}\rho}
+\longrightarrow
+\frac{r\delta+\varepsilon}{r+1}.
+\]
+Thus $[\delta,\varepsilon]\subseteq E$, completing this case.
+
+\medskip
+\noindent
+\textit{Case 2: both subsystems are non-affine.}
+
+By hypothesis, one subsystem has rank at least three.
+Interchanging $I$ and $J$ if necessary, assume
+\[
+\dim V_I\ge3.
+\]
+Using \cite[Proposition~6.4]{DHR}, choose linearly independent
+positive roots $a,b,u\in\Phi_I^+$ that belong to the simple system
+of a based root subsystem and satisfy
+\[
+B(a,b),B(a,u),B(b,u)<-1,
+\qquad B(\rho,a)<0.
+\]
+Likewise choose $c,d\in\Phi_J^+$ with
+\[
+B(c,d)<-1,\qquad B(\rho,c)<0.
+\]
+
+Set
+\[
+g=s_as_b,\qquad t=s_cs_d.
+\]
+Choose normalized eigenvectors
+\[
+gx=\lambda x,\qquad gx_-=\lambda^{-1}x_-,
+\]
+\[
+ty=\mu y,\qquad ty_-=\mu^{-1}y_-,
+\]
+where
+\[
+\lambda,\mu>1,\qquad
+x,x_-\in E_I,\qquad y,y_-\in E_J.
+\]
+The planes
+\[
+L=\operatorname{span}\{a,b\},
+\qquad
+M=\operatorname{span}\{c,d\}
+\]
+are nondegenerate and mutually orthogonal. Every $v\in V$
+therefore has a unique decomposition
+\[
+v=A(v)x+A_-(v)x_-+D(v)y+D_-(v)y_-+v_0,
+\]
+where
+\[
+v_0\in(L\oplus M)^\perp.
+\]
+The connecting-root inequalities imply
+\[
+A(\rho),A_-(\rho),D(\rho),D_-(\rho)>0.
+\]
+
+Suppose first that
+\[
+\frac{\log\lambda}{\log\mu}\notin\mathbb Q.
+\]
+For every $r>0$, irrational rotation on the circle gives sequences
+$n_k,m_k\to\infty$ such that
+\[
+\frac{A(\rho)\lambda^{n_k}}
+     {D(\rho)\mu^{m_k}}
+\longrightarrow r.
+\]
+Since
+\[
+g^{n_k}t^{m_k}\rho
+=
+A(\rho)\lambda^{n_k}x
++D(\rho)\mu^{m_k}y+O(1),
+\]
+we obtain
+\[
+\widehat{g^{n_k}t^{m_k}\rho}
+\longrightarrow
+\frac{rx+y}{r+1}.
+\]
+Thus $[x,y]\subseteq E$.
+
+It remains to consider
+\[
+\frac{\log\lambda}{\log\mu}\in\mathbb Q.
+\]
+Replacing $g$ and $t$ by suitable positive powers, we may assume
+that their attracting eigenvalues coincide:
+\[
+\lambda=\mu=\Lambda>1.
+\]
+
+Define
+\[
+\mathcal R
+=
+\left\{
+r>0:\frac{rx+y}{r+1}\in E
+\right\}.
+\]
+This is a closed subset of $(0,\infty)$. Since $g$ fixes $y$ and
+sends $x$ to $\Lambda x$, the $W$-invariance of $E$ gives
+\[
+\Lambda^{\mathbb Z}\mathcal R=\mathcal R.
+\]
+
+Put
+\[
+\kappa=-B(x,x_-)>0.
+\]
+The inequalities $B(u,a),B(u,b)<-1$ imply
+\[
+A(u)>0,\qquad A_-(u)>0.
+\]
+Set
+\[
+d_0=\kappa A(u)A_-(u)>0,
+\qquad
+u_m=g^m u.
+\]
+Because $a,b,u$ belong to a simple system of a based root
+subsystem, $u_m\in\Phi_I^+$ for $m\ge0$.
+
+Writing
+\[
+u=A(u)x+A_-(u)x_-+u_0,
+\qquad u_0\perp L,
+\]
+and using $B(u,u)=1$, we obtain
+\[
+B(u,u_m)
+=
+1+2d_0-d_0(\Lambda^m+\Lambda^{-m}).
+\]
+For all sufficiently large $m$, therefore,
+\[
+q_m:=-B(u,u_m)>1.
+\]
+Let
+\[
+H_m=s_{u_m}s_u.
+\]
+Its attracting eigenvalue is
+\[
+\eta_m=
+\left(q_m+\sqrt{q_m^2-1}\right)^2.
+\]
+
+For sufficiently large $m$,
+\[
+B(\rho,u)\le0,\qquad B(\rho,u_m)<0.
+\]
+Both isotropic eigenvectors of $H_m$ in
+$\operatorname{span}\{u,u_m\}$ are positive linear combinations
+of $u$ and $u_m$. It follows that the attracting coefficient of
+$\rho$ is strictly positive.
+
+Moreover,
+\[
+A(u)>0,\qquad A(u_m)=\Lambda^mA(u)>0.
+\]
+Applying the linear functional $A$ to the eigenspace decomposition
+of $H_m^k\rho$ consequently gives
+\[
+A(H_m^k\rho)=C_m\eta_m^k+O(1)
+\qquad(k\to\infty)
+\]
+for some $C_m>0$.
+
+Since $H_m\in W_I$,
+\[
+D(H_m^k\rho)=D(\rho)=:D_0>0.
+\]
+Fixing a sufficiently large $k$ and letting $N\to\infty$, we have
+\[
+\widehat{g^Nt^NH_m^k\rho}
+\longrightarrow
+\frac{A(H_m^k\rho)x+D_0y}
+     {A(H_m^k\rho)+D_0}.
+\]
+Hence
+\[
+\frac{A(H_m^k\rho)}{D_0}\in\mathcal R.
+\]
+
+Consider the closed subset
+\[
+\mathcal T
+=
+\{\log_\Lambda r+\mathbb Z:r\in\mathcal R\}
+\subseteq\mathbb R/\mathbb Z.
+\]
+Its closedness follows from the closedness of $\mathcal R$ and
+the invariance $\Lambda^{\mathbb Z}\mathcal R=\mathcal R$.
+For every sufficiently large $m$, the set $\mathcal T$ contains
+all accumulation points of
+\[
+k\log_\Lambda\eta_m
++\log_\Lambda(C_m/D_0)+o(1)
+\pmod{\mathbb Z}.
+\]
+
+If some $\log_\Lambda\eta_m$ is irrational, these accumulation
+points fill the circle, and hence
+\[
+\mathcal T=\mathbb R/\mathbb Z.
+\]
+If all $\log_\Lambda\eta_m$ are rational but their reduced
+denominators are unbounded, then $\mathcal T$ contains translates
+of equally spaced grids of arbitrarily large cardinality.
+Closedness again gives
+\[
+\mathcal T=\mathbb R/\mathbb Z.
+\]
+
+Suppose, finally, that all these numbers are rational with
+uniformly bounded reduced denominators. Then there exists
+$M\in\mathbb N$ such that
+\[
+\log_\Lambda\eta_m-2m\in\frac1M\mathbb Z
+\]
+for every sufficiently large $m$.
+
+On the other hand,
+\[
+q_m=d_0\Lambda^m-(1+2d_0)+d_0\Lambda^{-m},
+\]
+so
+\[
+\frac{\eta_m}{\Lambda^{2m}}\longrightarrow4d_0^2.
+\]
+Furthermore,
+\[
+q_m<d_0\Lambda^m,
+\qquad
+\eta_m<4q_m^2,
+\]
+and therefore
+\[
+\frac{\eta_m}{\Lambda^{2m}}<4d_0^2.
+\]
+Thus the sequence
+\[
+\log_\Lambda\eta_m-2m
+\]
+lies in the discrete set $\frac1M\mathbb Z$, converges to
+$\log_\Lambda(4d_0^2)$, and is strictly smaller than its limit.
+This is impossible.
+
+Consequently,
+\[
+\mathcal T=\mathbb R/\mathbb Z.
+\]
+Together with $\Lambda^{\mathbb Z}\mathcal R=\mathcal R$, this
+implies
+\[
+\mathcal R=(0,\infty).
+\]
+Hence $[x,y]\subseteq E$. Applying
+Lemma~\ref{lem:one-segment-suffices} completes the proof of the
+join inclusion.
+\end{proof}
+
+\begin{proof}[Construction and verification of the counterexample]
+Let $\Pi=\{\alpha_1,\ldots,\alpha_5\}$, and take the Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&-2\\
+-2&1&0&0&-2\\
+0&0&1&-2&-2\\
+0&0&-2&1&-2\\
+-2&-2&-2&-2&1
+\end{pmatrix}.
+\]
+The Coxeter graph is connected, so the ambient root system is
+irreducible. Set
+\[
+I=\{1,2\},\qquad J=\{3,4\}.
+\]
+Then $V_I\perp V_J$, and both standard parabolic subsystems are
+non-affine of rank two.
+
+Put
+\[
+\tau=2-\sqrt3,
+\qquad
+x=\frac{\alpha_1+\tau\alpha_2}{1+\tau},
+\qquad
+y=\frac{\alpha_3+\tau\alpha_4}{1+\tau}.
+\]
+The matrix of $s_1s_2$ on $V_I$ is
+\[
+\begin{pmatrix}
+15&-4\\
+4&-1
+\end{pmatrix},
+\]
+whose attracting eigenvalue is $\tau^{-2}$ and whose attracting
+eigenvector is $(1,\tau)$. Hence
+\[
+\widehat{(s_1s_2)^n\alpha_1}\longrightarrow x.
+\]
+Similarly,
+\[
+\widehat{(s_3s_4)^n\alpha_3}\longrightarrow y.
+\]
+Thus
+\[
+x\in E_I,\qquad y\in E_J.
+\]
+
+We shall prove that
+\[
+z=\frac{x+2y}{3}\notin E.
+\]
+
+Define
+\[
+p=\frac{1+\sqrt3}{2},
+\qquad
+q=\frac{\sqrt3-1}{2}.
+\]
+For
+\[
+v=c_1\alpha_1+c_2\alpha_2+c_3\alpha_3+c_4\alpha_4+d\alpha_5,
+\]
+set
+\[
+\begin{aligned}
+A_+(v)&=pc_1-qc_2+2d,
+&
+A_-(v)&=-qc_1+pc_2+2d,\\
+C_+(v)&=pc_3-qc_4+2d,
+&
+C_-(v)&=-qc_3+pc_4+2d.
+\end{aligned}
+\]
+Consider the homogeneous quadratic polynomial
+\[
+H(v)
+=
+\bigl(20A_+(v)-9C_+(v)\bigr)
+\bigl(3A_+(v)-2C_+(v)\bigr).
+\]
+We claim that
+\[
+H(\beta)\ge0
+\qquad(\beta\in\Phi^+).
+\]
+
+All roots have integral coordinates in the basis $\Pi$.
+If $\beta=\sum_i b_i\alpha_i$ is a positive root that is not
+simple, then
+\[
+1=B(\beta,\beta)=\sum_i b_iB(\beta,\alpha_i)
+\]
+provides an index $i$ with
+\[
+b_i>0,\qquad B(\beta,\alpha_i)>0.
+\]
+The root $s_i\beta$ remains positive: another positive coordinate
+of $\beta$ is unchanged, so $s_i\beta$ cannot be negative.
+Moreover,
+\[
+s_i\beta=\beta-2B(\beta,\alpha_i)\alpha_i
+\]
+has strictly smaller height and differs from $\beta$ only in its
+$i$-th coordinate.
+
+Iterating this descent reaches a simple root, since the heights
+are positive integers. Reversing the descent shows that every
+positive root admits a construction from a simple root along
+which all coordinates are nondecreasing.
+
+Fix such a construction of $\beta$, and suppose first that its
+fifth coordinate $d$ is positive. If the construction uses $s_5$,
+let $\rho$ be the root immediately after the last application of
+$s_5$. Write
+\[
+\rho=a_1\alpha_1+\cdots+a_4\alpha_4+d\alpha_5,
+\qquad
+S=a_1+\cdots+a_4.
+\]
+If $d_{\mathrm{old}}$ is the fifth coordinate immediately before
+that reflection, then
+\[
+d=4S-d_{\mathrm{old}}.
+\]
+Coordinate monotonicity gives $d\ge d_{\mathrm{old}}$, and hence
+\[
+d\ge2S.
+\]
+If the construction never uses $s_5$, its initial simple root
+must be $\alpha_5$; in this case take $\rho=\alpha_5$, and the same
+inequality holds.
+
+In either case,
+\[
+\beta=w\rho
+\qquad\text{for some }w\in W_IW_J,
+\]
+and
+\[
+a_i\ge0,\qquad \sum_{i=1}^4a_i\le\frac d2.
+\]
+Consequently,
+\[
+Ld\le A_\pm(\rho),C_\pm(\rho)\le Ud,
+\]
+where
+\[
+L=2-\frac q2=\frac{9-\sqrt3}{4},
+\qquad
+U=2+\frac p2=\frac{9+\sqrt3}{4}.
+\]
+Set
+\[
+R=\frac UL=\frac{9+\sqrt3}{9-\sqrt3}<\frac32.
+\]
+
+A direct calculation gives
+\[
+\begin{aligned}
+(A_+,A_-)(s_1v)
+&=(\tau^{-1}A_-(v),\,\tau A_+(v)),\\
+(A_+,A_-)(s_2v)
+&=(\tau A_-(v),\,\tau^{-1}A_+(v)).
+\end{aligned}
+\]
+Both $s_1$ and $s_2$ fix $C_+$ and $C_-$. Likewise,
+\[
+\begin{aligned}
+(C_+,C_-)(s_3v)
+&=(\tau^{-1}C_-(v),\,\tau C_+(v)),\\
+(C_+,C_-)(s_4v)
+&=(\tau C_-(v),\,\tau^{-1}C_+(v)),
+\end{aligned}
+\]
+and $s_3,s_4$ fix $A_+,A_-$.
+
+It follows that
+\[
+A_+(\beta),C_+(\beta)>0,
+\qquad
+\frac{A_+(\beta)}{C_+(\beta)}
+\in
+\bigcup_{m\in\mathbb Z}\tau^m[R^{-1},R].
+\]
+Since $\tau<3/10$ and $R<3/2$, we have
+\[
+\tau R<\frac9{20},
+\qquad
+R^{-1}>\frac23.
+\]
+For $m\ge1$,
+\[
+\tau^mR\le\tau R<\frac9{20},
+\]
+whereas for $m\le0$,
+\[
+\tau^mR^{-1}\ge R^{-1}>\frac23.
+\]
+Thus the displayed union avoids the interval
+$(9/20,2/3)$. Therefore
+\[
+\left(
+20\frac{A_+(\beta)}{C_+(\beta)}-9
+\right)
+\left(
+3\frac{A_+(\beta)}{C_+(\beta)}-2
+\right)
+\ge0,
+\]
+which proves $H(\beta)\ge0$ when $d>0$.
+
+Now suppose that the fifth coordinate of $\beta$ is zero.
+Its coordinatewise nondecreasing construction cannot use $s_5$.
+Since $W_I$ and $W_J$ preserve their respective summands, the
+root $\beta$ belongs to $\Phi_I$ or $\Phi_J$. In the first case
+$C_+(\beta)=0$, and in the second case $A_+(\beta)=0$. Accordingly,
+\[
+H(\beta)=60A_+(\beta)^2
+\qquad\text{or}\qquad
+H(\beta)=18C_+(\beta)^2.
+\]
+This proves the claim for every positive root.
+
+The homogeneity of $H$ implies
+\[
+H(\widehat\beta)=\frac{H(\beta)}{h(\beta)^2}\ge0.
+\]
+Taking accumulation points and using continuity, we obtain
+\[
+E\subseteq\{v\in V:H(v)\ge0\}.
+\]
+
+Finally, direct substitution gives
+\[
+A_+(x)=1,\qquad C_+(x)=0,
+\qquad
+A_+(y)=0,\qquad C_+(y)=1.
+\]
+Hence
+\[
+A_+(z)=\frac13,\qquad C_+(z)=\frac23,
+\]
+and
+\[
+H(z)
+=
+\left(\frac{20}{3}-6\right)
+\left(1-\frac43\right)
+=
+-\frac29<0.
+\]
+Therefore $z\notin E$, although $z\in[x,y]$ with
+$x\in E_I$ and $y\in E_J$. This proves
+\[
+E_I*E_J\not\subseteq E.
+\]
+\end{proof}
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+\end{document}

@@ -1,0 +1,4129 @@
+\documentclass[11pt,reqno]{amsart}
+
+% ==================================================
+% 1. Packages
+% ==================================================
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+% ==================================================
+% 2. Mathematical operators
+% ==================================================
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\PLC}{PLC}
+
+\DeclareMathOperator{\Inv}{Inv}
+% ==================================================
+% 3. Mathematical symbols
+% ==================================================
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\pairing}[2]{\left\langle #1,#2 \right\rangle}
+
+% Coxeter group notation (optional)
+
+\newcommand{\simpleRoots}{\Pi}
+\newcommand{\limitRoots}{\mathcal{E}}
+\newcommand{\imaginaryCone}{\mathcal{I}}
+\newcommand{\TitsCone}{\mathcal{T}}
+\newcommand{\depth}{\operatorname{dp}}
+
+% ==================================================
+% 4. Theorem environments
+% ==================================================
+
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{remark}
+
+\newtheorem{remark}[theorem]{Remark}
+
+% ==================================================
+% 5. Equation numbering
+% ==================================================
+
+\numberwithin{equation}{section}
+
+% ==================================================
+% 6. Hyper-reference names
+% ==================================================
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Pos}{Pos}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\dom}{dom}
+
+% ==================================================
+% 7. Title and author
+% ==================================================
+
+\title[Some open problems of Dyer]
+{Some open problems of Dyer}
+
+\author{Haoquan Wang}
+
+\address{
+School of Mathematical Science,
+Peking University,
+Peking, China
+}
+
+\email{2300010755@stu.pku.edu.cn}
+
+% Optional: AMS classification and keywords
+
+
+\keywords{
+Coxeter groups, Fuchsian groups, limit roots,
+dominance order
+}
+
+% ==================================================
+% 8. Document
+% ==================================================
+
+\setlength{\emergencystretch}{2em}
+\begin{document}
+
+% Abstract
+
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+The following questions are organized by the eight themes in
+\cite[Section~7]{DHR}. A check mark indicates a question resolved
+in this manuscript, including a negative answer by counterexample.
+Partial results are identified separately.
+
+\par\medskip
+\noindent\textbf{Literature scope (16 November 2026).}
+The notes below distinguish published results, preprints, elementary
+consequences, and the results claimed in this manuscript. ``No general
+resolution was verified'' reports the scope of this search, not a proof
+that a problem is still open. Numbered results refer to the versions
+identified in the bibliography. Existing manuscript proofs are retained;
+the literature annotations do not constitute an independent validation
+of every new theorem here.
+\tableofcontents
+\section{Geometric Characteristics of \texorpdfstring{$E(\Phi)$}{E(Phi)} and \texorpdfstring{$\mathcal{Z}(\Phi)$}{Z(Phi)}}
+
+\subsection{Intersection of the isotropic cone with the convex hull}
+
+An important open question is whether the equality
+\[
+E(\Phi)=\widehat{\mathcal{Q}}\cap\operatorname{conv}(E(\Phi))
+\]
+holds for general irreducible Coxeter systems.
+This equality has already been established in the weakly
+hyperbolic case by \cite[Theorem~4.10]{DHR}.
+An affirmative answer would provide a natural fractal
+description of the limit-root set $E(\Phi)$.
+
+The following counterexample shows that this equality fails in general.
+
+
+\par\medskip
+\noindent\textbf{Status.} \(\checkmark\) Answered negatively in this manuscript. The rank-five counterexample below disproves the equality in general; the Lorentzian case is known. This status depends on verification of the manuscript's counterexample.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Dyer--Hohlweg--Ripoll prove the weakly hyperbolic case in
+\cite[Theorem~4.10]{DHR}. Higashitani--Mineyama--Nakashima independently
+obtain the Lorentzian fractal description \cite[Theorem~1.2]{HMN2019}.
+Neither statement covers arbitrary signature. The negative answer below
+is a result claimed and proved in this manuscript; it is not being
+attributed to those references.
+
+\begin{proposition}\label{prop:counterexample-convE-Q}
+There exists an irreducible based root system of rank five and
+signature $(3,2)$ for which
+\[
+E \subsetneq \operatorname{conv}(E)\cap Q.
+\]
+More precisely, let
+\[
+V=\bigoplus_{i=1}^{5}\mathbb{R}\alpha_i
+\]
+and let $B$ be the symmetric bilinear form whose Gram matrix,
+with respect to the basis $(\alpha_1,\ldots,\alpha_5)$, is
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&-2\\
+-2&1&0&0&-2\\
+0&0&1&-2&-2\\
+0&0&-2&1&-2\\
+-2&-2&-2&-2&1
+\end{pmatrix}.
+\]
+Let $W=\langle s_1,\ldots,s_5\rangle$, where
+\[
+s_i(v)=v-2B(v,\alpha_i)\alpha_i,
+\]
+and let
+\[
+\Phi=W\{\alpha_1,\ldots,\alpha_5\},
+\qquad
+P=\sum_{i=1}^{5}\mathbb{R}_{\geq 0}\alpha_i,
+\qquad
+\Phi^+=\Phi\cap P.
+\]
+Define
+\[
+h\left(\sum_{i=1}^{5}c_i\alpha_i\right)=\sum_{i=1}^{5}c_i,
+\qquad
+\widehat{v}=\frac{v}{h(v)},
+\qquad
+E=\operatorname{Acc}\{\widehat{\rho}:\rho\in\Phi^+\},
+\]
+and put
+\[
+Q=\{v\in V:B(v,v)=0\}.
+\]
+Set
+\[
+\tau=2-\sqrt{3},
+\qquad
+x=\frac{\alpha_1+\tau\alpha_2}{1+\tau},
+\qquad
+y=\frac{\alpha_3+\tau\alpha_4}{1+\tau}.
+\]
+Then
+\[
+x,y\in E,
+\qquad
+B(x,y)=0,
+\qquad
+\frac{x+2y}{3}\notin E.
+\]
+\end{proposition}
+
+\begin{proof}
+The off-diagonal entries of $G$ belong to $\{0,-2\}$, so $G$
+defines a based root system: an entry $0$ corresponds to
+$m_{ij}=2$, whereas an entry $-2$ corresponds to $m_{ij}=\infty$.
+Its Coxeter graph is connected, since the fifth vertex is
+joined to each of the other four vertices. Hence the root
+system is irreducible.
+
+Write
+\[
+x_+=x,
+\qquad
+x_-=\frac{\tau\alpha_1+\alpha_2}{1+\tau},
+\]
+and
+\[
+y_+=y,
+\qquad
+y_-=\frac{\tau\alpha_3+\alpha_4}{1+\tau}.
+\]
+These are the limit roots of the two non-affine dihedral
+root subsystems supported on
+$\{\alpha_1,\alpha_2\}$ and $\{\alpha_3,\alpha_4\}$.
+
+For completeness, the matrix of $s_1s_2$ on
+$\operatorname{span}\{\alpha_1,\alpha_2\}$ is
+\[
+\begin{pmatrix}
+15&-4\\
+4&-1
+\end{pmatrix}.
+\]
+Its eigenvectors $x_+$ and $x_-$ have respective eigenvalues
+\[
+\tau^{-2}=7+4\sqrt{3},
+\qquad
+\tau^2=7-4\sqrt{3}.
+\]
+Consequently,
+\[
+\widehat{(s_1s_2)^n\alpha_1}\longrightarrow x_+.
+\]
+The corresponding argument for $s_3s_4$ gives
+\[
+\widehat{(s_3s_4)^n\alpha_3}\longrightarrow y_+.
+\]
+Thus $x_+,y_+\in E$.
+
+Direct calculation gives
+\[
+B(x_+,x_+)=B(x_-,x_-)
+=B(y_+,y_+)=B(y_-,y_-)=0,
+\]
+\[
+B(x_+,x_-)=B(y_+,y_-)=-1,
+\]
+and
+\[
+B(x_\varepsilon,y_\delta)=0
+\qquad
+(\varepsilon,\delta\in\{+,-\}).
+\]
+Let
+\[
+\eta=\alpha_5-2\alpha_1-2\alpha_2-2\alpha_3-2\alpha_4.
+\]
+Then
+\[
+\eta\perp_B
+\operatorname{span}\{x_+,x_-,y_+,y_-\},
+\qquad
+B(\eta,\eta)=17.
+\]
+The vectors $(x_+,x_-,y_+,y_-,\eta)$ form a basis of $V$,
+and the Gram matrix in this basis is
+\[
+\begin{pmatrix}
+0&-1&0&0&0\\
+-1&0&0&0&0\\
+0&0&0&-1&0\\
+0&0&-1&0&0\\
+0&0&0&0&17
+\end{pmatrix}.
+\]
+Therefore $B$ has signature $(3,2)$.
+
+For $v=\sum_{i=1}^{5}c_i\alpha_i$, define linear forms
+\[
+\begin{aligned}
+A_+(v)
+&=\frac{1+\sqrt{3}}{2}c_1
+  -\frac{\sqrt{3}-1}{2}c_2+2c_5,\\
+A_-(v)
+&=-\frac{\sqrt{3}-1}{2}c_1
+  +\frac{1+\sqrt{3}}{2}c_2+2c_5,\\
+C_+(v)
+&=\frac{1+\sqrt{3}}{2}c_3
+  -\frac{\sqrt{3}-1}{2}c_4+2c_5,\\
+C_-(v)
+&=-\frac{\sqrt{3}-1}{2}c_3
+  +\frac{1+\sqrt{3}}{2}c_4+2c_5.
+\end{aligned}
+\]
+These are the first four coordinates in the preceding basis:
+\[
+v=
+A_+(v)x_++A_-(v)x_-
++C_+(v)y_++C_-(v)y_-+c_5\eta.
+\]
+
+We claim that every positive root $\rho$ satisfies
+\begin{equation}\label{eq:root-gap-inequality}
+\bigl(20A_+(\rho)-9C_+(\rho)\bigr)
+\bigl(3A_+(\rho)-2C_+(\rho)\bigr)\geq 0.
+\end{equation}
+We first establish a useful description of positive roots.
+
+Since the simple reflections have integer matrices in the
+simple-root basis, every root has integer coordinates.
+Let $\rho=\sum_i c_i\alpha_i$ be a positive root that is
+not simple. Since
+\[
+1=B(\rho,\rho)=\sum_i c_i B(\rho,\alpha_i),
+\]
+there exists $i$ with $B(\rho,\alpha_i)>0$.
+A simple reflection preserves all positive roots other than
+its corresponding simple root. Hence
+\[
+s_i\rho\in\Phi^+,
+\qquad
+h(s_i\rho)=h(\rho)-2B(\rho,\alpha_i)<h(\rho).
+\]
+The height is a positive integer, so repeating this procedure
+eventually reaches a simple root.
+
+Reversing the resulting sequence shows that every positive
+root can be obtained from a simple root by a sequence of
+simple reflections in which each step strictly increases
+one simple-root coordinate and leaves the others unchanged.
+
+Suppose first that the fifth coordinate of $\rho$ is positive.
+Choose such a coordinate-increasing sequence.
+If the sequence contains $s_5$, let $v$ be the root immediately
+after its last occurrence.
+If it contains no $s_5$, then it must start at $\alpha_5$;
+in this case put $v=\alpha_5$.
+In either case,
+\[
+\rho=uv
+\qquad\text{for some}\qquad
+u\in W_{\{1,2,3,4\}}.
+\]
+
+Write
+\[
+v=\sum_{i=1}^{4}c_i\alpha_i+d\alpha_5,
+\qquad
+S=c_1+c_2+c_3+c_4.
+\]
+We have
+\begin{equation}\label{eq:seed-coordinate-bound}
+d\geq 2S.
+\end{equation}
+Indeed, if $v=\alpha_5$, this is immediate.
+Otherwise, let $d_0$ be the fifth coordinate immediately
+before the last occurrence of $s_5$.
+Since that step increases the fifth coordinate,
+\[
+d_0-2S
+=
+B\left(\sum_{i=1}^{4}c_i\alpha_i+d_0\alpha_5,\alpha_5\right)
+<0.
+\]
+The fifth coordinate after reflection is
+\[
+d=4S-d_0>2S,
+\]
+which proves \eqref{eq:seed-coordinate-bound}.
+
+Since $c_i\geq 0$ and $S\leq d/2$, the definitions of the
+four linear forms imply
+\[
+\frac{9-\sqrt{3}}{4}\,d
+\leq
+A_\varepsilon(v),C_\varepsilon(v)
+\leq
+\frac{9+\sqrt{3}}{4}\,d
+\qquad
+(\varepsilon\in\{+,-\}).
+\]
+In particular, these four values are strictly positive.
+Put
+\[
+R=\frac{9+\sqrt{3}}{9-\sqrt{3}}.
+\]
+Then
+\begin{equation}\label{eq:seed-ratio-bound}
+R^{-1}
+\leq
+\frac{A_\varepsilon(v)}{C_\delta(v)}
+\leq R
+\qquad
+(\varepsilon,\delta\in\{+,-\}).
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:elementary-gap-bounds}
+R<\frac32,
+\qquad
+0<\tau<\frac3{10}.
+\end{equation}
+
+The action of the first two simple reflections on the
+coordinates $(A_+,A_-)$ is
+\[
+\begin{pmatrix}
+A_+(s_1v)\\
+A_-(s_1v)
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&\tau^{-1}\\
+\tau&0
+\end{pmatrix}
+\begin{pmatrix}
+A_+(v)\\
+A_-(v)
+\end{pmatrix},
+\]
+and
+\[
+\begin{pmatrix}
+A_+(s_2v)\\
+A_-(s_2v)
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&\tau\\
+\tau^{-1}&0
+\end{pmatrix}
+\begin{pmatrix}
+A_+(v)\\
+A_-(v)
+\end{pmatrix}.
+\]
+They fix the coordinates $(C_+,C_-)$ and the vector $\eta$.
+The reflections $s_3,s_4$ act by the same two matrices on
+$(C_+,C_-)$ and fix $(A_+,A_-)$ and $\eta$.
+
+It follows that there exist integers $k,\ell$ and signs
+$\varepsilon,\delta\in\{+,-\}$ such that
+\[
+A_+(\rho)=\tau^k A_\varepsilon(v),
+\qquad
+C_+(\rho)=\tau^\ell C_\delta(v).
+\]
+In particular, $A_+(\rho),C_+(\rho)>0$, and
+\[
+\frac{A_+(\rho)}{C_+(\rho)}
+\in
+\tau^{k-\ell}[R^{-1},R].
+\]
+If $k-\ell\leq 0$, then
+\[
+\frac{A_+(\rho)}{C_+(\rho)}
+\geq R^{-1}>\frac23.
+\]
+If $k-\ell\geq 1$, then
+\[
+\frac{A_+(\rho)}{C_+(\rho)}
+\leq \tau R<\frac9{20}.
+\]
+Thus the ratio cannot lie between $9/20$ and $2/3$.
+This proves \eqref{eq:root-gap-inequality} whenever the
+fifth coordinate of $\rho$ is positive.
+
+Suppose now that the fifth coordinate of $\rho$ is zero.
+Along a coordinate-increasing sequence producing $\rho$,
+the fifth coordinate must remain zero. Hence the sequence
+does not use $s_5$ and starts at one of
+$\alpha_1,\ldots,\alpha_4$.
+Because the two blocks $\{1,2\}$ and $\{3,4\}$ are orthogonal,
+the resulting root is supported entirely on one of them.
+
+If $\rho$ is supported on $\{\alpha_1,\alpha_2\}$, then
+$C_+(\rho)=0$, and the left-hand side of
+\eqref{eq:root-gap-inequality} is
+\[
+60A_+(\rho)^2\geq 0.
+\]
+If $\rho$ is supported on $\{\alpha_3,\alpha_4\}$, then
+$A_+(\rho)=0$, and the same expression equals
+\[
+18C_+(\rho)^2\geq 0.
+\]
+This completes the proof of
+\eqref{eq:root-gap-inequality} for every positive root.
+
+Define the continuous homogeneous quadratic function
+\[
+F(v)=
+\bigl(20A_+(v)-9C_+(v)\bigr)
+\bigl(3A_+(v)-2C_+(v)\bigr).
+\]
+For every positive root $\rho$,
+\[
+F(\widehat{\rho})=\frac{F(\rho)}{h(\rho)^2}\geq 0.
+\]
+Passing to accumulation points gives
+\[
+F(e)\geq 0
+\qquad\text{for every }e\in E.
+\]
+
+Finally, put
+\[
+z=\frac{x_++2y_+}{3}.
+\]
+Since $x_+,y_+\in E$ are isotropic and orthogonal,
+\[
+z\in\operatorname{conv}(E)\cap Q.
+\]
+On the other hand, its coordinates in the chosen basis give
+\[
+A_+(z)=\frac13,
+\qquad
+C_+(z)=\frac23.
+\]
+Therefore
+\[
+F(z)
+=
+\left(\frac{20}{3}-6\right)
+\left(1-\frac43\right)
+=
+-\frac29<0.
+\]
+Consequently $z\notin E$, proving
+\[
+E\subsetneq\operatorname{conv}(E)\cap Q.
+\]
+\end{proof}
+
+\subsection{Homeomorphism types of limit-root sets}
+
+Another natural problem is to characterize pairs of root
+systems $(\Phi,\Phi')$ for which
+\[
+E(\Phi)\cong E(\Phi')
+\]
+as topological spaces.
+
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Boundary models are known for several classes; no classification in the full stated generality was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+In the Lorentzian setting, the identification with a hyperbolic limit
+set \cite{HPR2020} makes boundary methods available. Mineyama constructs
+an equivariant continuous surjection onto the limit set
+\cite[Theorem~1.1]{Mineyama2014}; his boundary for nonhyperbolic groups
+uses an extended definition, and the map is not asserted to be a
+homeomorphism. A general classification of pairs of realizations with
+homeomorphic limit-root sets was not located in the sources checked.
+
+\subsection{Recovering the root system from its limit roots}
+
+More generally, one may ask to what extent the set of
+limit roots $E(\Phi)$ determines the root system $\Phi$.
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Topology alone does not recover the realization, as non-affine dihedral examples show. Reconstruction from embedded or marked data is a separate question.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The rank-two computations in \cite[Section~2.3]{HLR} already show
+that topology alone cannot recover a realization: all non-affine dihedral
+realizations have a two-point limit set, while their Gram parameter can
+vary. Conversely, changing an infinite-edge parameter from $-1$ to a value
+less than $-1$ changes a singleton limit set into a two-point set.
+Thus neither the abstract Coxeter presentation nor the unmarked topology
+of $E$ determines all the other data. Recovery from an embedded set or
+from a marked $W$-space is a different question.
+
+\subsection{Connectedness}
+Which root systems have a connected limit-root set $E(\Phi)$?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Particular classes are understood; no general connectedness criterion was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+For a Lorentzian realization with the entire normalized isotropic
+sphere contained in the simple-root simplex, \cite[Theorem~1.2(a)]{HMN2019}
+gives $E=\widehat Q$; this is connected in rank at least three.
+In settings where $E$ is identified homeomorphically with a group boundary,
+boundary connectedness criteria also apply. Such an identification must
+be established for the particular representation; it does not follow
+from the signature alone. No general root-system classification was
+verified in this search.
+
+\subsection{Local connectedness}
+Which root systems have a locally connected limit-root set $E(\Phi)$?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Boundary local-connectedness results apply when the required identification with the limit-root set is established.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Dasgupta--Hruska prove local connectedness of the Bowditch boundary
+for relatively one-ended relatively hyperbolic pairs
+\cite{DH2024}, removing earlier restrictions on peripheral groups.
+This settles the corresponding case for $E$ whenever an equivariant
+homeomorphism from that boundary to $E$ is available. It is a conditional
+application, not a theorem that every limit-root set is locally connected;
+a continuous boundary surjection alone should not be described as a
+homeomorphism.
+
+\subsection{Total disconnectedness}
+Which root systems have a totally disconnected limit-root set $E(\Phi)$?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Finite and Cantor-type examples are known; no general characterization was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The dihedral examples above provide finite totally disconnected
+sets. In a convex-cocompact Lorentzian realization of a non-elementary
+virtually free group, the hyperbolic limit set, hence $E$ by
+\cite{HPR2020}, is a Cantor set. This is a consequence of the boundary
+model, not a classification in arbitrary signature. In particular,
+abstract virtual freeness does not suffice without controlling the
+realization and possible parabolic elements.
+
+\subsection{Exposed points and extreme points}
+
+Let
+\[
+C=\operatorname{conv}(E(\Phi)),
+\]
+and denote its sets of exposed points and extreme points by
+$E_{\mathrm{exp}}(\Phi)$ and $E_{\mathrm{ext}}(\Phi)$,
+respectively.
+Is the equality
+\[
+E_{\mathrm{exp}}(\Phi)=E_{\mathrm{ext}}(\Phi)
+\]
+always valid?
+
+\par\medskip
+\noindent\textbf{Status.}
+\(\checkmark\) \textit{Answered negatively for general based root systems.}
+The rank-eight construction below has signature $(5,3)$ and
+provides two extreme points of $\operatorname{conv}(E)$
+which are not exposed.
+The construction uses the Gram parameter $-2$ on infinite edges.
+It does not settle the question for the standard Tits realization,
+where the parameter on every infinite edge is fixed at $-1$.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Dyer--Hohlweg--Ripoll discuss extreme and exposed limit roots in
+\cite[Section~3.3]{DHR} and establish the density statement
+\[
+\overline{E_{\mathrm{ext}}(\Phi)}=E(\Phi)
+\]
+under the hypotheses of \cite[Theorem~3.4]{DHR}.
+This does not imply that every extreme point is exposed.
+The following construction gives a counterexample to that
+stronger assertion.
+
+\begin{proposition}\label{prop:nonexposed-extreme-limit-roots}
+There exists an irreducible based root system $\Phi$ of rank eight
+and signature $(5,3)$ such that
+\[
+E_{\mathrm{exp}}(\Phi)
+\subsetneq E_{\mathrm{ext}}(\Phi).
+\]
+More precisely, its limit-root convex hull has two distinct
+extreme points $x,y$ such that every supporting hyperplane at
+either point contains both points.
+\end{proposition}
+
+\begin{proof}
+Let $V=\bigoplus_{i=1}^{8}\mathbb R\alpha_i$,
+and define $B$ by the Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&0&0&0&0\\
+-2&1&-2&0&0&0&0&0\\
+0&-2&1&-2&0&0&0&0\\
+0&0&-2&1&-2&0&0&0\\
+0&0&0&-2&1&-2&0&0\\
+0&0&0&0&-2&1&-2&0\\
+0&0&0&0&0&-2&1&-2\\
+0&0&0&0&0&0&-2&1
+\end{pmatrix}.
+\]
+Let
+\[
+s_i(v)=v-2B(v,\alpha_i)\alpha_i,
+\qquad
+W=\langle s_1,\ldots,s_8\rangle,
+\qquad
+\Phi=W\{\alpha_1,\ldots,\alpha_8\}.
+\]
+These data define a based root system, and its Coxeter graph
+is connected.
+The eigenvalues of $G$ are
+\[
+1-4\cos\frac{k\pi}{9},
+\qquad 1\le k\le8.
+\]
+Exactly three are negative, so the signature is $(5,3)$.
+
+Use the normalization
+\[
+h\left(\sum_i c_i\alpha_i\right)=\sum_i c_i,
+\qquad
+\widehat v=\frac{v}{h(v)}.
+\]
+Write
+\[
+E=E(\Phi),
+\qquad
+C=\operatorname{conv}(E),
+\qquad
+K=\mathbb R_{\ge0}C.
+\]
+The cone $K$ is closed and $W$-invariant, is contained in the
+nonnegative simple-root cone, and satisfies
+\[
+B(v,w)\le0
+\qquad(v,w\in K).
+\]
+These are standard properties of the closed imaginary cone;
+see \cite[Section~2]{DHR}.
+
+\medskip
+\noindent\textit{The three dihedral blocks.}
+Put
+\[
+(a_1,b_1)=(1,2),
+\qquad
+(a_2,b_2)=(4,5),
+\qquad
+(a_3,b_3)=(7,8),
+\]
+and set
+\[
+\tau=2-\sqrt3,
+\qquad
+\lambda=\tau^{-2}=7+4\sqrt3.
+\]
+For $1\le i\le3$, define
+\[
+\xi_i=
+\frac{\alpha_{a_i}+\tau\alpha_{b_i}}{1+\tau},
+\qquad
+\eta_i=
+\frac{\tau\alpha_{a_i}+\alpha_{b_i}}{1+\tau}.
+\]
+These are the two limit roots of the corresponding non-affine
+dihedral subsystem. In particular,
+\[
+\xi_i,\eta_i\in E,
+\qquad
+B(\xi_i,\eta_i)=-1.
+\]
+The three two-dimensional blocks are pairwise orthogonal.
+
+We will use that $\xi_1$ and $\xi_3$ generate extreme rays of $K$.
+Indeed, for $i\in\{1,3\}$, the functional
+\[
+v\longmapsto
+B(\xi_i,v)-\sum_{j\notin\{a_i,b_i\}}c_j(v)
+\]
+is nonpositive on $C$.
+Equality forces $v$ to lie in the corresponding dihedral block
+and to be orthogonal to $\xi_i$.
+Since that block is nondegenerate of signature $(1,1)$,
+its intersection with $\xi_i^\perp$ is $\mathbb R\xi_i$.
+The normalization $h(v)=1$ then gives $v=\xi_i$.
+Thus $\xi_1$ and $\xi_3$ are exposed points of $C$.
+
+Define
+\[
+a=s_1s_2,
+\qquad
+b=s_4s_5,
+\qquad
+c=s_7s_8,
+\qquad
+T=s_3s_6.
+\]
+The elements $a,b,c$ commute. On their respective blocks,
+they have eigenvalues $\lambda,\lambda^{-1}$ with
+eigenvectors $\xi_i,\eta_i$.
+
+\medskip
+\noindent\textit{A family approaching a rank-two projection.}
+Define
+\[
+P_i^+(v)=-B(v,\eta_i)\xi_i,
+\qquad
+P_i^-(v)=-B(v,\xi_i)\eta_i,
+\]
+and
+\[
+P_U=I-\sum_{i=1}^{3}(P_i^++P_i^-).
+\]
+Here $P_U$ is the projection onto the orthogonal complement of
+the sum of the three dihedral blocks.
+
+Put $\gamma=7/3$, and define
+\[
+\begin{aligned}
+A_0&=\gamma^{-1}(P_1^++P_3^+)T,\\
+A_1&=\gamma^{-1}P_2^+T,\\
+A_2&=\gamma^{-1}P_UT,\\
+A_3&=\gamma^{-1}P_2^-T,\\
+A_4&=\gamma^{-1}(P_1^-+P_3^-)T.
+\end{aligned}
+\]
+For every integer $d\ge1$, set
+\[
+g(d)=a^{2d}b^dc^{2d}T,
+\qquad
+F(d)=\frac{g(d)}{\gamma\lambda^{2d}}.
+\]
+The spectral decomposition of the three commuting blocks gives
+the exact identity
+\begin{equation}\label{eq:nonexposed-factor-expansion}
+F(d)=
+A_0+\lambda^{-d}A_1+\lambda^{-2d}A_2
++\lambda^{-3d}A_3+\lambda^{-4d}A_4.
+\end{equation}
+
+Direct calculation gives
+\begin{equation}\label{eq:nonexposed-projection}
+A_0^2=A_0,
+\qquad
+\operatorname{im}A_0=\operatorname{span}\{\xi_1,\xi_3\},
+\qquad
+A_0\xi_1=\xi_1,
+\qquad
+A_0\xi_3=\xi_3.
+\end{equation}
+Moreover, with
+\[
+u=\frac{8+4\sqrt3}{7},
+\qquad
+v=\frac{8-4\sqrt3}{7},
+\]
+we have $u,v>0$ and
+\begin{equation}\label{eq:nonexposed-transitions}
+A_0\xi_2=u\xi_1+v\xi_3,
+\qquad
+A_1\xi_1=v\xi_2,
+\qquad
+A_1\xi_3=u\xi_2.
+\end{equation}
+For example, the matrix of $(P_1^++P_2^++P_3^+)T$
+on the ordered vectors $(\xi_1,\xi_2,\xi_3)$ is
+\[
+\begin{pmatrix}
+\frac73&\frac{8+4\sqrt3}{3}&0\\
+\frac{8-4\sqrt3}{3}&\frac{11}{3}&\frac{8+4\sqrt3}{3}\\
+0&\frac{8-4\sqrt3}{3}&\frac73
+\end{pmatrix},
+\]
+from which these identities follow.
+
+\medskip
+\noindent\textit{Convergence of the products.}
+Set
+\[
+d_n=n+10,
+\qquad
+\varepsilon_n=\lambda^{-d_n},
+\qquad
+F_n=F(d_n),
+\qquad
+L_n=F_1\cdots F_n.
+\]
+Each $L_n$ is a positive scalar multiple of a group element,
+and hence
+\[
+L_nK=K,
+\qquad
+L_n^{-1}K=K.
+\]
+
+For completeness, we verify convergence in operator norm.
+Equip $V$ with the norm
+\[
+\|z\|_*=
+\|A_0z\|_\infty+\|(I-A_0)z\|_\infty,
+\]
+where $\|\cdot\|_\infty$ is the maximum norm in the simple-root
+coordinates. Since $A_0$ is a projection,
+\[
+\|A_0\|_*\le1,
+\qquad
+\|I-A_0\|_*\le1.
+\]
+Write
+\[
+F_n=A_0+R_n,
+\qquad
+\delta_n=\|R_n\|_*.
+\]
+
+The explicit matrices above give the elementary bounds
+\[
+\|A_0\|_\infty<6,
+\qquad
+\|A_j\|_\infty<8
+\quad(1\le j\le4).
+\]
+Consequently,
+\[
+\|z\|_\infty\le\|z\|_*\le13\|z\|_\infty,
+\]
+and \eqref{eq:nonexposed-factor-expansion} implies, with a
+deliberately coarse bound,
+\[
+\delta_n\le5000\varepsilon_n.
+\]
+In particular,
+\begin{equation}\label{eq:nonexposed-small-perturbation}
+S:=\sum_{n\ge1}\delta_n
+\le
+\frac{5000\lambda^{-11}}{1-\lambda^{-1}}
+<10^{-8}.
+\end{equation}
+
+We have the uniform bound
+\[
+\|L_n\|_*
+\le
+\prod_{j=1}^{n}(1+\delta_j)
+\le e^S.
+\]
+Also,
+\[
+L_n(I-A_0)=L_{n-1}R_n(I-A_0),
+\]
+so
+\[
+\|L_n(I-A_0)\|_*\le e^S\delta_n.
+\]
+It follows that
+\[
+\begin{aligned}
+L_{n+1}-L_n
+&=L_nR_{n+1}-L_n(I-A_0),\\
+\|L_{n+1}-L_n\|_*
+&\le e^S(\delta_{n+1}+\delta_n).
+\end{aligned}
+\]
+Thus $(L_n)$ converges to an operator $L$.
+The preceding estimate also yields
+\[
+L(I-A_0)=0,
+\qquad\text{hence}\qquad
+L=LA_0.
+\]
+
+Comparing the products $F_1\cdots F_n$ and $A_0^n=A_0$
+by telescoping gives
+\[
+\|L-A_0\|_*\le e^S-1<1.
+\]
+Therefore $L$ is injective on $\operatorname{im}A_0$.
+Together with $L=LA_0$, this proves
+\[
+\operatorname{rank}L=2.
+\]
+
+Applying the same argument to each tail gives operators
+\[
+Q_n=\lim_{m\to\infty}F_{n+1}\cdots F_m
+\]
+such that
+\begin{equation}\label{eq:nonexposed-tail}
+L=L_nQ_n,
+\qquad
+Q_n\longrightarrow A_0.
+\end{equation}
+
+\medskip
+\noindent\textit{The two limiting extreme rays.}
+Put
+\[
+X=L\xi_1,
+\qquad
+Y=L\xi_3,
+\qquad
+x=\widehat X,
+\qquad
+y=\widehat Y.
+\]
+The vectors $X,Y$ belong to $K$, are nonzero, and are linearly
+independent. In particular, $h(X),h(Y)>0$.
+Since normalized group actions preserve $E$,
+\[
+\widehat{L_n\xi_1},\widehat{L_n\xi_3}\in E.
+\]
+Passing to the limit gives $x,y\in E$, with $x\ne y$.
+
+We show that $X$ generates an extreme ray of $K$.
+Suppose
+\[
+X=A+B,
+\qquad A,B\in K.
+\]
+For every $n$, put
+\[
+A_n=L_n^{-1}A,
+\qquad
+B_n=L_n^{-1}B.
+\]
+These vectors belong to $K$, and
+\[
+A_n+B_n=L_n^{-1}X=Q_n\xi_1\longrightarrow\xi_1.
+\]
+Because $K$ is contained in the nonnegative coordinate cone,
+both sequences $(A_n)$ and $(B_n)$ are bounded.
+After passing to a subsequence, write
+\[
+A_n\longrightarrow A_\infty,
+\qquad
+B_n\longrightarrow B_\infty.
+\]
+Then
+\[
+A_\infty,B_\infty\in K,
+\qquad
+A_\infty+B_\infty=\xi_1.
+\]
+Since $\xi_1$ generates an extreme ray,
+$A_\infty=t\xi_1$ for some $t\ge0$.
+Therefore
+\[
+A=L_nA_n\longrightarrow L(t\xi_1)=tX.
+\]
+Thus every decomposition of $X$ in $K$ is along its ray.
+The same argument applies to $Y$, and hence
+\begin{equation}\label{eq:nonexposed-extremality}
+x,y\in E_{\mathrm{ext}}(\Phi).
+\end{equation}
+
+\medskip
+\noindent\textit{The supporting hyperplanes cannot separate the endpoints.}
+Set
+\[
+X_n=L_n\xi_1,
+\qquad
+Y_n=L_n\xi_3,
+\qquad
+Z=L\xi_2.
+\]
+Since $L=LA_0$, equation
+\eqref{eq:nonexposed-transitions} gives
+\begin{equation}\label{eq:nonexposed-mixed-direction}
+Z=uX+vY.
+\end{equation}
+
+Using \eqref{eq:nonexposed-factor-expansion} and
+\eqref{eq:nonexposed-transitions}, together with the uniform
+boundedness of $L_n$, we obtain
+\[
+X_{n+1}-X_n
+=
+v\varepsilon_{n+1}L_n\xi_2
++O(\varepsilon_{n+1}^2).
+\]
+Put
+\[
+t_n=\sum_{k>n}\varepsilon_k.
+\]
+Since $L_n\xi_2\to Z$ and
+$\sum_{k>n}\varepsilon_k^2=o(t_n)$, summing the preceding
+identity gives
+\[
+X-X_n=vt_nZ+o(t_n).
+\]
+By \eqref{eq:nonexposed-mixed-direction},
+\[
+X_n=(1-uvt_n)X-v^2t_nY+o(t_n).
+\]
+After normalization, this becomes
+\begin{equation}\label{eq:nonexposed-tangent-x}
+\widehat{X_n}
+=
+x+
+v^2\frac{h(Y)}{h(X)}t_n(x-y)
++o(t_n).
+\end{equation}
+
+Let $\ell$ be any linear functional attaining its maximum
+over $C$ at $x$.
+As $\widehat{X_n}\in E\subseteq C$,
+\[
+\ell(\widehat{X_n})-\ell(x)\le0.
+\]
+Divide \eqref{eq:nonexposed-tangent-x}, after applying $\ell$,
+by $t_n$ and let $n\to\infty$.
+Because $v^2h(Y)/h(X)>0$, this gives
+\[
+\ell(x)\le\ell(y).
+\]
+The maximality at $x$ gives the reverse inequality, so
+\[
+\ell(x)=\ell(y).
+\]
+Since $x\ne y$, the point $x$ is not exposed.
+
+Likewise,
+\[
+Y_{n+1}-Y_n
+=
+u\varepsilon_{n+1}L_n\xi_2
++O(\varepsilon_{n+1}^2),
+\]
+and therefore
+\[
+\widehat{Y_n}
+=
+y+
+u^2\frac{h(X)}{h(Y)}t_n(y-x)
++o(t_n).
+\]
+The same argument shows that every linear functional attaining
+its maximum at $y$ also attains that maximum at $x$.
+Thus $y$ is not exposed either.
+
+Combining this with \eqref{eq:nonexposed-extremality} yields
+\[
+x,y\in
+E_{\mathrm{ext}}(\Phi)\setminus E_{\mathrm{exp}}(\Phi),
+\]
+as required.
+\end{proof}
+
+\begin{remark}
+The counterexample points are specified by the group elements
+\[
+g_n=
+(s_1s_2)^{2(n+10)}
+(s_4s_5)^{n+10}
+(s_7s_8)^{2(n+10)}
+s_3s_6:
+\]
+namely,
+\[
+x=\lim_{n\to\infty}
+\widehat{g_1\cdots g_n\xi_1},
+\qquad
+y=\lim_{n\to\infty}
+\widehat{g_1\cdots g_n\xi_3}.
+\]
+The summable perturbations preserve two extreme directions,
+while their first-order terms force every supporting hyperplane
+at either limiting point to contain the other point.
+\end{remark}
+
+\begin{remark}
+All infinite edges in this example have Gram parameter $-2$.
+Replacing these entries by $-1$ changes the spectral
+decomposition used in the proof: the corresponding rank-two
+blocks become affine.
+Consequently, the proposition does not answer whether
+\[
+E_{\mathrm{exp}}(\Phi)=E_{\mathrm{ext}}(\Phi)
+\]
+holds for every standard Tits realization.
+\end{remark}
+\section{Facial Structure for Subsets of \texorpdfstring{$E$}{E}}
+
+Let $(\Phi,\Delta)$ be a based root system with associated
+Coxeter system $(W,S)$.
+Recall that a subset $I\subseteq S$ is called facial if
+\[
+F_I=\operatorname{conv}(\widehat{\Delta}_I)
+\]
+is a face of $\operatorname{conv}(\widehat{\Delta})$.
+
+Let $\Phi_I$ denote the corresponding facial root subsystem.
+
+\subsection{Functorial subsets respecting facial structure}
+
+Consider a mapping $E^*$ which associates to every based
+root system $(\Phi,\Delta)$ a subset
+\[
+E^*(\Phi)\subseteq E(\Phi).
+\]
+
+We say that $E^*$ is functorial if
+\[
+E^*(\Phi_I)\subseteq E^*(\Phi)
+\]
+for every facial root subsystem $\Phi_I$.
+
+We further say that $E^*$ respects the facial structure
+if, for every facial subset $I\subseteq S$,
+\begin{equation}\label{eq:facial-restriction}
+E^*(\Phi_I)=E^*(\Phi)\cap F_I.
+\end{equation}
+
+The six subsets constructed in \cite[Section~5]{DHR} satisfy this
+property. However, the entire limit-root set $E(\Phi)$
+does not satisfy it in general.
+
+The following problem is therefore natural:
+
+\begin{quote}
+How can one characterize the functorial subsets of
+$E(\Phi)$ which respect the facial structure?
+\end{quote}
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Six compatible constructions are known, but no classification of all such assignments was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The concrete positive result is \cite[Theorem~5.20]{DHR}, which treats
+six natural subsets, including $E_2$. This is not a classification of
+all functorial assignments. A claim about one fixed orbit also requires
+specifying how its distinguished point is chosen in each subsystem.
+
+\subsection{The single-orbit case}
+
+A first direction would be to investigate the special
+case in which
+\[
+E^*(\Phi)=W\cdot x
+\]
+for some $x\in E(\Phi)$.
+
+
+\par\medskip
+\noindent\textbf{Status.} No general solution verified. A dense orbit need not equal the limit-root set, and facial compatibility requires an additional argument.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Minimality gives $\overline{W\cdot x}=E$, not $W\cdot x=E$
+\cite[Theorem~3.1]{DHR}. Density therefore does not by itself settle
+facial restriction for an orbit. No general single-orbit classification
+was located. The assignment must be defined compatibly across root
+systems before functoriality can be tested.
+
+\section{Facial Restriction for \texorpdfstring{$E(\Phi)$}{E(Phi)}}
+
+Since $E(\Phi)$ does not respect the facial structure
+in the sense of \eqref{eq:facial-restriction}, it is natural to investigate the
+relationship between
+\[
+E(\Phi_I)
+\qquad\text{and}\qquad
+E(\Phi)\cap F_I
+\]
+for a facial subset $I\subseteq S$.
+
+\subsection{Joins of orthogonal parabolic limit-root sets}
+
+Suppose that $(\Phi,\Delta)$ is irreducible and that
+the facial subsystem $(\Phi_I,\Delta_I)$ is reducible.
+Write
+\[
+\Phi_I=\Phi_1\sqcup\Phi_2,
+\]
+where
+\[
+B(\Phi_1,\Phi_2)=0.
+\]
+Then
+\[
+E(\Phi_I)=E(\Phi_1)\sqcup E(\Phi_2).
+\]
+
+Calculations suggest that, for any
+\[
+x\in E(\Phi_1),
+\qquad
+y\in E(\Phi_2),
+\]
+the line segment joining $x$ and $y$ may be contained
+in $E(\Phi)$; that is,
+\[
+\boxed{
+[x,y]\subseteq E(\Phi).
+}
+\]
+
+This would provide many counterexamples to the facial
+restriction formula \eqref{eq:facial-restriction}, provided that both
+$E(\Phi_1)$ and $E(\Phi_2)$ are nonempty.
+
+
+\par\medskip
+\noindent\textbf{Status.} \(\checkmark\) Answered in this manuscript. The unrestricted inclusion is false; the theorem below proves it unless both subsystems are non-affine of rank two. This status depends on verification of the proof and counterexample.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Fu--Reeves--Xu prove that the convex hull of limit roots of mutually
+orthogonal irreducible affine standard parabolic subgroups lies in $E$
+\cite[Proposition~5.30]{FRX2026}. This includes multiple affine components.
+The mixed affine/non-affine cases and the exceptional non-affine dihedral
+pair in the theorem below go beyond that cited statement; they are
+presented here as manuscript results.
+
+\begin{theorem}\label{thm:orthogonal-parabolic-join}
+Assume that $(\Phi,\Pi)$ is irreducible. Let $I,J\subseteq S$
+determine irreducible infinite standard parabolic subsystems
+satisfying
+\[
+B(V_I,V_J)=0.
+\]
+If $\Phi_I$ and $\Phi_J$ are not both non-affine root systems of
+rank two, then
+\[
+E_I*E_J\subseteq E.
+\]
+
+For subsets $A,B\subseteq\{v:h(v)=1\}$, define their join by
+\[
+A*B
+=
+\{(1-t)x+ty:x\in A,\ y\in B,\ 0\le t\le1\}.
+\]
+
+The excluded case cannot be omitted in general: there exists an
+irreducible rank-five based root system with two orthogonal
+non-affine rank-two standard parabolic subsystems for which
+\[
+E_I*E_J\not\subseteq E.
+\]
+\end{theorem}
+
+\begin{remark}\label{rem:meaning-of-exception}
+The exception concerns two simultaneously non-affine rank-two
+root systems. It does not concern the property of being parabolic:
+both subsystems in the theorem are standard parabolic subsystems.
+
+Moreover, the theorem does not assert that the join inclusion
+always fails in the excluded case. It asserts that the inclusion
+holds outside that case and can fail within it.
+\end{remark}
+
+We use two results of Dyer--Hohlweg--Ripoll. First, if a based root
+system is irreducible, every orbit in its limit-root set is dense
+\cite[Theorem~3.1]{DHR}. Second, an irreducible infinite non-affine
+based root system contains a based root subsystem whose simple
+roots are positive roots, span the same ambient space, and have
+pairwise inner products strictly less than $-1$
+\cite[Proposition~6.4]{DHR}.
+
+\begin{lemma}\label{lem:connecting-root}
+Under the hypotheses of Theorem~\ref{thm:orthogonal-parabolic-join},
+there exists $\rho\in\Phi^+$ such that
+\[
+\operatorname{supp}(\rho)\subseteq S\setminus(I\cup J),
+\]
+\[
+B(\rho,\alpha)\le0
+\qquad
+(\alpha\in\Phi_I^+\cup\Phi_J^+),
+\]
+and neither $B(\rho,-)|_{V_I}$ nor $B(\rho,-)|_{V_J}$ is zero.
+Moreover,
+\[
+w\rho\in\Phi^+
+\qquad (w\in W_IW_J).
+\]
+\end{lemma}
+
+\begin{proof}
+Choose a shortest path in the Coxeter graph joining a vertex of
+$I$ to a vertex of $J$. Since $B(V_I,V_J)=0$, this path has at least
+one internal vertex. By minimality, all its internal vertices lie
+outside $I\cup J$.
+
+Starting with the simple root at the first internal vertex,
+successively reflect at the remaining internal vertices along
+the path. At each step the new simple root has strictly negative
+inner product with the root already constructed, so the resulting
+root is positive and acquires a strictly positive coefficient at
+the new vertex. We obtain a positive root $\rho$ supported
+precisely on the internal vertices.
+
+All off-diagonal entries of the Gram matrix are nonpositive.
+Consequently,
+\[
+B(\rho,\alpha)\le0
+\qquad
+(\alpha\in\Phi_I^+\cup\Phi_J^+).
+\]
+The first and last edges of the chosen path show that the
+restrictions of $B(\rho,-)$ to $V_I$ and $V_J$ are nonzero.
+
+Every element of $W_IW_J$ preserves the coordinates outside
+$I\cup J$. At least one such coordinate of $\rho$ is strictly
+positive. Hence $w\rho$ cannot be a negative root. The sign
+property of roots therefore gives $w\rho\in\Phi^+$.
+\end{proof}
+
+\begin{lemma}\label{lem:one-segment-suffices}
+Suppose that $x\in E_I$ and $y\in E_J$ satisfy
+\[
+[x,y]\subseteq E.
+\]
+Then
+\[
+E_I*E_J\subseteq E.
+\]
+\end{lemma}
+
+\begin{proof}
+The group $W_I$ fixes $V_J$ pointwise, and $W_J$ fixes $V_I$
+pointwise. Thus, for $u\in W_I$ and $v\in W_J$,
+\[
+(uv)\cdot[x,y]=[u\cdot x,v\cdot y]\subseteq E.
+\]
+Here the normalized linear action maps the segment onto the
+segment between the normalized images of its endpoints.
+
+By minimality,
+\[
+\overline{W_I\cdot x}=E_I,
+\qquad
+\overline{W_J\cdot y}=E_J.
+\]
+Given $x'\in E_I$ and $y'\in E_J$, choose sequences
+$u_n\in W_I$ and $v_n\in W_J$ such that
+\[
+u_n\cdot x\longrightarrow x',
+\qquad
+v_n\cdot y\longrightarrow y'.
+\]
+For every $t\in[0,1]$,
+\[
+(1-t)(u_n\cdot x)+t(v_n\cdot y)\in E.
+\]
+The closedness of $E$ gives
+\[
+(1-t)x'+ty'\in E.
+\]
+\end{proof}
+
+\begin{proof}[Proof of the inclusion in
+Theorem~\ref{thm:orthogonal-parabolic-join}]
+Fix the positive root $\rho$ supplied by
+Lemma~\ref{lem:connecting-root}. By
+Lemma~\ref{lem:one-segment-suffices}, it is enough to construct one
+segment $[x,y]\subseteq E$ with $x\in E_I$ and $y\in E_J$.
+
+\medskip
+\noindent
+\textit{Case 1: at least one subsystem is affine.}
+
+Suppose first that $\Phi_I$ is affine. Let
+\[
+E_I=\{\delta\},
+\qquad h(\delta)=1.
+\]
+The affine root-string structure provides a root $a$ and a
+constant $\ell>0$ such that
+\[
+a_n=a+n\ell\delta\in\Phi_I^+
+\qquad(n\ge0).
+\]
+Since $\delta$ has strictly positive coordinates on $I$,
+Lemma~\ref{lem:connecting-root} implies
+\[
+B(\rho,\delta)<0.
+\]
+Consequently,
+\[
+\begin{aligned}
+s_{a_n}\rho
+&=\rho-2B(\rho,a_n)a_n\\
+&=Cn^2\delta+O(n),
+\end{aligned}
+\]
+where
+\[
+C=-2\ell^2B(\rho,\delta)>0.
+\]
+
+Assume that $\Phi_J$ is non-affine. By
+\cite[Proposition~6.4]{DHR}, we can choose positive roots
+$c,d\in\Phi_J^+$ such that
+\[
+B(c,d)<-1,
+\qquad B(\rho,c)<0.
+\]
+Let $t=s_cs_d$, and let $y\in E_J$ be its normalized attracting
+eigenvector, with eigenvalue $\mu>1$. Since
+\[
+B(\rho,c)<0,\qquad B(\rho,d)\le0,
+\]
+the attracting coefficient of $\rho$ is strictly positive.
+Thus, for some $D>0$,
+\[
+t^m\rho=D\mu^m y+O(1).
+\]
+The element $t$ fixes $V_I$ pointwise, so
+\[
+s_{a_n}t^m\rho
+=
+Cn^2\delta+D\mu^m y+O(n+1).
+\]
+All these vectors are positive roots by
+Lemma~\ref{lem:connecting-root}.
+
+Given $r>0$, choose positive integers $n_m$ satisfying
+\[
+n_m\sim\sqrt{\frac{rD}{C}\mu^m}.
+\]
+Then
+\[
+\widehat{s_{a_{n_m}}t^m\rho}
+\longrightarrow
+\frac{r\delta+y}{r+1}.
+\]
+Hence $[\delta,y]\subseteq E$.
+
+If $\Phi_J$ is also affine, write
+\[
+E_J=\{\varepsilon\},
+\qquad h(\varepsilon)=1,
+\]
+and choose an affine root string
+\[
+b_m=b+m\ell'\varepsilon\in\Phi_J^+.
+\]
+Orthogonality gives
+\[
+s_{a_n}s_{b_m}\rho
+=
+Cn^2\delta+Dm^2\varepsilon+O(n+m+1)
+\]
+for constants $C,D>0$.
+For any $r>0$, choosing $n,m\to\infty$ with
+\[
+\frac{Cn^2}{Dm^2}\longrightarrow r
+\]
+yields
+\[
+\widehat{s_{a_n}s_{b_m}\rho}
+\longrightarrow
+\frac{r\delta+\varepsilon}{r+1}.
+\]
+Thus $[\delta,\varepsilon]\subseteq E$, completing this case.
+
+\medskip
+\noindent
+\textit{Case 2: both subsystems are non-affine.}
+
+By hypothesis, one subsystem has rank at least three.
+Interchanging $I$ and $J$ if necessary, assume
+\[
+\dim V_I\ge3.
+\]
+Using \cite[Proposition~6.4]{DHR}, choose linearly independent
+positive roots $a,b,u\in\Phi_I^+$ that belong to the simple system
+of a based root subsystem and satisfy
+\[
+B(a,b),B(a,u),B(b,u)<-1,
+\qquad B(\rho,a)<0.
+\]
+Likewise choose $c,d\in\Phi_J^+$ with
+\[
+B(c,d)<-1,\qquad B(\rho,c)<0.
+\]
+
+Set
+\[
+g=s_as_b,\qquad t=s_cs_d.
+\]
+Choose normalized eigenvectors
+\[
+gx=\lambda x,\qquad gx_-=\lambda^{-1}x_-,
+\]
+\[
+ty=\mu y,\qquad ty_-=\mu^{-1}y_-,
+\]
+where
+\[
+\lambda,\mu>1,\qquad
+x,x_-\in E_I,\qquad y,y_-\in E_J.
+\]
+The planes
+\[
+L=\operatorname{span}\{a,b\},
+\qquad
+M=\operatorname{span}\{c,d\}
+\]
+are nondegenerate and mutually orthogonal. Every $v\in V$
+therefore has a unique decomposition
+\[
+v=A(v)x+A_-(v)x_-+D(v)y+D_-(v)y_-+v_0,
+\]
+where
+\[
+v_0\in(L\oplus M)^\perp.
+\]
+The connecting-root inequalities imply
+\[
+A(\rho),A_-(\rho),D(\rho),D_-(\rho)>0.
+\]
+
+Suppose first that
+\[
+\frac{\log\lambda}{\log\mu}\notin\mathbb Q.
+\]
+For every $r>0$, irrational rotation on the circle gives sequences
+$n_k,m_k\to\infty$ such that
+\[
+\frac{A(\rho)\lambda^{n_k}}
+     {D(\rho)\mu^{m_k}}
+\longrightarrow r.
+\]
+Since
+\[
+g^{n_k}t^{m_k}\rho
+=
+A(\rho)\lambda^{n_k}x
++D(\rho)\mu^{m_k}y+O(1),
+\]
+we obtain
+\[
+\widehat{g^{n_k}t^{m_k}\rho}
+\longrightarrow
+\frac{rx+y}{r+1}.
+\]
+Thus $[x,y]\subseteq E$.
+
+It remains to consider
+\[
+\frac{\log\lambda}{\log\mu}\in\mathbb Q.
+\]
+Replacing $g$ and $t$ by suitable positive powers, we may assume
+that their attracting eigenvalues coincide:
+\[
+\lambda=\mu=\Lambda>1.
+\]
+
+Define
+\[
+\mathcal R
+=
+\left\{
+r>0:\frac{rx+y}{r+1}\in E
+\right\}.
+\]
+This is a closed subset of $(0,\infty)$. Since $g$ fixes $y$ and
+sends $x$ to $\Lambda x$, the $W$-invariance of $E$ gives
+\[
+\Lambda^{\mathbb Z}\mathcal R=\mathcal R.
+\]
+
+Put
+\[
+\kappa=-B(x,x_-)>0.
+\]
+The inequalities $B(u,a),B(u,b)<-1$ imply
+\[
+A(u)>0,\qquad A_-(u)>0.
+\]
+Set
+\[
+d_0=\kappa A(u)A_-(u)>0,
+\qquad
+u_m=g^m u.
+\]
+Because $a,b,u$ belong to a simple system of a based root
+subsystem, $u_m\in\Phi_I^+$ for $m\ge0$.
+
+Writing
+\[
+u=A(u)x+A_-(u)x_-+u_0,
+\qquad u_0\perp L,
+\]
+and using $B(u,u)=1$, we obtain
+\[
+B(u,u_m)
+=
+1+2d_0-d_0(\Lambda^m+\Lambda^{-m}).
+\]
+For all sufficiently large $m$, therefore,
+\[
+q_m:=-B(u,u_m)>1.
+\]
+Let
+\[
+H_m=s_{u_m}s_u.
+\]
+Its attracting eigenvalue is
+\[
+\eta_m=
+\left(q_m+\sqrt{q_m^2-1}\right)^2.
+\]
+
+For sufficiently large $m$,
+\[
+B(\rho,u)\le0,\qquad B(\rho,u_m)<0.
+\]
+Both isotropic eigenvectors of $H_m$ in
+$\operatorname{span}\{u,u_m\}$ are positive linear combinations
+of $u$ and $u_m$. It follows that the attracting coefficient of
+$\rho$ is strictly positive.
+
+Moreover,
+\[
+A(u)>0,\qquad A(u_m)=\Lambda^mA(u)>0.
+\]
+Applying the linear functional $A$ to the eigenspace decomposition
+of $H_m^k\rho$ consequently gives
+\[
+A(H_m^k\rho)=C_m\eta_m^k+O(1)
+\qquad(k\to\infty)
+\]
+for some $C_m>0$.
+
+Since $H_m\in W_I$,
+\[
+D(H_m^k\rho)=D(\rho)=:D_0>0.
+\]
+Fixing a sufficiently large $k$ and letting $N\to\infty$, we have
+\[
+\widehat{g^Nt^NH_m^k\rho}
+\longrightarrow
+\frac{A(H_m^k\rho)x+D_0y}
+     {A(H_m^k\rho)+D_0}.
+\]
+Hence
+\[
+\frac{A(H_m^k\rho)}{D_0}\in\mathcal R.
+\]
+
+Consider the closed subset
+\[
+\mathcal T
+=
+\{\log_\Lambda r+\mathbb Z:r\in\mathcal R\}
+\subseteq\mathbb R/\mathbb Z.
+\]
+Its closedness follows from the closedness of $\mathcal R$ and
+the invariance $\Lambda^{\mathbb Z}\mathcal R=\mathcal R$.
+For every sufficiently large $m$, the set $\mathcal T$ contains
+all accumulation points of
+\[
+k\log_\Lambda\eta_m
++\log_\Lambda(C_m/D_0)+o(1)
+\pmod{\mathbb Z}.
+\]
+
+If some $\log_\Lambda\eta_m$ is irrational, these accumulation
+points fill the circle, and hence
+\[
+\mathcal T=\mathbb R/\mathbb Z.
+\]
+If all $\log_\Lambda\eta_m$ are rational but their reduced
+denominators are unbounded, then $\mathcal T$ contains translates
+of equally spaced grids of arbitrarily large cardinality.
+Closedness again gives
+\[
+\mathcal T=\mathbb R/\mathbb Z.
+\]
+
+Suppose, finally, that all these numbers are rational with
+uniformly bounded reduced denominators. Then there exists
+$M\in\mathbb N$ such that
+\[
+\log_\Lambda\eta_m-2m\in\frac1M\mathbb Z
+\]
+for every sufficiently large $m$.
+
+On the other hand,
+\[
+q_m=d_0\Lambda^m-(1+2d_0)+d_0\Lambda^{-m},
+\]
+so
+\[
+\frac{\eta_m}{\Lambda^{2m}}\longrightarrow4d_0^2.
+\]
+Furthermore,
+\[
+q_m<d_0\Lambda^m,
+\qquad
+\eta_m<4q_m^2,
+\]
+and therefore
+\[
+\frac{\eta_m}{\Lambda^{2m}}<4d_0^2.
+\]
+Thus the sequence
+\[
+\log_\Lambda\eta_m-2m
+\]
+lies in the discrete set $\frac1M\mathbb Z$, converges to
+$\log_\Lambda(4d_0^2)$, and is strictly smaller than its limit.
+This is impossible.
+
+Consequently,
+\[
+\mathcal T=\mathbb R/\mathbb Z.
+\]
+Together with $\Lambda^{\mathbb Z}\mathcal R=\mathcal R$, this
+implies
+\[
+\mathcal R=(0,\infty).
+\]
+Hence $[x,y]\subseteq E$. Applying
+Lemma~\ref{lem:one-segment-suffices} completes the proof of the
+join inclusion.
+\end{proof}
+
+\begin{proof}[Construction and verification of the counterexample]
+Let $\Pi=\{\alpha_1,\ldots,\alpha_5\}$, and take the Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&-2\\
+-2&1&0&0&-2\\
+0&0&1&-2&-2\\
+0&0&-2&1&-2\\
+-2&-2&-2&-2&1
+\end{pmatrix}.
+\]
+The Coxeter graph is connected, so the ambient root system is
+irreducible. Set
+\[
+I=\{1,2\},\qquad J=\{3,4\}.
+\]
+Then $V_I\perp V_J$, and both standard parabolic subsystems are
+non-affine of rank two.
+
+Put
+\[
+\tau=2-\sqrt3,
+\qquad
+x=\frac{\alpha_1+\tau\alpha_2}{1+\tau},
+\qquad
+y=\frac{\alpha_3+\tau\alpha_4}{1+\tau}.
+\]
+The matrix of $s_1s_2$ on $V_I$ is
+\[
+\begin{pmatrix}
+15&-4\\
+4&-1
+\end{pmatrix},
+\]
+whose attracting eigenvalue is $\tau^{-2}$ and whose attracting
+eigenvector is $(1,\tau)$. Hence
+\[
+\widehat{(s_1s_2)^n\alpha_1}\longrightarrow x.
+\]
+Similarly,
+\[
+\widehat{(s_3s_4)^n\alpha_3}\longrightarrow y.
+\]
+Thus
+\[
+x\in E_I,\qquad y\in E_J.
+\]
+
+We shall prove that
+\[
+z=\frac{x+2y}{3}\notin E.
+\]
+
+Define
+\[
+p=\frac{1+\sqrt3}{2},
+\qquad
+q=\frac{\sqrt3-1}{2}.
+\]
+For
+\[
+v=c_1\alpha_1+c_2\alpha_2+c_3\alpha_3+c_4\alpha_4+d\alpha_5,
+\]
+set
+\[
+\begin{aligned}
+A_+(v)&=pc_1-qc_2+2d,
+&
+A_-(v)&=-qc_1+pc_2+2d,\\
+C_+(v)&=pc_3-qc_4+2d,
+&
+C_-(v)&=-qc_3+pc_4+2d.
+\end{aligned}
+\]
+Consider the homogeneous quadratic polynomial
+\[
+H(v)
+=
+\bigl(20A_+(v)-9C_+(v)\bigr)
+\bigl(3A_+(v)-2C_+(v)\bigr).
+\]
+We claim that
+\[
+H(\beta)\ge0
+\qquad(\beta\in\Phi^+).
+\]
+
+All roots have integral coordinates in the basis $\Pi$.
+If $\beta=\sum_i b_i\alpha_i$ is a positive root that is not
+simple, then
+\[
+1=B(\beta,\beta)=\sum_i b_iB(\beta,\alpha_i)
+\]
+provides an index $i$ with
+\[
+b_i>0,\qquad B(\beta,\alpha_i)>0.
+\]
+The root $s_i\beta$ remains positive: another positive coordinate
+of $\beta$ is unchanged, so $s_i\beta$ cannot be negative.
+Moreover,
+\[
+s_i\beta=\beta-2B(\beta,\alpha_i)\alpha_i
+\]
+has strictly smaller height and differs from $\beta$ only in its
+$i$-th coordinate.
+
+Iterating this descent reaches a simple root, since the heights
+are positive integers. Reversing the descent shows that every
+positive root admits a construction from a simple root along
+which all coordinates are nondecreasing.
+
+Fix such a construction of $\beta$, and suppose first that its
+fifth coordinate $d$ is positive. If the construction uses $s_5$,
+let $\rho$ be the root immediately after the last application of
+$s_5$. Write
+\[
+\rho=a_1\alpha_1+\cdots+a_4\alpha_4+d\alpha_5,
+\qquad
+S=a_1+\cdots+a_4.
+\]
+If $d_{\mathrm{old}}$ is the fifth coordinate immediately before
+that reflection, then
+\[
+d=4S-d_{\mathrm{old}}.
+\]
+Coordinate monotonicity gives $d\ge d_{\mathrm{old}}$, and hence
+\[
+d\ge2S.
+\]
+If the construction never uses $s_5$, its initial simple root
+must be $\alpha_5$; in this case take $\rho=\alpha_5$, and the same
+inequality holds.
+
+In either case,
+\[
+\beta=w\rho
+\qquad\text{for some }w\in W_IW_J,
+\]
+and
+\[
+a_i\ge0,\qquad \sum_{i=1}^4a_i\le\frac d2.
+\]
+Consequently,
+\[
+Ld\le A_\pm(\rho),C_\pm(\rho)\le Ud,
+\]
+where
+\[
+L=2-\frac q2=\frac{9-\sqrt3}{4},
+\qquad
+U=2+\frac p2=\frac{9+\sqrt3}{4}.
+\]
+Set
+\[
+R=\frac UL=\frac{9+\sqrt3}{9-\sqrt3}<\frac32.
+\]
+
+A direct calculation gives
+\[
+\begin{aligned}
+(A_+,A_-)(s_1v)
+&=(\tau^{-1}A_-(v),\,\tau A_+(v)),\\
+(A_+,A_-)(s_2v)
+&=(\tau A_-(v),\,\tau^{-1}A_+(v)).
+\end{aligned}
+\]
+Both $s_1$ and $s_2$ fix $C_+$ and $C_-$. Likewise,
+\[
+\begin{aligned}
+(C_+,C_-)(s_3v)
+&=(\tau^{-1}C_-(v),\,\tau C_+(v)),\\
+(C_+,C_-)(s_4v)
+&=(\tau C_-(v),\,\tau^{-1}C_+(v)),
+\end{aligned}
+\]
+and $s_3,s_4$ fix $A_+,A_-$.
+
+It follows that
+\[
+A_+(\beta),C_+(\beta)>0,
+\qquad
+\frac{A_+(\beta)}{C_+(\beta)}
+\in
+\bigcup_{m\in\mathbb Z}\tau^m[R^{-1},R].
+\]
+Since $\tau<3/10$ and $R<3/2$, we have
+\[
+\tau R<\frac9{20},
+\qquad
+R^{-1}>\frac23.
+\]
+For $m\ge1$,
+\[
+\tau^mR\le\tau R<\frac9{20},
+\]
+whereas for $m\le0$,
+\[
+\tau^mR^{-1}\ge R^{-1}>\frac23.
+\]
+Thus the displayed union avoids the interval
+$(9/20,2/3)$. Therefore
+\[
+\left(
+20\frac{A_+(\beta)}{C_+(\beta)}-9
+\right)
+\left(
+3\frac{A_+(\beta)}{C_+(\beta)}-2
+\right)
+\ge0,
+\]
+which proves $H(\beta)\ge0$ when $d>0$.
+
+Now suppose that the fifth coordinate of $\beta$ is zero.
+Its coordinatewise nondecreasing construction cannot use $s_5$.
+Since $W_I$ and $W_J$ preserve their respective summands, the
+root $\beta$ belongs to $\Phi_I$ or $\Phi_J$. In the first case
+$C_+(\beta)=0$, and in the second case $A_+(\beta)=0$. Accordingly,
+\[
+H(\beta)=60A_+(\beta)^2
+\qquad\text{or}\qquad
+H(\beta)=18C_+(\beta)^2.
+\]
+This proves the claim for every positive root.
+
+The homogeneity of $H$ implies
+\[
+H(\widehat\beta)=\frac{H(\beta)}{h(\beta)^2}\ge0.
+\]
+Taking accumulation points and using continuity, we obtain
+\[
+E\subseteq\{v\in V:H(v)\ge0\}.
+\]
+
+Finally, direct substitution gives
+\[
+A_+(x)=1,\qquad C_+(x)=0,
+\qquad
+A_+(y)=0,\qquad C_+(y)=1.
+\]
+Hence
+\[
+A_+(z)=\frac13,\qquad C_+(z)=\frac23,
+\]
+and
+\[
+H(z)
+=
+\left(\frac{20}{3}-6\right)
+\left(1-\frac43\right)
+=
+-\frac29<0.
+\]
+Therefore $z\notin E$, although $z\in[x,y]$ with
+$x\in E_I$ and $y\in E_J$. This proves
+\[
+E_I*E_J\not\subseteq E.
+\]
+\end{proof}
+
+\subsection{Join inclusion in the standard Tits realization}
+
+Does $E_I*E_J\subseteq E$ always hold for orthogonal irreducible
+infinite standard parabolic subsystems in the standard Tits realization?
+
+
+\par\medskip
+\noindent\textbf{Status.} \(\checkmark\) Answered in this manuscript, conditional on its join theorem. Infinite rank-two standard parabolic subsystems in the standard Tits realization are affine, excluding the exceptional configuration.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The affine-component case is covered by
+\cite[Proposition~5.30]{FRX2026}. This does not establish the full statement
+below when a standard parabolic factor is non-affine of higher rank.
+The corollary below instead uses this manuscript's join theorem and
+the fact that infinite rank-two subsystems in the standard Tits
+realization are affine.
+
+\begin{corollary}\label{cor:standard-tits-join}
+Suppose that $(\Phi,\Pi)$ is an irreducible root system in the
+standard Tits realization. If $\Phi_I,\Phi_J$ are orthogonal
+irreducible infinite standard parabolic subsystems, then
+\[
+E_I*E_J\subseteq E.
+\]
+\end{corollary}
+
+\begin{proof}
+In the standard Tits realization, an infinite edge has inner
+product $-1$. Every infinite rank-two standard parabolic
+subsystem is therefore affine. The exceptional case in
+Theorem~\ref{thm:orthogonal-parabolic-join} cannot occur.
+\end{proof}
+
+\begin{remark}\label{rem:reducible-parabolic-join}
+For reducible standard parabolic subsystems, the theorem must be
+applied to pairs of irreducible components.
+
+More precisely, suppose
+\[
+\Phi_I=\bigsqcup_a\Phi_{I_a},
+\qquad
+\Phi_J=\bigsqcup_b\Phi_{J_b}.
+\]
+Then
+\[
+E_I=\bigcup_a E_{I_a},
+\qquad
+E_J=\bigcup_b E_{J_b}.
+\]
+If no pair of infinite components
+$(\Phi_{I_a},\Phi_{J_b})$ consists of two non-affine rank-two
+root systems, then
+\[
+E_I*E_J
+=
+\bigcup_{a,b}(E_{I_a}*E_{J_b})
+\subseteq E.
+\]
+In particular, having total rank greater than two does not by
+itself exclude the exceptional configuration in a reducible
+subsystem.
+\end{remark}
+
+\begin{remark}\label{rem:convex-hull-isotropic-counterexample}
+In the rank-five counterexample,
+\[
+B(x,x)=B(y,y)=B(x,y)=0.
+\]
+Thus the entire segment $[x,y]$ lies in the isotropic cone
+\[
+Q=\{v\in V:B(v,v)=0\}.
+\]
+The point $z=(x+2y)/3$ therefore satisfies
+\[
+z\in\operatorname{conv}(E)\cap Q,
+\qquad z\notin E.
+\]
+Consequently,
+\[
+\operatorname{conv}(E)\cap Q\ne E
+\]
+for this irreducible based root system.
+
+This construction does not assert that $x$ and $y$ are
+accumulation points of a common dominance chain.
+\end{remark}
+
+\subsection{The proposed join formula for facial intersections}
+
+Let $\Phi_I=\bigsqcup_{k=1}^{m}\Phi_{I,k}$ be the decomposition
+into irreducible components, and put $V_I=\operatorname{span}(\Delta_I)$.
+Is it always true that
+\[
+E(\Phi)\cap V_I=\operatorname{join}_{k=1}^{m}E(\Phi_{I,k})?
+\]
+The counterexample in Proposition~\ref{prop:counterexample-convE-Q}
+already gives a negative answer. Take $I=\{1,2,3,4\}$.
+The point $z=(x+2y)/3$ belongs to the join of the two component
+limit-root sets, but does not belong to $E(\Phi)\cap V_I$.
+
+
+\par\medskip
+\noindent\textbf{Status.} \(\checkmark\) Answered negatively in this manuscript. Its counterexample disproves the proposed join formula; this is related to the same construction used in Question~1.1.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Hohlweg--Labb\'e--Ripoll give a rank-five example in which
+$E(\Phi_I)\subsetneq E(\Phi)\cap F_I$
+\cite[Example~5.8]{HLR}. That example disproves ordinary facial
+restriction, not the stronger join formula. The negative answer to the
+join formula given above uses this manuscript's different counterexample.
+These two failures should not be conflated.
+
+\subsection{Obstructions to facial restriction}
+How can $E(\Phi)\cap V_I$ be described exactly? Is mixing between
+irreducible components the only obstruction to
+\eqref{eq:facial-restriction} for the full limit-root set?
+This question remains open in this manuscript.
+
+
+\par\medskip
+\noindent\textbf{Status.} No general solution verified. Existing obstructions do not classify every failure of facial restriction.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+For the affine part, \cite[Corollary~5.33]{FRX2026} identifies
+$E\cap Z$ through the Pos-finite condition, where $Z$ is the normalized
+\emph{unclosed} imaginary cone. This is useful for separating affine
+combinations from other limit roots, but it does not describe the entire
+intersection $E\cap V_I$. No proof that component mixing is the only
+obstruction was located.
+
+\subsection{Facial restriction for irreducible subsystems}
+
+If $\Phi_I$ is irreducible, is it always true that
+\[
+E(\Phi_I)=E(\Phi)\cap F_I?
+\]
+
+\par\medskip
+\noindent\textbf{Status.}
+\(\checkmark\) \textit{Answered negatively in this manuscript.}
+The rank-six counterexample below has an irreducible rank-five
+facial subsystem for which the equality fails, even in the
+relative interior of the face.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+This question is raised in \cite[Section~7.3]{DHR}.
+The following construction extends
+Proposition~\ref{prop:counterexample-convE-Q}.
+An additional simple root produces a sequence of roots converging
+to a point excluded from the limit-root set of the original
+irreducible subsystem.
+
+\begin{proposition}\label{prop:irreducible-facial-counterexample}
+There exists an irreducible based root system $\Phi$ of rank six
+and signature $(4,2)$ with an irreducible standard parabolic
+subsystem $\Phi_I$ of rank five and signature $(3,2)$ such that
+\[
+E(\Phi_I)\subsetneq E(\Phi)\cap F_I.
+\]
+Moreover,
+\[
+\bigl(E(\Phi)\cap\operatorname{relint}(F_I)\bigr)
+\setminus E(\Phi_I)\ne\varnothing.
+\]
+\end{proposition}
+
+\begin{proof}
+Let $V=\bigoplus_{i=1}^{6}\mathbb R\alpha_i$, and define $B$
+by the Gram matrix
+\[
+G=
+\begin{pmatrix}
+1&-2&0&0&-2&-1\\
+-2&1&0&0&-2&-1\\
+0&0&1&-2&-2&-2\\
+0&0&-2&1&-2&-2\\
+-2&-2&-2&-2&1&0\\
+-1&-1&-2&-2&0&1
+\end{pmatrix}.
+\]
+Let
+\[
+s_i(v)=v-2B(v,\alpha_i)\alpha_i,
+\qquad
+W=\langle s_1,\ldots,s_6\rangle,
+\qquad
+\Phi=W\{\alpha_1,\ldots,\alpha_6\}.
+\]
+All off-diagonal entries of $G$ are zero or at most $-1$,
+so these data define a based root system.
+
+Put
+\[
+I=\{1,2,3,4,5\},
+\qquad
+h\left(\sum_{i=1}^{6}c_i\alpha_i\right)=\sum_{i=1}^{6}c_i,
+\qquad
+\widehat v=\frac{v}{h(v)}.
+\]
+Since the simple roots form a basis,
+\[
+F_I=\operatorname{conv}\{\alpha_1,\ldots,\alpha_5\}
+\]
+is a face of the simple-root simplex.
+The fifth vertex is joined to each of the first four vertices,
+so $\Phi_I$ is irreducible. The sixth vertex is also joined to
+the first four vertices, so $\Phi$ is irreducible.
+
+The restriction of $G$ to $I$ is precisely the Gram matrix in
+Proposition~\ref{prop:counterexample-convE-Q}.
+Set
+\[
+\tau=2-\sqrt3,
+\qquad
+\lambda=\tau^{-2}=7+4\sqrt3,
+\]
+and define
+\[
+x_+=\frac{\alpha_1+\tau\alpha_2}{1+\tau},
+\qquad
+x_-=\frac{\tau\alpha_1+\alpha_2}{1+\tau},
+\]
+\[
+y_+=\frac{\alpha_3+\tau\alpha_4}{1+\tau},
+\qquad
+y_-=\frac{\tau\alpha_3+\alpha_4}{1+\tau}.
+\]
+The exclusion established in that proposition gives
+\begin{equation}\label{eq:facial-excluded-point}
+z:=\frac{x_++2y_+}{3}\notin E(\Phi_I).
+\end{equation}
+
+We show that $z\in E(\Phi)$.
+Let
+\[
+w=s_1s_2s_3s_4,
+\qquad
+u=\alpha_6-\alpha_1-\alpha_2-2\alpha_3-2\alpha_4.
+\]
+The blocks $\{1,2\}$ and $\{3,4\}$ are orthogonal, and direct
+calculation gives
+\[
+wx_+=\lambda x_+,
+\qquad
+wx_-=\lambda^{-1}x_-,
+\qquad
+wy_+=\lambda y_+,
+\qquad
+wy_-=\lambda^{-1}y_-.
+\]
+Also,
+\[
+B(u,\alpha_i)=0
+\qquad(1\le i\le4),
+\]
+so $wu=u$. Since
+\[
+x_++x_-=\alpha_1+\alpha_2,
+\qquad
+y_++y_-=\alpha_3+\alpha_4,
+\]
+we obtain
+\[
+\alpha_6=u+x_++x_-+2y_++2y_-.
+\]
+Consequently,
+\begin{equation}\label{eq:facial-root-iterate}
+w^n\alpha_6
+=
+u+\lambda^n(x_++2y_+)
++\lambda^{-n}(x_-+2y_-)
+\qquad(n\ge0).
+\end{equation}
+
+Each $w^n\alpha_6$ is a positive root.
+Indeed, reflections indexed by $\{1,2,3,4\}$ leave its sixth
+coordinate unchanged, so that coordinate is always $1$.
+The root therefore cannot be negative.
+
+As $h(u)=-5$ and $h(x_\pm)=h(y_\pm)=1$,
+\[
+h(w^n\alpha_6)=3\lambda^n+3\lambda^{-n}-5.
+\]
+These heights are strictly increasing for $n\ge0$ and tend to
+infinity. Thus the roots are distinct, and
+\eqref{eq:facial-root-iterate} yields
+\[
+\widehat{w^n\alpha_6}
+=
+\frac{
+u+\lambda^n(x_++2y_+)+\lambda^{-n}(x_-+2y_-)
+}{
+3\lambda^n+3\lambda^{-n}-5
+}
+\longrightarrow z.
+\]
+Hence
+\[
+z\in E(\Phi)\cap F_I.
+\]
+Together with \eqref{eq:facial-excluded-point} and the inclusion
+\[
+E(\Phi_I)\subseteq E(\Phi)\cap F_I,
+\]
+this proves strict inclusion.
+
+To obtain a counterexample in the relative interior of $F_I$,
+observe that the first four coordinates of $z$ are positive
+and sum to $1$, whereas its fifth and sixth coordinates vanish.
+Thus
+\[
+B(z,\alpha_5)=-2,
+\qquad
+s_5z=z+4\alpha_5,
+\qquad
+h(s_5z)=5.
+\]
+Define
+\begin{equation}\label{eq:facial-interior-counterexample}
+z^\circ:=\widehat{s_5z}
+=\frac{z+4\alpha_5}{5}.
+\end{equation}
+All coordinates of $z^\circ$ indexed by $I$ are strictly positive,
+so
+\[
+z^\circ\in\operatorname{relint}(F_I).
+\]
+The normalized $W$-action preserves $E(\Phi)$, hence
+$z^\circ\in E(\Phi)$.
+If $z^\circ\in E(\Phi_I)$, normalized $W_I$-invariance would give
+\[
+\widehat{s_5z^\circ}=z\in E(\Phi_I),
+\]
+contradicting \eqref{eq:facial-excluded-point}.
+Therefore
+\[
+z^\circ\in
+\bigl(E(\Phi)\cap\operatorname{relint}(F_I)\bigr)
+\setminus E(\Phi_I).
+\]
+
+Finally, the signatures can be checked explicitly.
+Put
+\[
+\eta=\alpha_5-2\alpha_1-2\alpha_2-2\alpha_3-2\alpha_4.
+\]
+In the basis $(x_+,x_-,y_+,y_-,\eta,u)$, the Gram matrix is
+\[
+\begin{pmatrix}
+0&-1\\
+-1&0
+\end{pmatrix}
+\oplus
+\begin{pmatrix}
+0&-1\\
+-1&0
+\end{pmatrix}
+\oplus
+\begin{pmatrix}
+17&12\\
+12&11
+\end{pmatrix}.
+\]
+The last block is positive definite, since its determinant is
+$43$ and its first diagonal entry is positive.
+Thus $B$ has signature $(4,2)$.
+The first five basis vectors span $V_I$, on which the signature
+is $(3,2)$.
+\end{proof}
+
+\begin{remark}
+Although the initial counterexample point $z$ has reducible
+support $\{1,2,3,4\}$, the point $z^\circ$ in
+\eqref{eq:facial-interior-counterexample} has support exactly $I$.
+Thus the equality can fail even when the facial subsystem is
+irreducible and the counterexample point has full support in it.
+
+This construction uses nonstandard Gram parameters on infinite
+edges. It does not settle the corresponding question restricted
+to the standard Tits realization.
+\end{remark}
+
+\section{Relation with Hyperbolic Geometry and Geometric Group Theory}
+
+The relationship with hyperbolic geometry is well developed in the
+Lorentzian case; extensions to general signatures remain a research direction.
+
+Consider a based root system $(\Phi,\Delta)$ of rank
+three or four, of indefinite and weakly hyperbolic type.
+
+In this situation, the Coxeter group $W$ acts on
+$E(\Phi)$ as a group generated by hyperbolic reflections.
+Consequently, it can be viewed as a Fuchsian group or
+a Kleinian group.
+
+Moreover, the limit-root set $E(\Phi)$ coincides with
+the limit set $\Lambda(W)$ of $W$ viewed as a Kleinian
+group.
+
+This correspondence suggests a natural research
+direction: to generalize classical properties of limit
+sets of Kleinian groups to the more general setting
+of Coxeter groups acting on quadratic spaces.
+
+\subsection{Dynamics of the action}
+Which classical dynamical properties of Kleinian limit sets extend
+to the action of $W$ on $E(\Phi)$?
+
+
+\par\medskip
+\noindent\textbf{Status.} Research direction with established partial results. Known dynamical theorems do not settle every proposed extension.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+A higher-signature development is the theory of convex-cocompact
+projective reflection representations \cite{DGKLM2025}. For word-hyperbolic
+Coxeter groups, the representations singled out there are projective
+Anosov. These results give boundary dynamics beyond classical hyperbolic
+space, but require the paper's conditions on the Cartan matrix.
+
+\subsection{Geometry of the limit set}
+Which geometric properties of Kleinian limit sets extend to
+limit-root sets in general quadratic spaces?
+
+
+\par\medskip
+\noindent\textbf{Status.} Research direction with established partial results. Lorentzian and convex projective methods cover substantial special cases.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+For spectral and arrangement methods, see \cite[Sections~3--4]{ChenLabbe2017}.
+For a projective convex framework, see \cite{DGKLM2025}.
+These references do not supply a classification in every signature.
+
+
+\subsection{The imaginary convex body and the convex core}
+What is the relationship between the imaginary convex body and
+the convex core in the hyperbolic setting, and how can it be generalized?
+
+
+\par\medskip
+\noindent\textbf{Status.} Solved in the Lorentzian setting; partially solved in general. Extensions of the convex-core interpretation to other signatures require additional arguments.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Dyer--Hohlweg--Ripoll explain the Lorentzian convex-core interpretation
+in \cite[Section~7.4]{DHR}. For projective reflection groups,
+\cite[Section~5]{DGKLM2025} studies the minimal invariant convex subset
+of the Tits--Vinberg domain. Keep the imaginary cone, its closure,
+and the convex core quotient distinct when comparing the constructions.
+
+\subsection{Reflection groups of infinite covolume}
+How do these relationships extend to discrete reflection groups
+of infinite covolume?
+
+
+\par\medskip
+\noindent\textbf{Status.} Lorentzian limit-set identification solved. The equality between root and hyperbolic limit sets includes infinite-covolume groups. Further geometric conclusions require separate hypotheses.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The Lorentzian equality between root and hyperbolic limit sets
+\cite{HPR2020} is not confined to lattices. The Cartan-matrix criteria
+of \cite[Theorems~1.3 and~1.8]{DGKLM2025} provide further reflection-group
+examples and a projective replacement for classical convex cocompactness.
+They do not assert convex cocompactness for every infinite-covolume group.
+
+\section{Dynamics of the Projective Action of \texorpdfstring{$W$}{W}}
+
+\subsection{Orbit limit sets of arbitrary directions}
+
+Another natural question concerns the dynamics of the
+projective action of $W$ on all directions of the vector
+space $V$, rather than only on the directions of roots
+and the imaginary cone.
+
+For weakly hyperbolic root systems, previous work of
+Chen and Labbé shows that $E(\Phi)$ coincides with
+the set of limit directions arising from the projective
+action on the weights of the root system.
+
+However, limit sets of orbits of other directions may
+also contain points outside $E(\Phi)$.
+
+Thus, it is natural to investigate the general structure
+of the limit sets arising from the projective action
+of $W$ on arbitrary directions of $V$.
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Lorentzian orbit accumulation has substantial results, but no complete classification for arbitrary directions and signatures was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Chen--Labb\'e prove that any light-like accumulation direction of
+an injective orbit sequence in a Lorentzian system is a limit root
+\cite[Theorem~2.6]{ChenLabbe2017}. Their Section~4 also bounds the full set of
+limit directions using unimodular eigenspaces and the reflection
+arrangement; Section~4.4 retains further open questions even there.
+Thus this subsection has substantial partial answers, not a complete
+classification of all orbit closures in arbitrary signature.
+
+\section{Ergodic Theory for the \texorpdfstring{$W$}{W}-Action on \texorpdfstring{$E$}{E}}
+
+A classical problem in the ergodic theory of discrete
+groups is to determine whether a group acting on its
+limit set admits an invariant measure, whether such
+a measure is unique, and how to construct it.
+
+In the present setting, a natural problem is to study
+the existence and properties of $W$-invariant measures
+on $E(\Phi)$.
+
+\subsection{Existence of invariant measures}
+Under what conditions does $E(\Phi)$ admit a $W$-invariant
+Borel probability measure?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. The affine singleton supports an invariant probability measure; the non-elementary Lorentzian limit set supports none. No classification in full generality was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+A distinction is necessary. Patterson--Sullivan theory constructs
+an equivariant \emph{family} of conformal measures, not generally a
+$W$-invariant probability measure at one base point \cite{Sullivan1979}.
+In a non-elementary Lorentzian case there is no invariant probability
+measure on $E$: invariance under a loxodromic element and recurrence
+force support on its two fixed points; two independent loxodromic
+elements have disjoint fixed-point pairs. In an irreducible affine
+system, by contrast, the Dirac mass on the unique limit root is invariant.
+These are elementary consequences in the indicated cases, not a
+classification for all signatures.
+
+\subsection{Uniqueness of invariant measures}
+When such a measure exists, under what conditions is it unique?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. The affine singleton case is unique; the non-elementary Lorentzian case has no invariant probability. General uniqueness requires a separate existence analysis.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+For invariant probabilities, the affine singleton case is unique,
+whereas the non-elementary Lorentzian case in the preceding subsection
+has none. Uniqueness results for conformal densities, such as the
+critical-exponent and ergodicity theory in \cite{Sullivan1979}, concern
+a different object and have their own hypotheses. Likewise,
+$p$-stationarity does not mean invariance under every element of $W$.
+
+\subsection{Construction of invariant measures}
+How can such invariant probability measures be constructed?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved; existence is an obstruction. Stationary probabilities and conformal densities do not automatically yield invariant probabilities.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The classical construction uses weighted orbit sums and a limit at
+the critical exponent \cite{Patterson1976,Sullivan1979}; its output is
+conformal. A separate elementary construction always yields a stationary
+probability on nonempty compact $E$: for a finitely supported probability
+$p$ on $W$, put $P\nu=\sum_w p(w)w_*\nu$ and take a weak limit of
+$N^{-1}\sum_{k=0}^{N-1}P^k\nu$. Since
+$P\nu_N-\nu_N=(P^N\nu-\nu)/N$, the limit is $P$-stationary.
+This argument supplies existence but neither $W$-invariance nor uniqueness.
+
+\subsection{Hausdorff dimension}
+Furthermore, when the root system is of indefinite
+type but not hyperbolic, the set $E(\Phi)$ may exhibit
+fractal properties.
+
+This leads to another natural question:
+\[
+\boxed{
+\text{What is the Hausdorff dimension of }E(\Phi)?
+}
+\]
+
+For example, for the standard Tits realization of
+the universal Coxeter group of rank four,
+$E(\Phi)$ is the Apollonian gasket inscribed in a sphere,
+whose Hausdorff dimension is approximately
+\[
+\dim_H E(\Phi)\approx 1.3057.
+\]
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Particular examples, including the Apollonian gasket, admit rigorous dimension results. No general formula for arbitrary limit-root sets was verified.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The Apollonian special case has progressed well beyond a numerical
+estimate of $1.3057$. Vytnova--Wormell prove rigorous error bounds for
+128 decimal places \cite[Theorem~1.1]{VW2025}; in particular,
+\[
+\dim_H E=1.305686728049877\ldots
+\]
+for that realization. Their induced transfer-operator method handles
+parabolic dynamics. This does not give a formula for arbitrary Coxeter
+limit-root sets, nor show that dimension depends only on the abstract
+Coxeter group.
+
+\section{Construction of Converging Sequences,
+Combinatorics and Dominance Order}
+
+Many questions concerning the precise manner in which
+normalized roots converge to $E(\Phi)$ remain open.
+
+\subsection{Convergence rates and root depth}
+
+What convergence-rate bounds can be given in terms of root depth,
+and under which hypotheses?
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Norm--depth estimates control quadratic defect, rather than distance to a prescribed limit root.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+With a linearly independent simple-root basis,
+\cite[Lemma~2.10]{HLR} gives
+$\|\rho\|_2^2\geq 1+c(\depth(\rho)-1)$ for some $c>0$.
+Since $h(\rho)\geq\|\rho\|_2$, one obtains
+\[
+B(\widehat\rho,\widehat\rho)=h(\rho)^{-2}
+\leq\frac{1}{1+c(\depth(\rho)-1)}.
+\]
+This bounds the quadratic defect, not the distance to a prescribed
+limit root. Fixed-element spectral estimates are a separate special case;
+a general convergence-rate theorem for arbitrary chains was not verified.
+
+\subsection{Convergence of increasing root sequences}
+
+Let
+\[
+\rho_1\leq_{\mathrm{rt}}\rho_2\leq_{\mathrm{rt}}\cdots
+\]
+be a sequence of positive roots increasing in the root poset.
+Under what conditions does the normalized sequence
+$(\widehat{\rho}_n)_{n\geq1}$ converge?
+
+Here $\leq_{\mathrm{rt}}$ denotes the transitive closure of the
+elementary steps
+\[
+\rho<_{\mathrm{rt}}s_i\rho
+\qquad\text{whenever}\qquad
+B(\rho,\alpha_i)<0.
+\]
+In such a step, the coefficient of $\alpha_i$ increases strictly
+and all other simple-root coefficients remain unchanged.
+
+\par\medskip
+\noindent\textbf{Status.}
+Partially solved. Strict increase in the root poset does not
+guarantee convergence, even in the standard Tits realization
+and even when consecutive roots differ by a single simple
+reflection. A general criterion characterizing the convergent
+increasing sequences remains open here.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+By \cite[Theorem~2.7]{HLR}, every accumulation point of an
+injective sequence of normalized positive roots is isotropic.
+The example below shows that a single strictly increasing chain
+can have accumulation points supported on disjoint subsets of
+the simple roots.
+
+\begin{proposition}
+\label{prop:nonconvergent-root-poset-chain}
+For every $a\geq1$, consider the rank-six based root system with
+simple roots $\alpha_1,\ldots,\alpha_6$ and Gram matrix given by
+\[
+B(\alpha_i,\alpha_j)=
+\begin{cases}
+  1,  & i=j,\\
+  -a, & |i-j|=1,\\
+  0,  & |i-j|>1.
+\end{cases}
+\]
+There exists a sequence of positive roots
+\[
+\rho_0<_{\mathrm{rt}}\rho_1<_{\mathrm{rt}}\rho_2
+<_{\mathrm{rt}}\cdots
+\]
+in which every step is a simple reflection and whose normalized
+sequence has at least two distinct accumulation points.
+In particular, this occurs for the standard Tits realization
+$a=1$.
+\end{proposition}
+
+\begin{proof}
+Start with the positive root
+\[
+\rho_0=s_4\alpha_3=\alpha_3+2a\alpha_4.
+\]
+We interleave the following two sequences of reflections, preserving
+the indicated order within each sequence:
+\[
+s_2,s_1,s_2,s_1,\ldots,
+\qquad
+s_5,s_6,s_5,s_6,\ldots.
+\]
+Write the current root as $\rho=\sum_{i=1}^6 c_i\alpha_i$.
+Throughout the construction,
+\[
+c_3=1,\qquad c_4=2a.
+\]
+The first sequence changes only $(c_1,c_2)$, and the second
+changes only $(c_5,c_6)$. Thus either sequence can be paused
+and resumed without affecting its subsequent coordinate updates.
+
+We first verify that every reflection used is an upward step.
+On either side, write $(x,y)$ for the inner and outer coordinates,
+respectively, and let $b$ denote the fixed central coordinate
+adjacent to $x$. Thus
+\[
+(x,y,b)=(c_2,c_1,1)
+\quad\text{or}\quad
+(x,y,b)=(c_5,c_6,2a).
+\]
+Starting at $(x,y)=(0,0)$, the two reflections act alternately by
+\[
+(x,y)\longmapsto(2a(b+y)-x,y),
+\qquad
+(x,y)\longmapsto(x,2ax-y).
+\]
+Let $d_k$ be the increment of the coordinate changed at the
+$k$th reflection on this side. The displayed formulas give
+\[
+d_1=2ab,\qquad d_2=2a\,d_1,\qquad
+d_{k+1}=2a\,d_k-d_{k-1}\quad(k\geq2).
+\]
+Since $a\geq1$ and $b>0$, we have $d_2>d_1>0$. Moreover,
+\[
+d_{k+1}-d_k
+=(2a-2)d_k+(d_k-d_{k-1}),
+\]
+so induction gives $d_{k+1}>d_k>0$ for every $k$.
+At a step using $s_i$, the increment is $-2B(\rho,\alpha_i)$.
+Hence every step gives $\rho<_{\mathrm{rt}}s_i\rho$.
+This argument includes $a=1$, for which $d_k=2bk$.
+
+It remains to choose the interleaving. Set
+\[
+L=c_1+c_2,\qquad R=c_5+c_6,\qquad C=c_3+c_4=1+2a,
+\]
+so that $h(\rho)=L+C+R$.
+At stage $j\geq1$, apply reflections from the first sequence
+until
+\[
+L\geq j(R+C),
+\]
+and then apply reflections from the second sequence until
+\[
+R\geq j(L+C).
+\]
+Each block terminates: its active coordinate sum grows without
+bound if continued, while the other sum remains fixed.
+Denote the roots at the ends of the two blocks by
+$\rho_j^{L}$ and $\rho_j^{R}$, respectively.
+
+Consider the linear functional
+\[
+F\left(\sum_{i=1}^6 z_i\alpha_i\right)=z_1+z_2.
+\]
+The stopping conditions give
+\[
+F(\widehat{\rho_j^{L}})\geq\frac{j}{j+1},
+\qquad
+F(\widehat{\rho_j^{R}})\leq\frac{1}{j+1}.
+\]
+All normalized positive roots lie in the compact simplex
+$\operatorname{conv}\{\alpha_1,\ldots,\alpha_6\}$.
+Thus the left and right block endpoints have accumulation
+points $x_L$ and $x_R$ satisfying
+\[
+F(x_L)=1,\qquad F(x_R)=0.
+\]
+In particular, $x_L\neq x_R$. More precisely, the fixed central
+coordinates vanish after normalization as the height tends to
+infinity, so
+\[
+x_L\in\operatorname{conv}\{\alpha_1,\alpha_2\},
+\qquad
+x_R\in\operatorname{conv}\{\alpha_5,\alpha_6\}.
+\]
+Hence the full normalized sequence does not converge.
+\end{proof}
+
+\begin{remark}
+For $a=2,3$, this construction uses the same Gram matrices as
+the rank-six dominance-chain examples discussed below, but the
+chains themselves are different. In those examples, the odd
+and even roots lie in $W\alpha_3$ and $W\alpha_4$, respectively.
+Indeed, for integral $a$, each simple reflection preserves every
+simple-root coordinate modulo $2$, so these two orbits are
+disjoint. Since comparable roots in the root poset must lie
+in the same $W$-orbit, no odd term of the original dominance
+chain is comparable in the root poset with an even term.
+By contrast, every root in
+Proposition~\ref{prop:nonconvergent-root-poset-chain}
+belongs to $W\alpha_3$ and every step is explicitly upward.
+\end{remark}
+\subsection{Infinite reduced words and periodic root sequences}
+
+The convergence problem for increasing root sequences leads to
+the study of the possible accumulation points of
+\[
+\widehat{s_k s_{k-1}\cdots s_1(\alpha_0)},
+\qquad k\in\mathbb N,
+\]
+where $\alpha_0\in\Delta$ and
+\[
+\cdots s_k\cdots s_1
+\]
+is a left-infinite reduced word of $W$.
+
+The periodic case is of particular interest.
+If the sequence of generators has period $p$, put
+\[
+w=s_p\cdots s_1,
+\qquad
+u_j=s_j\cdots s_1
+\quad(0\le j<p),
+\]
+with $u_0=1$.
+Then
+\[
+s_{np+j}\cdots s_1(\alpha_0)
+=
+u_jw^n(\alpha_0).
+\]
+Thus the periodic case reduces to understanding the normalized
+orbits of a fixed element, together with the finitely many
+intermediate phases.
+For an alternating word on two generators, the corresponding
+infinite dihedral subsystem provides limit roots in $E_2(\Phi)$.
+Different phases may have different limits, so convergence
+along complete periods does not by itself imply convergence
+of the full sequence.
+
+\par\medskip
+\noindent\textbf{Status.}
+Partially solved.
+Theorem~\ref{thm:normalized-root-orbits} below proves that every
+infinite root orbit under a fixed element has a unique normalized
+limit, without a restriction on the signature of the associated
+bilinear form.
+Corollary~\ref{cor:periodic-root-phases} consequently determines
+the accumulation set of a periodic fixed-root sequence with
+an infinite period orbit.
+Finite root orbits are periodic and must be treated separately.
+The arguments below do not settle the convergence problem for
+arbitrary nonperiodic left-infinite reduced words.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+The Lorentzian spectral analysis in
+\cite[Theorems~3.8 and~3.10]{ChenLabbe2017}
+describes parabolic and hyperbolic iterates and identifies
+their light-like eigendirections as limit roots.
+For essential elements of irreducible infinite non-affine
+Coxeter groups, Krammer proves that the spectral radius is
+greater than one and is a simple eigenvalue
+\cite[Section~6.5]{Krammer2009}.
+The strict spectral gap is stated there as
+Conjecture~6.5.16; it is proved below using a trace estimate,
+rather than assumed.
+A separate argument shows that an infinite root orbit cannot
+have zero projection onto the attracting eigenspace of an
+essential non-affine parabolic component.
+
+Related results concern the inversion roots
+\[
+\beta_k=s_1\cdots s_{k-1}(\alpha_{s_k}).
+\]
+For Lorentzian systems, Chen--Labb\'e prove uniqueness of the
+accumulation point of an infinite reduced-word inversion set
+\cite[Theorem~2.9]{ChenLabbe2017}.
+Hohlweg--Labb\'e formulate a connected-word conjecture in general
+and discuss disconnected examples with several accumulation
+points \cite[Section~4.2, Conjecture~3]{HL2016}.
+These statements concern inversion-root sequences and should
+be distinguished from the fixed-root sequences considered here.
+
+\par\medskip
+Throughout the proof, $(W,S)$ has finite rank and
+\[
+V=\bigoplus_{s\in S}\mathbb R\alpha_s,
+\qquad
+\Delta=\{\alpha_s:s\in S\},
+\qquad
+P=\sum_{s\in S}\mathbb R_{\geq0}\alpha_s.
+\]
+The symmetric bilinear form $B$ satisfies
+$B(\alpha_s,\alpha_s)=1$ and the usual Coxeter root-basis
+conditions; it is allowed to be degenerate.
+We write
+\[
+h\left(\sum_{s\in S}c_s\alpha_s\right)
+=\sum_{s\in S}c_s,
+\qquad
+\widehat{\beta}=\frac{\beta}{h(\beta)}
+\quad(\beta\in\Phi).
+\]
+Let $\mathcal T\subseteq V^*$ denote the dual Tits cone.
+An element $u\in W$ is called \emph{essential} if its parabolic
+closure satisfies $\operatorname{Pc}(u)=W$.
+
+\begin{lemma}
+\label{lem:periodic-trace-bound}
+For every $g\in W$,
+\[
+\operatorname{tr}_V(g)\geq \dim V-2\ell(g).
+\]
+Consequently,
+\[
+\operatorname{tr}_V(g^n)
+\geq \dim V-2n\ell(g)
+\qquad(n\geq1).
+\]
+\end{lemma}
+
+\begin{proof}
+We first show that
+\[
+\ell(vs)=\ell(sv)=\ell(v)+1
+\quad\Longrightarrow\quad
+B(\alpha_s,v\alpha_s)\leq1.
+\]
+The length assumptions imply that both $v\alpha_s$ and
+$v^{-1}\alpha_s$ are positive roots.
+Suppose that $B(\alpha_s,v\alpha_s)>1$.
+The dominance criterion
+\cite[Proposition~1.4.7(b)]{Krammer2009}
+implies that $\alpha_s$ and $v\alpha_s$ are comparable.
+A simple root cannot strictly dominate another positive root:
+indeed, its simple reflection makes it negative while preserving
+every other positive root.
+It follows that
+\[
+v\alpha_s\succ\alpha_s.
+\]
+By $W$-invariance of dominance,
+\[
+\alpha_s\succ v^{-1}\alpha_s,
+\]
+which is again impossible.
+This proves the claimed inequality.
+
+We now use strong induction on $\ell(g)$.
+The assertion is immediate for $g=1$.
+Choose an element $z$ of minimal length in the conjugacy class
+of $g$.
+If $z\neq1$, write
+\[
+z=vs,
+\qquad
+\ell(v)=\ell(z)-1.
+\]
+Since $sv=szs$ is conjugate to $z$, minimality gives
+\[
+\ell(sv)=\ell(vs)=\ell(v)+1.
+\]
+The reflection formula yields
+\[
+\operatorname{tr}_V(vs)
+=
+\operatorname{tr}_V(v)-2B(\alpha_s,v\alpha_s).
+\]
+Therefore, by the preceding inequality and the induction
+hypothesis,
+\[
+\begin{aligned}
+\operatorname{tr}_V(g)
+&=\operatorname{tr}_V(z)\\
+&\geq\operatorname{tr}_V(v)-2\\
+&\geq\dim V-2\ell(z)\\
+&\geq\dim V-2\ell(g).
+\end{aligned}
+\]
+The assertion for powers follows from
+$\ell(g^n)\leq n\ell(g)$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:periodic-strict-gap}
+Suppose that $W$ is irreducible, infinite and non-affine,
+and let $u\in W$ be essential.
+Then the spectral radius $\rho$ of $u$ satisfies $\rho>1$,
+is an algebraically simple eigenvalue, and
+\[
+|\lambda|<\rho
+\]
+for every other complex eigenvalue $\lambda$ of $u$.
+\end{lemma}
+
+\begin{proof}
+Set
+\[
+R=\operatorname{rad}B,
+\qquad
+\overline V=V/R,
+\]
+and let $A$ denote the action induced by $u$ on $\overline V$.
+The quotient is again a root-basis realization of $W$
+by \cite[Proposition~6.1.3]{Krammer2009}.
+
+Krammer's results
+\cite[Lemma~6.5.4 and Theorem~6.5.14]{Krammer2009}
+show that the spectral radius $\rho>1$ of $A$ is an
+algebraically simple eigenvalue and that all eigenvalues
+of modulus $\rho$ are semisimple.
+Moreover, every positive power of $u$ is essential.
+Indeed, the set of odd reflections is unchanged on passing
+to a positive power, and these reflections generate the
+infinite components of the parabolic closure
+\cite[Lemma~5.2.7 and Corollary~5.8.7]{Krammer2009}.
+Hence $\rho^m$ is an algebraically simple eigenvalue of $A^m$
+for every $m\geq1$.
+
+Every element of $W$ fixes $R$ pointwise.
+Lemma~\ref{lem:periodic-trace-bound} therefore gives
+\[
+\operatorname{tr}_{\overline V}(A^n)
+\geq\dim\overline V-2n\ell(u).
+\]
+Let $F\subseteq\overline V$ be the real spectral subspace
+corresponding to all eigenvalues of modulus $\rho$, and put
+\[
+T=\rho^{-1}A|_F.
+\]
+Since $T$ is semisimple and all its eigenvalues have modulus
+one, the closure
+\[
+K=\overline{\{T^n:n\in\mathbb Z\}}
+\]
+is a compact abelian group.
+Define
+\[
+f(k)=\operatorname{tr}_F(k)
+\qquad(k\in K).
+\]
+This function is real-valued, and
+\[
+\rho^{-n}\operatorname{tr}_{\overline V}(A^n)
+=
+f(T^n)+o(1).
+\]
+Every element of $K$ is a limit of a sequence $T^{n_j}$ with
+$n_j\to\infty$.
+The trace lower bound consequently implies
+\[
+f(k)\geq0
+\qquad(k\in K).
+\]
+
+Let $\mu$ be normalized Haar measure on $K$.
+Decompose the complex representation $F_{\mathbb C}$ into
+characters of $K$:
+\[
+f=\sum_{\chi}m_\chi\chi.
+\]
+The multiplicity of the trivial character is one, since
+the eigenvalue $\rho$ of $A$ is simple.
+Thus
+\[
+\int_K f\,d\mu=1.
+\]
+
+Suppose that a nontrivial character $\chi$ occurs.
+By character orthogonality,
+\[
+m_\chi=\int_K f\,\overline{\chi}\,d\mu.
+\]
+Since $f\geq0$ and $|\chi|=1$,
+\[
+1\leq m_\chi
+\leq\int_K f\,d\mu=1.
+\]
+It follows that $m_\chi=1$ and
+\[
+\int_K f(k)\bigl(1-\operatorname{Re}\chi(k)\bigr)\,d\mu(k)=0.
+\]
+The integrand is continuous and nonnegative.
+Hence $\chi(k)=1$ whenever $f(k)>0$.
+Since
+\[
+f(1)=\dim F>0,
+\]
+the kernel of $\chi$ contains a neighborhood of the identity.
+It is therefore an open subgroup of the compact group $K$,
+so $\chi(K)$ is finite.
+
+Choose $m\geq1$ such that $\chi(T)^m=1$.
+The trivial-character space and the $\chi$-space then both
+contribute to the eigenvalue $\rho^m$ of $A^m$.
+This contradicts the algebraic simplicity of that eigenvalue.
+Thus no nontrivial character occurs, proving that $\rho$ is
+the unique eigenvalue of modulus $\rho$.
+
+Finally, the action on $R$ is the identity.
+Passing from $\overline V$ back to $V$ only adds eigenvalues
+equal to $1$, so the conclusion also holds on $V$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:periodic-ambient-root}
+Let $J\subseteq S$ be such that $W_J$ is irreducible,
+infinite and non-affine, and let $u\in W_J$ satisfy
+\[
+\operatorname{Pc}_{W_J}(u)=W_J.
+\]
+Let $\rho>1$ be its spectral radius on $V_J$.
+For every root $\beta\in\Phi$ with infinite $u$-orbit,
+there exists $v\in V_J\setminus\{0\}$ such that
+\[
+\rho^{-n}u^n\beta\longrightarrow v.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal T_J\subseteq V_J^*$ denote the dual Tits cone
+of the subsystem.
+The axis results
+\cite[Theorems~6.5.10 and~6.5.14]{Krammer2009}
+provide nonzero linear functionals $f_+,f_-\in V_J^*$ such that,
+after rescaling,
+\[
+f_\pm\circ u=\rho^{\pm1}f_\pm,
+\qquad
+x_J:=f_++f_-\in\operatorname{int}\mathcal T_J.
+\]
+If $B|_{V_J}$ is degenerate, apply these results first to
+$V_J/\operatorname{rad}(B|_{V_J})$ and pull the functionals
+back to $V_J$.
+The pulled-back axis point is still an interior point:
+after moving it into the fundamental closed chamber, its
+zero set of simple roots is spherical, exactly as in the
+quotient realization.
+We use here the characterization of the interior of the
+Tits cone by facets with finite stabilizer
+\cite[Corollary~2.2.5]{Krammer2009}.
+
+Since
+\[
+(u-I)V\subseteq V_J,
+\]
+define extensions to $V$ by
+\[
+F_\pm(z)
+=
+\frac{f_\pm((u-I)z)}{\rho^{\pm1}-1}.
+\]
+They satisfy
+\[
+F_\pm|_{V_J}=f_\pm,
+\qquad
+F_\pm\circ u=\rho^{\pm1}F_\pm.
+\]
+
+There exists $X\in\operatorname{int}\mathcal T$ whose
+restriction to $V_J$ is $x_J$.
+To see this, move $x_J$ into a fundamental face for $W_J$.
+Its zero set is spherical.
+Extend it by assigning strictly positive values to all
+simple roots outside $J$, and then move the extension back.
+The resulting functional lies in the interior of the
+ambient Tits cone by the same finite-stabilizer criterion.
+
+Consequently,
+\[
+X=F_++F_-+\eta,
+\qquad
+\eta|_{V_J}=0.
+\]
+Since $(u-I)V\subseteq V_J$, we have $\eta\circ u=\eta$, and
+therefore
+\[
+X(u^n\beta)
+=
+\rho^nF_+(\beta)
++\rho^{-n}F_-(\beta)
++\eta(\beta).
+\]
+
+For every $X\in\operatorname{int}\mathcal T$ and every
+$M>0$, only finitely many roots $\gamma$ satisfy
+$|X(\gamma)|\leq M$.
+This follows by applying
+\cite[Lemma~5.7.1]{Krammer2009}
+to $\gamma$ and $-\gamma$.
+Since an infinite cyclic root orbit has no repetitions,
+\[
+|X(u^n\beta)|\longrightarrow\infty.
+\]
+The preceding formula then forces
+\[
+F_+(\beta)\neq0.
+\]
+
+By Lemma~\ref{lem:periodic-strict-gap}, $\rho$ is simple
+and strictly dominant on $V_J$.
+The action induced by $u$ on $V/V_J$ is the identity,
+so the same assertion holds on $V$.
+Let $P_\rho$ be the corresponding spectral projection.
+Because $F_+\circ u=\rho F_+$,
+\[
+F_+=F_+\circ P_\rho.
+\]
+Thus $P_\rho\beta\neq0$, and the strict spectral gap gives
+\[
+\rho^{-n}u^n\beta\longrightarrow P_\rho\beta.
+\]
+Finally, a $\rho$-eigenvector belongs to $V_J$, since $u$
+acts trivially on $V/V_J$ and $\rho\neq1$.
+\end{proof}
+
+\begin{theorem}[Convergence of normalized root orbits]
+\label{thm:normalized-root-orbits}
+Let $w\in W$ and $\alpha\in\Phi$.
+If
+\[
+\mathcal O_w(\alpha)
+:=
+\{w^n\alpha:n\geq0\}
+\]
+is infinite, then there exists a unique point
+$x_{w,\alpha}\in E(\Phi)$ such that
+\[
+\widehat{w^n\alpha}\longrightarrow x_{w,\alpha}.
+\]
+
+If $\mathcal O_w(\alpha)$ is finite, the normalized sequence
+is periodic and converges if and only if
+$w\alpha=\pm\alpha$, in which case it is constant with
+value $\widehat{\alpha}$.
+\end{theorem}
+
+\begin{proof}
+We first establish the required asymptotics for affine
+parabolic components.
+
+Suppose that $W_J$ is irreducible affine and that
+$B|_{V_J}$ is positive semidefinite, with
+\[
+\operatorname{rad}(B|_{V_J})=\mathbb R\delta,
+\qquad
+\delta\in P\setminus\{0\}.
+\]
+Every element of $W_J$ fixes $\delta$.
+For $u\in W_J$, choose $q\geq1$ such that $u^q$ acts
+trivially on $V_J/\mathbb R\delta$.
+Such a $q$ exists because the action on this quotient has
+finite image.
+Set
+\[
+N=u^q-I.
+\]
+On the ambient space $V$,
+\[
+NV\subseteq V_J,
+\qquad
+NV_J\subseteq\mathbb R\delta,
+\qquad
+N\delta=0.
+\]
+Hence $N^3=0$, and for every $\beta\in\Phi$,
+\[
+u^{qn}\beta
+=
+\beta+nN\beta+\binom n2N^2\beta.
+\]
+
+If $N^2\beta\neq0$, then $N^2\beta\in\mathbb R\delta$ is
+fixed by $u$.
+For $0\leq r<q$,
+\[
+u^{qn+r}\beta
+=
+u^r\beta+n\,u^rN\beta+\binom n2N^2\beta.
+\]
+It follows, uniformly over the finitely many residues $r$,
+that
+\[
+u^m\beta
+=
+m^2\frac{N^2\beta}{2q^2}+O(m).
+\]
+
+If $N^2\beta=0$ but $N\beta\neq0$, invariance of $B$ gives
+\[
+B(\beta+nN\beta,\beta+nN\beta)=B(\beta,\beta)=1.
+\]
+Comparing the quadratic coefficients yields
+\[
+B(N\beta,N\beta)=0.
+\]
+Since $N\beta\in V_J$ and $B|_{V_J}$ is positive
+semidefinite,
+\[
+N\beta\in\mathbb R\delta.
+\]
+Thus $uN\beta=N\beta$, and
+\[
+u^m\beta=m\frac{N\beta}{q}+O(1).
+\]
+
+If $N\beta=0$, then $u^q\beta=\beta$, so the orbit is finite.
+We have therefore proved that every infinite orbit of this
+affine component satisfies
+\[
+u^n\beta=n^d v+O(n^{d-1}),
+\qquad
+d\in\{1,2\},
+\qquad
+0\neq v\in\mathbb R\delta.
+\]
+
+There is one additional realization of an abstract affine
+component to consider.
+If $W_J=\langle s,t\rangle$ is infinite dihedral and
+\[
+B(\alpha_s,\alpha_t)=-c,
+\qquad c>1,
+\]
+then $B|_{V_J}$ is nondegenerate.
+An essential element is $(st)^k$ for some $k\neq0$, and
+its eigenvalues on $V_J$ are
+\[
+\rho=(c+\sqrt{c^2-1})^{2|k|}>1,
+\qquad
+\rho^{-1}.
+\]
+Moreover,
+\[
+V=V_J\oplus V_J^\perp,
+\]
+and $W_J$ fixes $V_J^\perp$ pointwise.
+If the $\rho$-component of $\beta$ were zero, its forward
+orbit would be bounded and hence finite, since the root
+system is locally finite.
+Thus every infinite orbit in this case satisfies
+\[
+\rho^{-n}u^n\beta\longrightarrow v
+\qquad
+\text{for some }v\in V_J\setminus\{0\}.
+\]
+All irreducible affine components of rank at least three
+have the usual positive semidefinite Gram form, so the
+preceding cases exhaust the affine possibilities.
+
+We now treat arbitrary $w$.
+First suppose that its parabolic closure is standard:
+\[
+\operatorname{Pc}(w)=W_I.
+\]
+Write
+\[
+I=I_1\sqcup\cdots\sqcup I_k
+\]
+for the decomposition into irreducible components.
+Then
+\[
+w=u_1\cdots u_k,
+\qquad
+u_i\in W_{I_i},
+\qquad
+\operatorname{Pc}_{W_{I_i}}(u_i)=W_{I_i}.
+\]
+The factors commute, and each factor fixes the root spaces
+of the other components pointwise.
+In particular,
+\[
+(u_i^n-I)V\subseteq V_{I_i},
+\qquad
+(u_j^n-I)V_{I_i}=0
+\quad(i\neq j).
+\]
+Expanding the product gives the exact identity
+\[
+w^n\alpha
+=
+\alpha+\sum_{i=1}^k(u_i^n\alpha-\alpha).
+\]
+
+If every $u_i$-orbit of $\alpha$ were finite, a common
+multiple of their periods would also be a period for the
+$w$-orbit.
+Hence at least one component orbit is infinite.
+
+For a non-affine infinite component,
+Lemma~\ref{lem:periodic-ambient-root} shows that an infinite
+component orbit satisfies
+\[
+u_i^n\alpha=\rho_i^n v_i+o(\rho_i^n),
+\qquad
+\rho_i>1,
+\qquad
+0\neq v_i\in V_{I_i}.
+\]
+The same form of asymptotics holds for an infinite
+dihedral component with parameter $c>1$.
+An infinite orbit in a positive semidefinite affine
+component has the polynomial asymptotics established above.
+All remaining component orbits are finite and therefore
+bounded.
+
+Suppose first that some component orbit has exponential
+growth, and let
+\[
+R=\max\{\rho_i:
+        \text{the $u_i$-orbit of $\alpha$ is infinite
+        and has exponential growth}\}.
+\]
+Then
+\[
+R^{-n}w^n\alpha
+\longrightarrow
+v:=\sum_{\rho_i=R}v_i.
+\]
+The nonzero summands belong to distinct coordinate subspaces
+$V_{I_i}$, so $v\neq0$.
+
+If no component orbit has exponential growth, let
+$d\in\{1,2\}$ be the largest degree of an infinite affine
+component orbit.
+Then
+\[
+n^{-d}w^n\alpha
+\longrightarrow
+v:=\sum_{d_i=d}v_i\neq0.
+\]
+Thus in either case there is a sequence of positive numbers
+$a_n\to\infty$ such that
+\[
+a_n^{-1}w^n\alpha\longrightarrow v\neq0.
+\]
+
+For general $w$, choose $g\in W$ such that
+\[
+p:=gwg^{-1}
+\]
+has standard parabolic closure, and set $\beta=g\alpha$.
+The orbit of $\beta$ under $p$ is infinite.
+Applying the preceding argument gives
+\[
+a_n^{-1}p^n\beta\longrightarrow v\neq0.
+\]
+Consequently,
+\[
+a_n^{-1}w^n\alpha
+=
+g^{-1}\bigl(a_n^{-1}p^n\beta\bigr)
+\longrightarrow g^{-1}v\neq0.
+\]
+We may therefore assume, without restriction, that
+\[
+a_n^{-1}w^n\alpha\longrightarrow v\neq0
+\]
+for the original $w$ and $\alpha$.
+
+Every root belongs to $P\cup(-P)$.
+Since $a_n>0$ and this union is closed,
+\[
+v\in(P\cup(-P))\setminus\{0\}.
+\]
+Hence $h(v)\neq0$, and
+\[
+\widehat{w^n\alpha}
+=
+\frac{a_n^{-1}w^n\alpha}
+     {h(a_n^{-1}w^n\alpha)}
+\longrightarrow
+\frac{v}{h(v)}.
+\]
+
+The roots in an infinite cyclic orbit are pairwise distinct.
+No two can be negatives of one another, since
+$w^m\alpha=-\alpha$ would imply $w^{2m}\alpha=\alpha$.
+Because all roots have squared length one, equal normalized
+roots differ only by a sign.
+Thus the normalized roots in the orbit are also pairwise
+distinct.
+Their limit therefore belongs to $E(\Phi)$.
+
+Finally, if the root orbit is finite, it is periodic.
+A periodic sequence converges precisely when it is constant.
+Here constancy is equivalent to
+$\widehat{w\alpha}=\widehat{\alpha}$, which, by preservation
+of squared length, is equivalent to $w\alpha=\pm\alpha$.
+\end{proof}
+
+\begin{remark}
+The assumption in
+Theorem~\ref{thm:normalized-root-orbits}
+concerns the infinitude of the root orbit, not merely
+the order of the group element.
+An infinite-order element may have finite root orbits.
+
+The conclusion also extends to a finite based root system
+whose simple roots are only positively independent.
+Choose a linear functional $h$ strictly positive on the
+simple roots, and lift the realization to the vector space
+having those roots as a formal basis.
+The natural map to the original realization is equivariant
+and cannot annihilate a nonzero vector in the positive cone.
+Applying the preceding proof to the lifted root orbit,
+with the pulled-back normalizing functional, and then
+projecting gives the same convergence conclusion.
+\end{remark}
+
+\begin{corollary}[Intermediate phases of a periodic word]
+\label{cor:periodic-root-phases}
+Suppose that the generator sequence has period $p$, and put
+\[
+w=s_p\cdots s_1,
+\qquad
+u_j=s_j\cdots s_1
+\quad(0\leq j<p),
+\qquad
+u_0=1.
+\]
+Assume that the orbit $\{w^n\alpha_0:n\geq0\}$ is infinite,
+and let
+\[
+x=\lim_{n\to\infty}\widehat{w^n\alpha_0}.
+\]
+Then every phase converges:
+\[
+\lim_{n\to\infty}
+\widehat{s_{np+j}\cdots s_1(\alpha_0)}
+=
+u_j\cdot x
+=
+\widehat{u_jx}.
+\]
+The accumulation set of the full normalized sequence is
+exactly
+\[
+\{u_j\cdot x:0\leq j<p\}.
+\]
+In particular, the full sequence converges if and only if
+\[
+u_j\cdot x=x
+\qquad(0\leq j<p).
+\]
+\end{corollary}
+
+\begin{proof}
+By the proof of
+Theorem~\ref{thm:normalized-root-orbits},
+there exist positive numbers $a_n\to\infty$ and a nonzero
+vector $v$ such that
+\[
+a_n^{-1}w^n\alpha_0\longrightarrow v,
+\qquad
+x=\widehat v.
+\]
+For each $j$,
+\[
+a_n^{-1}u_jw^n\alpha_0\longrightarrow u_jv\neq0.
+\]
+The vectors $u_jw^n\alpha_0$ are roots.
+Thus
+\[
+u_jv\in(P\cup(-P))\setminus\{0\},
+\]
+so $h(u_jv)\neq0$, and normalization gives
+\[
+\widehat{u_jw^n\alpha_0}
+\longrightarrow
+\widehat{u_jv}
+=
+u_j\cdot x.
+\]
+Each phase has infinitely many terms, so each displayed
+limit is an accumulation point.
+Conversely, every convergent subsequence of the full
+sequence has a further subsequence with a fixed residue
+class modulo $p$, and its limit must be the corresponding
+phase limit.
+The assertion about convergence follows.
+\end{proof}
+
+\begin{remark}
+If the period orbit of $\alpha_0$ is finite, choose $q\geq1$
+with $w^q\alpha_0=\alpha_0$.
+Then the full root sequence is periodic with period dividing
+$pq$.
+Its normalized sequence converges exactly when all terms
+in one such period have the same normalization.
+Thus finite period orbits are also completely determined,
+but their accumulation points need not be limit roots.
+\end{remark}
+\subsection{Uniqueness of limits of dominance chains}
+
+Let $(\rho_n)_{n\ge1}$ be an infinite sequence of positive roots
+which is strictly increasing in dominance order:
+\[
+\rho_1\prec\rho_2\prec\cdots.
+\]
+Must the normalized sequence $(\widehat{\rho}_n)_{n\ge1}$
+converge to a unique point of $E(\Phi)$?
+
+\par\medskip
+\noindent\textbf{Status.}
+\(\checkmark\) \textit{Answered negatively in general in
+\cite{WangUniqueness}.}
+That manuscript proves uniqueness in rank at most five and
+for nondegenerate systems of signature $(r-1,1)$ or $(2,r-2)$.
+It also constructs rank-six strict dominance chains with exactly
+two distinct normalized accumulation points, in signatures
+$(3,3)$ and $(4,2)$.
+These counterexamples use Gram parameters strictly below $-1$
+on infinite edges; they do not settle the general question
+restricted to the standard Tits realization, where those
+parameters are fixed at $-1$.
+
+\par\medskip
+\noindent\textbf{Previous work and subsequent progress.}
+Any two accumulation points of a normalized strict dominance
+chain are isotropic and mutually orthogonal
+\cite[Proposition~6.8(b)]{DHR}.
+This gives uniqueness in the Lorentzian case, but orthogonality
+alone does not imply proportionality when the Witt index
+is at least two.
+
+Fu--Reeves--Xu prove uniqueness when a chain has an accumulation
+point arising from an affine reflection subgroup
+\cite[Proposition~6.5]{FRX2026}.
+The preprint \cite{FuEtAl2026} establishes rank-three uniqueness
+(Proposition~4.5), identifies the accumulation supports with
+the eventual chain support (Theorem~4.8), and proves uniqueness
+when an accumulation point is Pos-finite (Proposition~4.14).
+Its announcement of a forthcoming general treatment should
+be distinguished from the results proved there.
+
+The supplied manuscript \cite{WangUniqueness} provides proofs
+of further positive cases and explicit higher-rank
+counterexamples, as follows.
+
+\begin{theorem}\label{thm:main}
+For the geometric realizations considered here, allowing arbitrary
+Gram parameters at most $-1$ on infinite edges, the following
+statements hold.
+\begin{enumerate}
+    \item If $|S|\le5$, every infinite strict dominance chain
+    has a normalized sequence converging to a unique point
+    of $E(\Phi)$.
+
+    \item In arbitrary rank $r$, the same conclusion holds
+    for every nondegenerate system of signature
+    \[
+    (r-1,1)
+    \qquad\text{or}\qquad
+    (2,r-2).
+    \]
+
+    \item More generally, if the system is irreducible and
+    its inertia is $(p,1,k)$, with $p,k\ge1$, every infinite
+    strict dominance chain has a unique normalized limit.
+
+    \item There exist irreducible rank-six systems of
+    signatures $(3,3)$ and $(4,2)$ admitting infinite strict
+    dominance chains whose normalized sequences have exactly
+    two distinct accumulation points.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Sources and proof structure]
+Parts~(1) and~(2) are
+\cite[Theorem~2.1]{WangUniqueness}.
+The proof combines the small-rank inertia analysis, quotient
+lifting, the relative-boundary argument in signature $(3,2)$,
+and its extension to positive index two.
+Part~(3) is
+\cite[Corollary~2.18]{WangUniqueness}.
+Part~(4) is
+\cite[Proposition~4.10 and Remark~4.11]{WangUniqueness}.
+\end{proof}
+
+\par\medskip
+\noindent\textbf{The rank-six counterexamples.}
+For $a>1$, consider the path Gram matrix
+\[
+G_a=
+\begin{pmatrix}
+1&-a&0&0&0&0\\
+-a&1&-a&0&0&0\\
+0&-a&1&-a&0&0\\
+0&0&-a&1&-a&0\\
+0&0&0&-a&1&-a\\
+0&0&0&0&-a&1
+\end{pmatrix}.
+\]
+Its eigenvalues are
+\[
+1-2a\cos\frac{k\pi}{7},
+\qquad 1\le k\le6.
+\]
+Thus $G_3$ has signature $(3,3)$ and $G_2$ has signature $(4,2)$.
+
+Here is the structure of the construction in
+\cite[Section~4.3]{WangUniqueness}.
+Put
+\[
+g=s_1s_2,
+\qquad
+t=s_5s_6,
+\qquad
+r=a+\sqrt{a^2-1},
+\]
+and define
+\[
+x=\frac{r\alpha_1+\alpha_2}{r+1},
+\qquad
+y=\frac{r\alpha_5+\alpha_6}{r+1}.
+\]
+These are distinct orthogonal limit roots.
+The positive roots
+\[
+u_m=g^m\alpha_3,
+\qquad
+v_m=t^m\alpha_4
+\]
+satisfy
+\[
+\widehat{u_m}\longrightarrow x,
+\qquad
+\widehat{v_m}\longrightarrow y,
+\qquad
+B(u_m,v_\ell)=-a
+\quad(m,\ell\ge0).
+\]
+
+Choose rapidly increasing integers $M_n$, and put
+\[
+\gamma_n=
+\begin{cases}
+u_{M_n},&n\text{ odd},\\
+v_{M_n},&n\text{ even},
+\end{cases}
+\qquad
+w_0=1,
+\qquad
+w_n=s_{\gamma_1}\cdots s_{\gamma_n},
+\qquad
+\beta_n=w_{n-1}\gamma_n.
+\]
+The constant cross-pairing gives
+\[
+s_{\gamma_n}\gamma_{n+1}
+=\gamma_{n+1}+2a\gamma_n
+\succ\gamma_n.
+\]
+By $W$-invariance of dominance,
+\[
+\beta_{n+1}\succ\beta_n.
+\]
+The roots $\beta_n$ are positive, so this is an infinite strict
+dominance chain.
+
+The integers $M_n$ are chosen so that
+$\widehat{\beta_n}$ alternately approximates the moving endpoints
+\[
+\widehat{w_{n-1}x},
+\qquad
+\widehat{w_{n-1}y},
+\]
+with summable errors.
+On each odd step, the second endpoint is fixed; on each even
+step, the first endpoint is fixed.
+The resulting endpoint sequences converge to distinct points
+$X,Y\in E(\Phi)$, and
+\[
+\widehat{\beta}_{2n-1}\longrightarrow X,
+\qquad
+\widehat{\beta}_{2n}\longrightarrow Y,
+\qquad
+X\ne Y,
+\qquad
+B(X,Y)=0.
+\]
+For $a=3$, the manuscript gives the explicit choice $M_n=10^n$.
+For $a=2$, it chooses the exponents recursively.
+See \cite[Proposition~4.10 and Remark~4.11]{WangUniqueness}
+for the estimates and the complete proof.
+
+\begin{remark}
+Adjoining $r-6$ orthogonal finite rank-one factors preserves
+these chains and yields counterexamples of signatures
+\[
+(r-3,3)
+\qquad\text{and}\qquad
+(r-2,2)
+\qquad(r\ge6).
+\]
+These higher-rank extensions are reducible; the rank-six
+examples themselves are irreducible.
+
+The constructions are existence results.
+They do not assert failure for every system outside the
+positive families above, nor do they provide counterexamples
+in every remaining signature.
+A complete classification by signature is not established.
+\end{remark}
+
+\begin{remark}
+The counterexamples here concern actual strict dominance chains.
+They therefore give a negative answer to general uniqueness
+independently of the counterexamples concerning convex hulls,
+facial restriction, or exposed points.
+
+However, the path constructions use $a=2$ or $a=3$.
+Setting $a=1$ makes the two outer dihedral blocks affine and
+invalidates the exponential-attraction argument used above.
+The general uniqueness question for standard Tits realizations
+is consequently not resolved by these examples.
+\end{remark}
+\subsection{Ends of the dominance order}
+
+One should distinguish limits of dominance-increasing chains from
+limits of auxiliary sequences associated with such chains; see
+\cite[Proposition~6.8(a) and Section~7.7]{DHR}. The latter statement
+alone does not settle which points are actual chain limits.
+
+These observations suggest associating subsets of
+$E(\Phi)$ with the ends of the dominance order.
+
+
+\par\medskip
+\noindent\textbf{Status.} No general solution verified. Existing chain constraints do not construct a complete boundary of the dominance poset.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Fu's geometric interpretation of dominance via the imaginary cone
+\cite{Fu2013} is a relevant starting point. The support and sign constraints
+of \cite[Theorems~4.8 and~4.18]{FuEtAl2026} further restrict the accumulation
+sets of chains. They do not, as stated, construct a complete boundary of
+the dominance poset. In particular, minimality of the action cannot
+replace an argument that each point is an actual chain limit.
+
+\subsection{Ends of the weak order and isotropic faces}
+
+Similarly, the results of Dyer suggest a possible
+approach to associating isotropic faces of the imaginary
+cone with the ends of the weak order.
+
+Although these ideas have been studied most extensively
+for generic universal root systems, several basic
+questions remain open even in that setting.
+
+Clarifying these constructions and their relationships
+would improve our understanding of the connection
+between the combinatorics of root systems and the
+distribution of normalized roots.
+
+
+\par\medskip
+\noindent\textbf{Status.} No general solution verified. Results on inversion sets do not establish the full proposed correspondence with isotropic faces.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Hohlweg--Labb\'e develop the link between infinite reduced words,
+biclosed sets, and paths in the imaginary cone
+\cite[Sections~4.2--4.3]{HL2016}. Their connected-word and path convergence
+statements are formulated as conjectures in the general setting.
+The Lorentzian inversion-set theorem cited above resolves an important
+special case, but does not itself produce the proposed correspondence
+with all isotropic faces in arbitrary signature.
+
+\subsection{Combinatorial determination of the closed imaginary cone}
+
+Finally, the Coxeter system $(W,S)$, together with
+its Coxeter graph and the collection of facial subsets
+of $\Delta$, determines the face lattice of the
+imaginary cone as a lattice equipped with a $W$-action.
+
+It is natural to ask whether adding the information
+of the affine edges
+\[
+\left\{
+\{\alpha,\beta\}\subseteq\Delta
+\mid B(\alpha,\beta)=-1
+\right\}
+\]
+is sufficient to determine the face lattice of the
+closed imaginary cone combinatorially.
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Face-lattice results for the imaginary cone do not automatically describe all faces of its topological closure.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Dyer describes the face lattice of the imaginary cone in terms of
+facial reflection subgroups \cite{Dyer2019}. This concerns the cone
+before taking its topological closure. Additional faces of the closure
+are the issue in the present question; a classification for the unclosed
+cone cannot be cited as an answer for the closed cone. No general
+resolution from precisely the listed combinatorial data was verified.
+
+\subsection{Combinatorial determination of the limit-root set}
+
+It is also conceivable that the limit-root set admits
+a combinatorial description in terms of this data,
+determining it either as a set or at least up to
+homeomorphism.
+
+
+\par\medskip
+\noindent\textbf{Status.} No general solution verified. Reconstruction of an embedded set and reconstruction up to homeomorphism must be distinguished.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+In favorable representations, boundary models give combinatorial
+access to the topology; see the conditional boundary discussion above.
+The deformation theory in \cite[Section~8]{DGKLM2025} also shows why
+representation parameters must be tracked. Neither it nor the face-lattice
+result in \cite{Dyer2019} asserts that the stated data determine every
+embedded limit-root set. A set-theoretic reconstruction and a classification
+up to equivariant homeomorphism should be posed separately.
+
+\section{Generalization to Other Frameworks}
+
+\subsection{Extensions to other root-system frameworks}
+
+The concept of root systems appears in several
+different mathematical frameworks, including:
+\begin{enumerate}
+    \item Coxeter groups;
+    \item semisimple Lie algebras;
+    \item Kac--Moody Lie algebras;
+    \item extended affine Lie algebras;
+    \item reductive algebraic groups.
+\end{enumerate}
+
+In most of these settings, limit roots can still be
+defined, and in some cases an isotropic cone can
+also be defined.
+
+It is expected that some of the results established
+in the present work and in \cite{HLR} can be generalized
+to these other settings.
+
+
+\par\medskip
+\noindent\textbf{Status.} Research direction with established partial results. Kac--Moody and representation-theoretic connections do not constitute a single extension theorem for all listed frameworks.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Dyer's imaginary-cone construction connects general Coxeter root
+systems to the Kac--Moody setting \cite{Dyer2019}. Paquette provides a
+concrete representation-theoretic development for quivers
+\cite{Paquette2016}. These are substantial bridges, not a single extension
+theorem covering all five frameworks. In finite root systems there is
+no infinite set of root directions to accumulate, so a nontrivial limit-root
+question requires an infinite setting or an additional asymptotic construction.
+
+\subsection{Limit roots in quiver representation theory}
+
+For example, certain classes of based root systems
+arise naturally in the theory of quiver representations,
+where positive roots can be interpreted as dimension
+vectors of indecomposable representations.
+
+This leads to the following question:
+
+\[
+\boxed{
+\begin{gathered}
+\text{How do limit roots arise in}\\
+\text{quiver representation theory?}
+\end{gathered}
+}
+\]
+
+
+\par\medskip
+\noindent\textbf{Status.} Partially solved. Paquette describes rational accumulation points of real Schur roots and irrational accumulation points in the weakly hyperbolic case. This does not classify all real roots of arbitrary quivers.
+
+\par\medskip
+\noindent\textbf{Previous work and verified progress.}
+Paquette studies projective accumulation of real Schur roots,
+which encode exceptional representations of an acyclic quiver
+\cite{Paquette2016}. Canonical decomposition describes the rational
+accumulation points, and the weakly hyperbolic case admits a complete
+description of the irrational ones. This directly develops the direction
+suggested in the question. The distinction between real Schur roots and
+all real roots is essential; the results should not be stated as a
+classification for every Kac--Moody or Coxeter root system.
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+\end{document}
