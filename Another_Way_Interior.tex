@@ -54,7 +54,6 @@
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem*{interiorlemma}{Lemma (Height on the interior of the imaginary cone)}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 
@@ -515,12 +514,12 @@ Let $D=\mathcal C\cap V_1$. By \cite[Theorem~2.2]{DHR}, the normalized section $
     B(\mathcal C,\mathcal C)\leq0.
 \]
 
-\begin{interiorlemma}\hypertarget{interior-height}{}
+\begin{lemma}[Height on the interior of the imaginary cone]\label{lem:interior-height}
 For every compact $A\subseteq\operatorname{int}_V\mathcal C$ and every
 $M>0$, only finitely many $w\in W$ satisfy $h(wz)\le M$ for some
 $z\in A$. This holds for a finite spanning simple system and any linear
 height strictly positive on $P\setminus\{0\}$.
-\end{interiorlemma}
+\end{lemma}
 \begin{proof}
 Choose $\varepsilon>0$ so that $z\pm\varepsilon\alpha_s\in\mathcal C$
 for all $z\in A$ and $s\in S$. Applying $w$ and then $h$ gives
@@ -968,7 +967,7 @@ Then
 Every $z\in\operatorname{int}_V\mathcal C$ has finite $\Pos(z)$.
 Indeed, each $\rho\in\Pos(z)$ pairs negatively with $p_0$ and positively
 with $z$, so $s_\rho$ fixes a point on the compact segment $A=[p_0,z]$
-in the interior. The \hyperlink{interior-height}{height lemma}, applied
+in the interior. Lemma~\ref{lem:interior-height}, applied
 with $M=\max_A h$, gives only finitely many such reflections, each with
 a unique positive root.
 
@@ -1444,8 +1443,8 @@ Choose a Euclidean norm in which the matrix of $B$ is
 $\operatorname{diag}(I_3,-I_2)$, and set
 $\lambda_n=\|g_n\|$.
 
-The conical sequence may be taken pairwise distinct. By the
-\hyperlink{interior-height}{height lemma}, $h(g_np_0)\to\infty$.
+The conical sequence may be taken pairwise distinct. By
+Lemma~\ref{lem:interior-height}, $h(g_np_0)\to\infty$.
 Since $h(g_np_0)\le\|h\|\,\lambda_n\|p_0\|$, we have $\lambda_n\to\infty$.
 Moreover $\|g_n^{-1}\|=\lambda_n$.
 After passing to a subsequence,
@@ -1805,7 +1804,7 @@ For an irreducible nondegenerate based root system of signature $(2,n)$, $n\geq2
 \begin{proof}
 Use Proposition~\ref{prop:2n-boundary}. Suppose $x\ne y$ and $B(x,y)=0$. Their common boundary image cannot be parabolic, because those fibres are singletons. Put $U=\operatorname{span}\{x,y\}$ and $F=D\cap(x+y)^\perp$. As shown at the beginning of Proposition~\ref{prop:32-conical}, every extreme point of $F$ is an isotropic extreme point of $D$. The quotient $U^\perp/U$ is negative definite (or zero if $n=2$), which forces these extreme points into $U$, and compact convexity gives $F=D\cap U$. Its endpoints $u,v$ are distinct extreme points of $D$ in the common fibre.
 
-The rest of the conical calculation can now be applied with an adapted Euclidean norm for $B=\operatorname{diag}(I_2,-I_n)$. The \hyperlink{interior-height}{height lemma} gives $h(g_jp_0)\to\infty$ for the pairwise distinct conical sequence, hence $\lambda_j=\|g_j\|\to\infty$ also for a dependent spanning simple system. We have $\|g_j^{-1}\|=\lambda_j$. Passing to a subsequence gives $T,R$ with $R=T^{*B}$ and rank at most two. Local spanning and distinct-fibre negativity give \eqref{eq:32-T-image}; the scaling calculation gives $Ru_*=u$, $Rv_*=v$, so both ranks are two.
+The rest of the conical calculation can now be applied with an adapted Euclidean norm for $B=\operatorname{diag}(I_2,-I_n)$. Lemma~\ref{lem:interior-height} gives $h(g_jp_0)\to\infty$ for the pairwise distinct conical sequence, hence $\lambda_j=\|g_j\|\to\infty$ also for a dependent spanning simple system. We have $\|g_j^{-1}\|=\lambda_j$. Passing to a subsequence gives $T,R$ with $R=T^{*B}$ and rank at most two. Local spanning and distinct-fibre negativity give \eqref{eq:32-T-image}; the scaling calculation gives $Ru_*=u$, $Rv_*=v$, so both ranks are two.
 
 If the attracting point $b$ were parabolic, $T(\mathcal C)$ would be contained in a ray, contradicting rank two and $\operatorname{span}(\mathcal C)=V$. Hence $b$ is conical. Lemma~\ref{lem:32-separation} applies: its proof only uses the common-wall property, the boundary-map properties, and the two carrier assertions verified above. It supplies the signed root $\rho$ in \eqref{eq:32-target1}--\eqref{eq:32-target2}. The final calculation of Proposition~\ref{prop:32-conical} then produces positive roots $\gamma_j=g_j^{-1}\rho$ to which Lemma~\ref{lem:32-extreme} applies for both $u$ and $v$. Thus $u=\widehat{R\rho}=v$, a contradiction.
 
@@ -1910,7 +1909,7 @@ x,y\in E,\qquad B(x,y)=0,\qquad \|x-y\|_1=2.
 \]
 
 The group $W_{\{5,6\}}$ fixes $x$, and $W_{\{1,2\}}$ fixes $y$.
-Both groups are infinite, so the \hyperlink{interior-height}{height lemma}
+Both groups are infinite, so Lemma~\ref{lem:interior-height}
 places $\mathcal C\cap V_{\{5,6\}}^\perp$ and
 $\mathcal C\cap V_{\{1,2\}}^\perp$ in $\partial\mathcal C$.
 
