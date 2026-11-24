@@ -4725,7 +4725,32 @@ $E(\Phi)$ with the ends of the dominance order.
 
 
 \par\medskip
-\noindent\textbf{Status.} No general solution verified. Existing chain constraints do not construct a complete boundary of the dominance poset.
+\noindent\textbf{Status.} Open at the level of ends. In a nondegenerate realization the
+walls of an individual chain recover its normalized accumulation set.
+Passing from chains to ends still requires a well-defined assignment
+on equivalent chains.
+
+Let $D$ be the interior of the normalized imaginary cone in the
+height-one hyperplane. For a positive root $\rho$ set
+$C_\rho=\{z\in D:B(z,\rho)>0\}$. When $\rho^\perp$ meets $D$,
+the relative boundary $\partial_D C_\rho$ spans $\rho^\perp$:
+it contains a relatively open piece of the height-one slice of that
+hyperplane. If $B$ is nondegenerate, projective duality therefore gives,
+for each subsequence and each height-one point $x$,
+\[
+ \operatorname{span}(\partial_D C_{\rho_{n_j}})\longrightarrow x^\perp
+ \quad\Longleftrightarrow\quad \widehat{\rho}_{n_j}\longrightarrow x,
+\]
+where the limit on the left is in the Grassmannian of hyperplanes and
+each wall is assumed to meet $D$. This equivalence concerns the walls.
+The regions themselves can accumulate on a nontrivial segment: in the
+rank-five example of Proposition~\ref{prop:counterexample-convE-Q},
+take a dihedral chain in the first factor with attracting endpoint $x$
+on its positive side, and a limit root $y$ of the orthogonal second
+factor. Then $B(x,\rho_n)>0$ and $B(y,\rho_n)=0$. By convexity and
+density of $D$ in its closure, $[x,y]\subseteq\overline{C_{\rho_n}}$
+for every $n$. In a degenerate realization, a wall only records its
+normal modulo the radical.
 
 \par\medskip
 \noindent\textbf{Previous work and verified progress.}
