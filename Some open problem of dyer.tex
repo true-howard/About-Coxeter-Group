@@ -4628,156 +4628,91 @@ statements hold.
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}[Sources and proof structure]
-Parts~(1) and~(2) are
-\cite[Theorem~2.1]{WangUniqueness}.
-The proof combines the small-rank inertia analysis, quotient
-lifting, the relative-boundary argument in signature $(3,2)$,
-and its extension to positive index two.
-Part~(3) is
-\cite[Corollary~2.18]{WangUniqueness}.
-Part~(4) is
-\cite[Proposition~4.10 and Remark~4.11]{WangUniqueness}.
+\begin{proof}[Accumulation points and the positive cases]
+Write $A$ for the accumulation set of $(\widehat{\rho}_n)$. Comparable
+distinct positive roots have inner product at least one, so the chain
+lies in a single irreducible component. For $x,y\in A$, take distinct
+terms along subsequences converging after normalization to $x$ and $y$.
+The dominance inequality and positivity of the heights give $B(x,y)\ge0$.
+The closed imaginary cone gives the reverse inequality. Hence
+\[
+ B(x,y)=0\quad(x,y\in A),\qquad
+ B(\rho_m,x)\ge0\quad(m\ge1,\ x\in A).
+\]
+The second inequality follows by fixing $m$ and passing to the limit
+along the tail. Compactness of the height-one simplex reduces
+convergence to showing that $A$ is a singleton.
+
+In Lorentzian signature, orthogonal null vectors are proportional.
+For an irreducible indefinite system with degenerate form, projective
+projection modulo the radical is injective on the accumulation set of
+a fixed chain \cite[Proposition~2.16]{WangUniqueness}. Applying the
+Lorentzian argument in the quotient gives part~(3).
+
+In signature $(3,2)$, orthogonality puts $A$ in a single fibre of the
+relative-boundary map. A conical fibre contains at most one point of
+$A$. For a parabolic fibre the only additional case is a product of
+two infinite dihedral factors. After conjugating to its standard
+parabolic $W_I$ and discarding a finite prefix, every positive root
+outside $\Phi_I$ pairs strictly negatively with the points of $A$.
+The inequality $B(\rho_m,x)\ge0$ therefore forces the chain into
+$\Phi_I$, and comparability places it in one dihedral factor. In the
+affine case there is just one limit direction. In the strict dihedral
+case the two endpoints pair strictly negatively, so at most one lies
+in $A$. These fibre arguments, together with the low-rank inertia
+analysis and quotient lifting, prove part~(1)
+\cite[Theorem~2.1 and Section~3]{WangUniqueness}. For irreducible
+nondegenerate signature $(2,r-2)$, distinct limit roots pair strictly
+negatively \cite[Section~4.1]{WangUniqueness}; the component reduction
+gives part~(2) in general.
 \end{proof}
 
-\par\medskip
-\noindent\textbf{The rank-six counterexamples.}
-For $a>1$, consider the path Gram matrix
-\[
-G_a=
-\begin{pmatrix}
-1&-a&0&0&0&0\\
--a&1&-a&0&0&0\\
-0&-a&1&-a&0&0\\
-0&0&-a&1&-a&0\\
-0&0&0&-a&1&-a\\
-0&0&0&0&-a&1
-\end{pmatrix}.
-\]
-Its eigenvalues are
-\[
-1-2a\cos\frac{k\pi}{7},
-\qquad 1\le k\le6.
-\]
-Thus $G_3$ has signature $(3,3)$ and $G_2$ has signature $(4,2)$.
+\begin{corollary}\label{cor:word-hyperbolic-dominance-chain}
+Under the hypotheses of Corollary~\ref{p14:whyp}, every infinite
+strict dominance chain has a unique normalized limit.
+\end{corollary}
+\begin{proof}
+For $x,y\in A$ we have $B(x,y)=0$. Lemma~\ref{p14:coding} sends them to
+the same boundary point. The map is injective by
+Corollary~\ref{p14:whyp}, so $x=y$. Compactness gives convergence.
+\end{proof}
 
-Here is the structure of the construction in
-\cite[Section~4.3]{WangUniqueness}.
-Put
-\[
-g=s_1s_2,
-\qquad
-t=s_5s_6,
-\qquad
-r=a+\sqrt{a^2-1},
-\]
-and define
-\[
-x=\frac{r\alpha_1+\alpha_2}{r+1},
-\qquad
-y=\frac{r\alpha_5+\alpha_6}{r+1}.
-\]
-These are distinct orthogonal limit roots.
-The positive roots
-\[
-u_m=g^m\alpha_3,
-\qquad
-v_m=t^m\alpha_4
-\]
-satisfy
-\[
-\widehat{u_m}\longrightarrow x,
-\qquad
-\widehat{v_m}\longrightarrow y,
-\qquad
-B(u_m,v_\ell)=-a
-\quad(m,\ell\ge0).
-\]
+\begin{proof}[The rank-six counterexamples in part~(4)]
+Let $G_a$ have diagonal entries $1$, consecutive entries
+$B(\alpha_i,\alpha_{i+1})=-a$, and all other off-diagonal entries zero.
+Its eigenvalues are $1-2a\cos(k\pi/7)$ for $1\le k\le6$.
+Thus $a=3$ gives signature $(3,3)$ and $a=2$ gives $(4,2)$.
+Put $g=s_1s_2$, $t=s_5s_6$, $u_m=g^m\alpha_3$ and $v_m=t^m\alpha_4$.
+Their normalized limits $x$ and $y$ lie in the two orthogonal outer
+dihedral planes. The coefficients of $\alpha_3$ in $u_m$ and of
+$\alpha_4$ in $v_\ell$ are both one, so $B(u_m,v_\ell)=-a$.
 
-Choose rapidly increasing integers $M_n$, and put
+Choose $\gamma_n=u_{M_n}$ for odd $n$ and $\gamma_n=v_{M_n}$ for
+even $n$. Set $w_0=1$, $w_n=w_{n-1}s_{\gamma_n}$ and
+$\beta_n=w_{n-1}\gamma_n$. The rank-two dominance relation
+$s_{\gamma_n}\gamma_{n+1}=\gamma_{n+1}+2a\gamma_n\succ\gamma_n$
+gives $\beta_{n+1}\succ\beta_n$ by $W$-invariance. The positivity
+and growth estimates in \cite[Proposition~4.10 and Remark~4.11]{WangUniqueness}
+allow $M_n$ to be chosen so that the moving endpoints
+$\widehat{w_nx}$ and $\widehat{w_ny}$ have summable displacements
+and stay a positive distance apart. The odd and even normalized
+roots approach the corresponding endpoints, giving
 \[
-\gamma_n=
-\begin{cases}
-u_{M_n},&n\text{ odd},\\
-v_{M_n},&n\text{ even},
-\end{cases}
-\qquad
-w_0=1,
-\qquad
-w_n=s_{\gamma_1}\cdots s_{\gamma_n},
-\qquad
-\beta_n=w_{n-1}\gamma_n.
+ \widehat{\beta}_{2n-1}\longrightarrow X,\qquad
+ \widehat{\beta}_{2n}\longrightarrow Y,\qquad X\ne Y .
 \]
-The constant cross-pairing gives
-\[
-s_{\gamma_n}\gamma_{n+1}
-=\gamma_{n+1}+2a\gamma_n
-\succ\gamma_n.
-\]
-By $W$-invariance of dominance,
-\[
-\beta_{n+1}\succ\beta_n.
-\]
-The roots $\beta_n$ are positive, so this is an infinite strict
-dominance chain.
-
-The integers $M_n$ are chosen so that
-$\widehat{\beta_n}$ alternately approximates the moving endpoints
-\[
-\widehat{w_{n-1}x},
-\qquad
-\widehat{w_{n-1}y},
-\]
-with summable errors.
-On each odd step, the second endpoint is fixed; on each even
-step, the first endpoint is fixed.
-The resulting endpoint sequences converge to distinct points
-$X,Y\in E(\Phi)$, and
-\[
-\widehat{\beta}_{2n-1}\longrightarrow X,
-\qquad
-\widehat{\beta}_{2n}\longrightarrow Y,
-\qquad
-X\ne Y,
-\qquad
-B(X,Y)=0.
-\]
-For $a=3$, the manuscript gives the explicit choice $M_n=10^n$.
-For $a=2$, it chooses the exponents recursively.
-See \cite[Proposition~4.10 and Remark~4.11]{WangUniqueness}
-for the estimates and the complete proof.
+For $a=3$ one may take $M_n=10^n$. For $a=2$ the choice is recursive.
+\end{proof}
 
 \begin{remark}
-Adjoining $r-6$ orthogonal finite rank-one factors preserves
-these chains and yields counterexamples of signatures
-\[
-(r-3,3)
-\qquad\text{and}\qquad
-(r-2,2)
-\qquad(r\ge6).
-\]
-These higher-rank extensions are reducible; the rank-six
-examples themselves are irreducible.
-
-The constructions are existence results.
-They do not assert failure for every system outside the
-positive families above, nor do they provide counterexamples
-in every remaining signature.
-A complete classification by signature is not established.
+Adjoining $r-6$ orthogonal rank-one factors preserves the chains
+and gives reducible examples of signatures $(r-3,3)$ and $(r-2,2)$
+for $r>6$. The two rank-six examples are irreducible. In the standard
+Tits realization $a=1$, the outer dihedral factors are affine and the
+exponential growth used in the construction disappears. Uniqueness
+in the general standard Tits realization remains open here.
 \end{remark}
 
-\begin{remark}
-The counterexamples here concern actual strict dominance chains.
-They therefore give a negative answer to general uniqueness
-independently of the counterexamples concerning convex hulls,
-facial restriction, or exposed points.
-
-However, the path constructions use $a=2$ or $a=3$.
-Setting $a=1$ makes the two outer dihedral blocks affine and
-invalidates the exponential-attraction argument used above.
-The general uniqueness question for standard Tits realizations
-is consequently not resolved by these examples.
-\end{remark}
 \subsection{Ends of the dominance order}
 
 One should distinguish limits of dominance-increasing chains from
